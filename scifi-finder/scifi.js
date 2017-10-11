@@ -1,15 +1,29 @@
-// Extracting articles using Wikipedia's API
+// Using jquery-csv plugin to parse the csv file
 
 $.ajax({
-    url: 'http://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Science_fiction_genres&cmlimit=200',
-    data: {
-        format: 'json'
+    url: "scifi_genres.csv",
+    async: false,
+    success: function (csvd) {
+        data = $.csv.toArrays(csvd);
     },
-    dataType: 'jsonp',
-    type: 'get',
-}).done(function (data) {
-    $("#mainContainer").append(JSON.stringify(data));
+    dataType: "text",
+    complete: function () {
+      console.log(data);
+    }
 });
+
+// Extracting articles using Wikipedia's API
+//
+// $.ajax({
+//     url: 'http://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Science_fiction_genres&cmlimit=200',
+//     data: {
+//         format: 'json'
+//     },
+//     dataType: 'jsonp',
+//     type: 'get',
+// }).done(function (data) {
+//     $("#mainContainer").append(JSON.stringify(data["query"]));
+// });
 
 
 $.ajax({
