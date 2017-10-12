@@ -1,5 +1,4 @@
-// Using jquery-csv plugin to parse the csv file
-
+// Using jquery-csv plugin to parse the csv file and extract articles' names
 $.ajax({
     url: "scifi_genres.csv",
     async: false,
@@ -8,24 +7,14 @@ $.ajax({
     },
     dataType: "text",
     complete: function () {
-      console.log(data);
+      var i;
+      for (i = 1; i < data.length; ++i) {
+        $("#mainContainer").append(data[i][1]);
     }
+  }
 });
 
-// Extracting articles using Wikipedia's API
-//
-// $.ajax({
-//     url: 'http://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Science_fiction_genres&cmlimit=200',
-//     data: {
-//         format: 'json'
-//     },
-//     dataType: 'jsonp',
-//     type: 'get',
-// }).done(function (data) {
-//     $("#mainContainer").append(JSON.stringify(data["query"]));
-// });
-
-
+// Using Wikipedia's API to extract several articles from the 'Science_fiction_genres' category
 $.ajax({
     url: 'http://en.wikipedia.org/w/api.php?format=xml&action=query&prop=extracts&titles=Gothic_science_fiction&redirects=true',
     data: {
