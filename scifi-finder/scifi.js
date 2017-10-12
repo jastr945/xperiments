@@ -9,7 +9,7 @@ $.ajax({
     complete: function () {
       var i;
       for (i = 1; i < data.length; ++i) {
-        $("#mainContainer").append(data[i][1]);
+        $(".selectpicker").append('<option>' + data[i][1] + '</option>');
     }
   }
 });
