@@ -9,7 +9,7 @@ $.ajax({
     complete: function () {
       var i;
       for (i = 1; i < data.length; ++i) {
-        $(".selectpicker").append('<option data-icon="glyphicon-heart">' + data[i][1] + '</option>');
+        $(".selectpicker").append('<option data-icon="glyphicon-star">' + data[i][1] + '</option>');
     }
   }
 });

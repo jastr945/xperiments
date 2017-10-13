@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Bootstrap optional theme -->
@@ -12,11 +12,34 @@
     <title>Scifi StudyRoom</title>
 </head>
 <body>
-  <div id="mainContainer">
-    <select class="selectpicker show-tick show-menu-arrow" data-width="50%" title="Choose one of the following..."></select>
-    <br>
-    <article id="article"></article>
-  </div>
+  <nav class="navbar navbar-inverse navbar-static-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Science Fiction Study Room</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="jumbotron">
+<div class="container">
+  <h1>Ready. Select. Read.</h1>
+  <p>Choose a sci-fi genre from the menu below and learn a lot of interesting stuff!</p>
+  <br>
+  <p><select class="selectpicker show-tick show-menu-arrow" data-width="50%" title="Choose one of the following..."></select></p>
+</div>
+</div>
+  <article id="article"></article>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.8.3/jquery.csv.js"></script>
 <script src="/home/polina/projects/xperiments/scifi-finder/scifi.js"></script>
