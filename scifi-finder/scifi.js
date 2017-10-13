@@ -9,7 +9,7 @@ $.ajax({
     complete: function () {
       var i;
       for (i = 1; i < data.length; ++i) {
-        $(".selectpicker").append('<option>' + data[i][1] + '</option>');
+        $(".selectpicker").append('<option data-icon="glyphicon-heart">' + data[i][1] + '</option>');
     }
   }
 });
@@ -25,7 +25,8 @@ $('.selectpicker').change(function () {
     },
     dataType: 'jsonp',
     type: 'get',
-}).done(function(data) {
-    $("#article").html(JSON.stringify(data["query"]["pages"]));
-});
+  }).done(function(data) {
+    var extract = JSON.stringify(data.query.pages);
+      $("#article").html(extract);
+  });
 });
