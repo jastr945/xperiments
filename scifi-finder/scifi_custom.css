@@ -31,6 +31,7 @@ body {
 #article {
   text-align: justify;
   font-size: 1.2em;
+	margin-top: 36px;
 }
 
 h2 {
@@ -45,6 +46,15 @@ h2 {
 .item > img {
 	width: 100%;
 	height: auto;
+}
+
+.carousel-caption {
+	top: 0%;
+	left: 10%;
+	font-size: 36px;
+	text-align: left;
+	width:100%;
+	padding-top: 0;
 }
 
 footer {
