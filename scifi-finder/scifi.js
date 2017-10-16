@@ -1,4 +1,4 @@
-// Using jquery-csv plugin to parse the csv file and extract articles' names
+// Using jquery-csv plugin to parse the csv file and extract the names of Wikipedia articles
 $.ajax({
     url: "scifi_genres.csv",
     async: false,
@@ -15,7 +15,7 @@ $.ajax({
 });
 
 
-// Using Wikipedia API to load an article of a user's choice from the select menu
+// Using Wikipedia API to load an article of user's choice from the select menu
 $('.selectpicker').change(function () {
   var textTitle = $('.selectpicker option:selected').text();
   $.ajax({
@@ -25,8 +25,12 @@ $('.selectpicker').change(function () {
     },
     dataType: 'jsonp',
     type: 'get',
-  }).done(function(data) {
-    var extract = JSON.stringify(data.query.pages);
-      $(".col-md-12").html("<div id='article'><p>" + extract + "</div></p>");
+    success: function (data) {
+      data = $.parseJSON(JSON.stringify(data));
+      myobj = data.query.pages;
+      $.map(myobj, function(val, i) {
+        $(".col-md-12").html("<div id='article'><p>" + myobj[i].extract + "</div></p>");
+      });
+    }
   });
 });
