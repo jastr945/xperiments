@@ -30,3 +30,11 @@ body {
   text-align: justify;
   font-size: 1.2em;
 }
+
+h2 {
+	text-align: center;
+}
+
+.item > img {
+	width: 100%;
+}

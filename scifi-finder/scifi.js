@@ -27,7 +27,6 @@ $('.selectpicker').change(function () {
     type: 'get',
   }).done(function(data) {
     var extract = JSON.stringify(data.query.pages);
-      $("#article").html(extract);
+      $(".col-md-12").html("<div id='article'><p>" + extract + "</div></p>");
   });
 });
-s
