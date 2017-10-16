@@ -30,3 +30,4 @@ $('.selectpicker').change(function () {
       $("#article").html(extract);
   });
 });
+s

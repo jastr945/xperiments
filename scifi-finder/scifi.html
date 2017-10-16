@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- Bootstrap Select latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link href="scifi_custom.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <title>Scifi StudyRoom</title>
 </head>
 <body>
@@ -25,8 +27,8 @@
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">About</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="https://github.com/jastr945/xperiments/tree/master/scifi-finder#sci-fi-studyroom" target="_blank" >About</a></li>
+				<li><a href="http://polina.mee.how/" target="_blank" >Contact</a></li>
 			</ul>
 		</div>
 	</div>
@@ -36,10 +38,18 @@
   <h1>Ready. Select. Read.</h1>
   <p>Choose a sci-fi genre from the menu below and learn a lot of interesting stuff!</p>
   <br>
-  <p><select class="selectpicker show-tick show-menu-arrow" data-width="50%" title="Choose one of the following..."></select></p>
+  <select class="selectpicker show-tick show-menu-arrow" data-width="50%" title="Choose one of the following..."></select>
 </div>
 </div>
-  <article id="article"></article>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2><b>Some Title</b></h2>
+			<article id="article"><p></p></article>
+		</div>
+	</div>
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.8.3/jquery.csv.js"></script>
 <script src="/home/polina/projects/xperiments/scifi-finder/scifi.js"></script>

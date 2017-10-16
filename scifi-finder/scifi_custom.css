@@ -1,0 +1,32 @@
+body {
+	background: #3E4649;
+	color: #f7f7f7;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+	margin-bottom: 0;
+}
+
+.jumbotron {
+	background: #480082;
+	color: white;
+	text-align: center;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: transparent;
+	border-color: white;
+	margin-bottom: 5px;
+}
+.btn-primary:hover {
+	color: #27A967;
+	background-color: white;
+	border-color: white;
+}
+
+#article {
+  text-align: justify;
+  font-size: 1.2em;
+}
