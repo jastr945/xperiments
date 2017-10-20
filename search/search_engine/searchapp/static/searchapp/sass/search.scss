@@ -11,15 +11,16 @@ body, html {
 }
 
 .navbar {
+  background: transparent;
   height: auto;
-  border-right: none;
+  border: none;
   border-radius: 0;
   padding: 1em 1em 0 1em;
-
   &:hover {
-    background-color: $color4;
+    background-color: rgba(64, 64, 64, 0.3);
   }
-  .navbar-brand {
+  h1.navbar-brand.mb-0 {
+    color: $color3;
     padding: 0;
     font-family: 'Indie Flower', cursive;
     font-size: 48px;
@@ -27,8 +28,20 @@ body, html {
   }
   .navbar-right {
     font-size: 24px;
-    a {
+    li a {
       color: $color1;
+      &:hover {
+        border-bottom: 3px solid $color3;
+      }
+    }
+    .glyphicon {
+      padding: 0.5em;
+      cursor: pointer;
+      color: $color3;
+      text-shadow: 2px 2px $color1;
+      &:hover {
+        transform: scale(1.5, 1.5);
+      }
     }
   }
 }
@@ -41,7 +54,6 @@ body, html {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  color: $color3;
 }
 
 footer {
