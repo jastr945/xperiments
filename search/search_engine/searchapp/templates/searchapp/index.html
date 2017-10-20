@@ -10,16 +10,37 @@
     <!-- Bootstrap optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="{% static 'searchapp/sass/search.min.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway" rel="stylesheet">
     <title>Search App</title>
 </head>
 <body>
-  <div class="container-fluid">
-  <nav class="navbar">
-    <h1 class="navbar-brand mb-0">SeacrhApp</h1>
-  </nav>
+  <div id="main" class="container-fluid">
+    <nav class="navbar navbar-toggleable-md">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      				<span class="sr-only">Toggle navigation</span>
+      				<span class="icon-bar"></span>
+      				<span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+      		</button>
+          <h1 class="navbar-brand mb-0"><b>MyLittleSearchApp</b></h1>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    			<ul class="nav navbar-nav navbar-right">
+            <li><a href=# target="_blank" >Articles</a></li>
+    				<li><a href=# target="_blank" >About</a></li>
+    				<li><a href=# target="_blank" >Contact</a></li>
+    			</ul>
+    		</div>
+      </div>
+    </nav>
 </div>
 <footer>
-  <hr>
   <small>&copy;
     <script type="text/javascript">
       document.write(new Date().getFullYear());

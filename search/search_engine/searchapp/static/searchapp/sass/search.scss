@@ -1,36 +1,58 @@
+$color0: #ffffff;
+$color1: #000000;
+$color3: #d000d0;
+$color4: #404040;
+
 body, html {
   margin: 0;
   padding-top: 0;
   height: 100%;
+  font-family: 'Raleway', sans-serif;
 }
 
-// .navbar {
-//   .navbar-inner {
-//     background-color: white;
-//     &:hover {
-//       background-color: green;
-//     }
-//   }
-// }
+.navbar {
+  height: auto;
+  border-right: none;
+  border-radius: 0;
+  padding: 1em 1em 0 1em;
 
-.container-fluid {
+  &:hover {
+    background-color: $color4;
+  }
+  .navbar-brand {
+    padding: 0;
+    font-family: 'Indie Flower', cursive;
+    font-size: 48px;
+    text-shadow: 2px 2px $color1;
+  }
+  .navbar-right {
+    font-size: 24px;
+    a {
+      color: $color1;
+    }
+  }
+}
+
+#main {
   height: 100%;
+  margin:0;
+  padding:0;
   background-image: url("../img/cannon.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  color: $color3;
 }
 
 footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 95%;
-  margin: 1em auto;
-  color: #ff0000;
-  hr {
-	align-items: stretch;
-	width: 100%;
-	color: #ff0000;
+  background-color: $color4;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border: none;
+  color: $color0;
+  small {
+    margin:0;
+    padding:0;
   }
 }
