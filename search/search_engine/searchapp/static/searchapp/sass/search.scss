@@ -1,0 +1,36 @@
+body, html {
+  margin: 0;
+  padding-top: 0;
+  height: 100%;
+}
+
+// .navbar {
+//   .navbar-inner {
+//     background-color: white;
+//     &:hover {
+//       background-color: green;
+//     }
+//   }
+// }
+
+.container-fluid {
+  height: 100%;
+  background-image: url("../img/cannon.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  margin: 1em auto;
+  color: #ff0000;
+  hr {
+	align-items: stretch;
+	width: 100%;
+	color: #ff0000;
+  }
+}
