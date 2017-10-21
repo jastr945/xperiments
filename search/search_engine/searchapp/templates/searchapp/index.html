@@ -52,6 +52,12 @@
     <div class=container>
       <div class="row">
         <div class="col-md-12">
+          {% for a in articles %}
+            {{ a.title }}
+            {{ a.date }}
+            Source: {{ a.source }}
+            {{ a.body }}
+          {% endfor %}
           <p>article goes in here</p>
         </div>
       </div>
