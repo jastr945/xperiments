@@ -13,7 +13,6 @@ body, html {
 }
 
 .navbar {
-  height: auto;
   background: transparent;
   height: auto;
   border: none;
@@ -69,11 +68,12 @@ body, html {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
 }
 
 .col-md-12 {
   background-color: rgba(64, 64, 64, 0.9);
-  height: auto;
+  height: 89vh;
   margin-top: 0;
   margin-bottom: 0;
   padding: 2em;
@@ -81,11 +81,10 @@ body, html {
   color: $color0;
   text-align: justify;
   font-size: 1.2em;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 footer {
-  height: auto;
   background-color: $color2;
   text-align: center;
   padding-top: 1em;
