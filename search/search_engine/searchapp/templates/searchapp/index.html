@@ -55,9 +55,11 @@
           {% for a in articles %}
             <div class="panel-body">
               <div class="media">
-                <div class="media-left"
-                  <img class="media-object" src="media/{{a.image}}" alt="Article pic">
+                {% if a.img %}
+                <div class="media-left">
+                  <img class="media-object" src="media/{{ a.img }}" alt="Article image">
                 </div>
+                {% endif %}
                 <div class="media-body">
                   <h3>{{ a.title }}</h3>
                   <h6>{{ a.date}}</h6>
