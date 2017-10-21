@@ -1,7 +1,9 @@
 $color0: #ffffff;
 $color1: #000000;
+$color2: #535d84;
 $color3: #d000d0;
 $color4: #404040;
+$color5: rgba(64, 64, 64, 0.3);
 
 body, html {
   margin: 0;
@@ -17,7 +19,7 @@ body, html {
   border-radius: 0;
   padding: 1em 1em 0 1em;
   &:hover {
-    background-color: rgba(64, 64, 64, 0.3);
+    background-color: $color5;
   }
   h1.navbar-brand.mb-0 {
     color: $color3;
@@ -30,8 +32,19 @@ body, html {
     font-size: 24px;
     li a {
       color: $color1;
+      padding-right: 1em;
       &:hover {
         border-bottom: 3px solid $color3;
+      }
+    }
+    .dropdown-menu {
+      text-align: right;
+      background-color: $color2;
+      border-radius: 5px;
+      li a {
+        &:hover {
+          background-color: green;
+        }
       }
     }
     .glyphicon {
@@ -56,13 +69,23 @@ body, html {
   background-position: center;
 }
 
-footer {
+.col-md-12 {
   background-color: $color4;
+  height: auto;
+  padding: 3em;
+  border-radius: 5px;
+  color: $color0;
+  text-align: justify;
+  font-size: 2em;
+}
+
+footer {
+  background-color: $color2;
   text-align: center;
   padding-top: 1em;
   padding-bottom: 1em;
   border: none;
-  color: $color0;
+  color: $color1;
   small {
     margin:0;
     padding:0;
