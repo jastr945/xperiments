@@ -62,7 +62,8 @@
                 {% endif %}
                 <div class="media-body">
                   <h3>{{ a.title }}</h3>
-                  <h6>{{ a.date}}</h6>
+                  <h6>{{ a.date }}</h6>
+                  <h6>Category:&nbsp;{{ a.category }}</h6>
                   <h5>{{ a.body|truncatechars:350 }}&nbsp;<a href="#">Continue reading >>></a></h5>
                 </div>
               </div>
