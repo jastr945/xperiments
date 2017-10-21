@@ -12,7 +12,7 @@ class Article(models.Model):
     """Contains basic information about each article."""
 
     title = models.CharField(max_length=255, default='', null=True)
-    body = models.CharField(max_length=3000, default='', null=True)
+    body = models.CharField(max_length=10000, default='', null=True)
     date = models.DateField(blank=False, null=False)
     source = models.CharField(max_length=255, default='', null=True)
     img = models.FileField(upload_to=upload_image, default='', blank=True, null=True)
@@ -30,6 +30,6 @@ class Article(models.Model):
         return '{} - {}'.format(self.title, self.category)
 
     def save(self, *args, **kwargs):
-        """the slug will change every time the ntitle changes"""
+        """the slug will change every time the article changes"""
         self.slug = slugify(self.title)
         super(Article, self).save(*args, **kwargs)

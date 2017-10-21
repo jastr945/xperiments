@@ -53,16 +53,23 @@
       <div class="row">
         <div class="col-md-12">
           {% for a in articles %}
-            {{ a.title }}
-            {{ a.date }}
-            Source: {{ a.source }}
-            {{ a.body }}
+            <div class="panel-body">
+              <div class="media">
+                <div class="media-left"
+                  <img class="media-object" src="media/{{a.image}}" alt="Article pic">
+                </div>
+                <div class="media-body">
+                  <h3>{{ a.title }}</h3>
+                  <h6>{{ a.date}}</h6>
+                  <h5>{{ a.body|truncatechars:350 }}&nbsp;<a href="#">Continue reading >>></a></h5>
+                </div>
+              </div>
+            </div>
           {% endfor %}
-          <p>article goes in here</p>
         </div>
       </div>
     </div>
-</div>
+  </div>
 <footer>
   <small>&copy;
     <script type="text/javascript">

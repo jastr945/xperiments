@@ -13,11 +13,13 @@ body, html {
 }
 
 .navbar {
+  height: auto;
   background: transparent;
   height: auto;
   border: none;
   border-radius: 0;
   padding: 1em 1em 0 1em;
+  margin-bottom: 0;
   &:hover {
     background-color: $color5;
   }
@@ -70,16 +72,20 @@ body, html {
 }
 
 .col-md-12 {
-  background-color: $color4;
+  background-color: rgba(64, 64, 64, 0.9);
   height: auto;
+  margin-top: 0;
+  margin-bottom: 0;
   padding: 2em;
   border-radius: 5px;
   color: $color0;
   text-align: justify;
-  font-size: 1.5em;
+  font-size: 1.2em;
+  overflow: hidden;
 }
 
 footer {
+  height: auto;
   background-color: $color2;
   text-align: center;
   padding-top: 1em;

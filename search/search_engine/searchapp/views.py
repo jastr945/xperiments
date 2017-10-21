@@ -4,7 +4,7 @@ from .models import Article
 # rendering the main page
 def index(request):
 
-    articles = Article.objects.all()
+    articles = Article.objects.all().order_by('-date')
 
     context_dict = {
         'articles': articles,
