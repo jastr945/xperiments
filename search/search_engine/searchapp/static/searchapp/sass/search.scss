@@ -76,17 +76,35 @@ body, html {
   height: 90vh;
   margin-top: 0;
   margin-bottom: 0;
-  padding: 2em;
+  padding: 1.6em;
   border-radius: 5px;
   color: $color0;
   text-align: justify;
   font-size: 1.2em;
   overflow-y: auto;
 
+  .media {
+    padding: 1em;
+    border-radius: 5px;
+    a {
+      color: $color3;
+    }
+
+    .media-body {
+      h3 {
+      margin-top: 0;
+      }
+    }
+
+    &:hover {
+      background-color: darken($color5, 10%)
+    }
+  }
+
   .media-object {
-    margin-top: 20px;
     max-width: 12em;
     height: 8em;
+
   }
 }
 
