@@ -22,6 +22,7 @@ body, html {
   &:hover {
     background-color: $color5;
   }
+
   h1.navbar-brand.mb-0 {
     color: $color3;
     padding: 0;
@@ -29,8 +30,10 @@ body, html {
     font-size: 48px;
     text-shadow: 2px 2px $color1;
   }
+
   .navbar-right {
     font-size: 24px;
+
     li a {
       color: $color1;
       padding-right: 1em;
@@ -38,16 +41,19 @@ body, html {
         border-bottom: 3px solid $color3;
       }
     }
+
     .dropdown-menu {
       text-align: right;
       background-color: $color2;
       border-radius: 5px;
+
       li a {
         &:hover {
           background-color: green;
         }
       }
     }
+
     .glyphicon {
       padding: 0.5em;
       cursor: pointer;
@@ -106,9 +112,9 @@ body, html {
   }
 
   .media-object {
-    max-width: 12em;
+    width: 12em;
     height: 8em;
-
+    object-fit: cover;
   }
 }
 
