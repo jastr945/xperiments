@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'searchapp',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +118,19 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "table,spellchecker,paste,searchreplace,emotions,autosave,preview,wordcount",
+    'theme': "advanced",
+    'width': 1200,
+    'height': 700,
+    'font-size': '12px',
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+}
+
+TINYMCE_SPELLCHECKER = True
+TINYMCE_COMPRESSOR = True
 
 STATIC_DIR = [
     os.path.join(BASE_DIR, 'searchapp', 'static')

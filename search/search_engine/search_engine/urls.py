@@ -18,9 +18,11 @@ from django.contrib import admin
 from searchapp import views as page_views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import include
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', page_views.index, name='index'),
+    url(r'^tinymce/', include('tinymce.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

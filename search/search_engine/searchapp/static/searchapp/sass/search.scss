@@ -83,6 +83,10 @@ body, html {
   font-size: 1.2em;
   overflow-y: auto;
 
+  .panel-body {
+    padding:0.5em;
+  }
+
   .media {
     padding: 1em;
     border-radius: 5px;

@@ -12,7 +12,7 @@ class Article(models.Model):
     """Contains basic information about each article."""
 
     title = models.CharField(max_length=255, default='', null=True)
-    body = models.CharField(max_length=10000, default='', null=True)
+    body = models.TextField(max_length=100000, default='', null=True)
     date = models.DateField(blank=False, null=False)
     source = models.CharField(max_length=255, default='', null=True)
     img = models.FileField(upload_to=upload_image, default='', blank=True, null=True)
