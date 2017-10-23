@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Article
 
 
-# the first view: rendering the main page without any artciles
+# the first view: rendering the clear main page without any articles
 def base(request):
 
     context_dict = {}
@@ -33,3 +33,10 @@ def article(request, article_name_slug):
         print('Error. There is no such article.')
 
     return render(request, 'searchapp/article.html', context_dict)
+
+
+# rendering a search tab
+def search(request):
+
+    context_dict = {}
+    return render(request, 'searchapp/search.html', context_dict)

@@ -1,0 +1,15 @@
+{% extends 'searchapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--Search container-->
+
+<div class="container" id="textspace">
+  <div class="row">
+    <div class="col-md-12">
+      <a href="{% url 'base' %}">home</a>&nbsp;/&nbsp;<a href="{% url 'search' %}">search</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
