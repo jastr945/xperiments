@@ -82,11 +82,17 @@ body, html {
   }
 }
 
+@keyframes move {
+  0% {background-position: top;}
+  100% {};
+}
+
 #main {
   height: 100%;
   margin:0;
   padding:0;
   background-image: url("../img/cannon.jpg");
+  animation: move 4s;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
