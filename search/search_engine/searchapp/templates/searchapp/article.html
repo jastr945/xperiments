@@ -9,7 +9,7 @@
 <div class="container" id="textspace">
   <div class="row">
     <div class="col-md-12">
-      home / <a href="{% url 'index' %}">all posts</a> / {{ articles.category }}
+      <a href="{% url 'base' %}">home</a> / <a href="{% url 'index' %}">all posts</a> / {{ articles.category }}
       <div class="article-container">
       <h4>Date posted:&nbsp;{{ articles.date }}</h4>
       <h2>{{ articles.title }}</h2>

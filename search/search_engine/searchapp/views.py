@@ -1,7 +1,15 @@
 from django.shortcuts import render
 from .models import Article
 
-# rendering the main page
+
+# the first view: rendering the main page without any artciles
+def base(request):
+
+    context_dict = {}
+    return render(request, 'searchapp/base.html', context_dict)
+
+
+# rendering the main page with articles thumbnails
 def index(request):
 
     articles = Article.objects.all().order_by('-date')

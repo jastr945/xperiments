@@ -6,6 +6,7 @@
 <div class="container" id="textspace">
   <div class="row">
     <div class="col-md-12">
+      <a href="{% url 'base' %}">home</a> / <a href="{% url 'index' %}">all posts</a>
       {% for a in articles %}
         <div class="panel-body">
           <div class="media">
@@ -18,7 +19,7 @@
               <h3>{{ a.title }}</h3>
               <h6>{{ a.date }}</h6>
               <h6>Category:&nbsp;{{ a.category }}</h6>
-              <h5>{{ a.body|striptags|safe|truncatechars:350 }}<a href="#">&nbsp;Continue reading >>></a></h5>
+              <h5>{{ a.body|striptags|safe|truncatechars:350 }}<a href="{% url 'article' a.slug %}">&nbsp;Continue reading >>></a></h5>
             </div>
           </div>
         </div>

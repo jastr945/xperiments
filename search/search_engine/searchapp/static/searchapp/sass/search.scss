@@ -10,6 +10,13 @@ body, html {
   padding-top: 0;
   height: 100%;
   font-family: 'Raleway', sans-serif;
+
+  a {
+    color:inherit;
+    &:hover {
+      color:inherit;
+    }
+  }
 }
 
 .navbar {
@@ -21,6 +28,15 @@ body, html {
   margin-bottom: 0;
   &:hover {
     background-color: $color5;
+  }
+
+  a {
+    color:inherit;
+    text-decoration: none;
+    &:hover {
+      color:inherit;
+      text-decoration: none;
+    }
   }
 
   h1.navbar-brand.mb-0 {
@@ -121,10 +137,15 @@ body, html {
 /* Single article page */
 
 .article-container {
+  color: $color0;
   padding: 0 1.5em;
   margin: 3em auto;
   font-family: 'Raleway', sans-serif;
   text-align: center;
+
+  div {
+    text-align: justify;
+  }
 
   h3 {
     font-size: 2em;
