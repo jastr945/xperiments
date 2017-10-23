@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', page_views.index, name='index'),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^article/(?P<article_name_slug>[-\w]+)/$', page_views.article, name='article')
+    url(r'^(?P<article_name_slug>[-\w]+)/$', page_views.article, name='article')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

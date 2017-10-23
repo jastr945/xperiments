@@ -2,11 +2,28 @@
 {% load static %}
 
 {% block content %}
+
 <!--Single article container-->
+
+{% if articles %}
 <div class="container" id="textspace">
   <div class="row">
     <div class="col-md-12">
+      home / <a href="{% url 'index' %}">all posts</a> / {{ articles.category }}
+      <div class="article-container">
+      <h4>Date posted:&nbsp;{{ articles.date }}</h4>
+      <h2>{{ articles.title }}</h2>
+      {{ articles.img }}
+      <p>{{ articles.body|safe }}</p>
+      {% if articles.author %}
+        <h5>Author:&nbsp;{{ articles.author }}</h5>
+      {% endif %}
+      {% if articles.source %}
+        <h5>Source:&nbsp;<a href="{{ articles.source }}" target="_blank">{{ articles.source }}</a></h5>
+      {% endif %}
+      </div>
     </div>
   </div>
 </div>
+{% endif %}
 {% endblock %}
