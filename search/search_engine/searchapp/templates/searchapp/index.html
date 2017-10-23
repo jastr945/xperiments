@@ -6,13 +6,13 @@
 <div class="container" id="textspace">
   <div class="row">
     <div class="col-md-12">
-      <a href="{% url 'base' %}">home</a> / <a href="{% url 'index' %}">all posts</a>
+      <a href="{% url 'base' %}">home</a>&nbsp;/&nbsp;<a href="{% url 'index' %}">all posts</a>
       {% for a in articles %}
         <div class="panel-body">
           <div class="media">
             {% if a.img %}
             <div class="media-left">
-              <img class="media-object" src="media/{{ a.img }}" alt="Article image">
+              <img class="media-object" src="{{ a.img.url }}" alt="Article image">
             </div>
             {% endif %}
             <div class="media-body">

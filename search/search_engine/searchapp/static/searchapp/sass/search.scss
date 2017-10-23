@@ -153,11 +153,15 @@ body, html {
 
   p {
     font-size: 1em;
+    margin-bottom: 2em;
   }
 
-  h4, h5 {
+  h4 {
     text-align: left;
-    margin-top: 1em;
+  }
+
+  h5 {
+    text-align: right;
   }
 }
 
