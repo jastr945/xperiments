@@ -83,8 +83,12 @@ body, html {
 }
 
 @keyframes move {
-  0% {background-position: top;}
-  100% {};
+  0% {
+    background-size: 105%;
+  }
+  100% {
+    background-size: 100%;
+  };
 }
 
 #main {
@@ -92,7 +96,7 @@ body, html {
   margin:0;
   padding:0;
   background-image: url("../img/cannon.jpg");
-  animation: move 4s;
+  animation: move 5s;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -176,6 +180,54 @@ body, html {
   h5 {
     text-align: right;
   }
+}
+
+/* Search Tab */
+
+.search {
+  margin-top: 4em;
+}
+
+.form-group {
+    margin:0;
+    padding:20px ;
+
+    &:first-child { border-color: transparent; }
+}
+
+.form-control {
+  padding: 0px 10px 0 20px;
+  color: #333;
+  font-size: 28px;
+  font-weight: 500;
+    border: 3px solid $color3;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    min-height:60px;
+    height: auto;
+    border-radius: 50px 0  0 50px !important;
+}
+.form-control :focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-color: none;
+
+    }
+
+#searchbtn {
+  border:0;
+  padding: 0px 10px;
+  color: $color0;
+  background:#888;
+  font-size: 27px;
+  font-weight: 500;
+  border: 3px solid $color3;
+  border-left: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  min-height:60px;
+  height: auto;
+  border-radius: 0 50px 50px 0 !important;
 }
 
 footer {
