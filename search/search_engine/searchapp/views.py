@@ -33,6 +33,9 @@ def article(request, article_name_slug):
 
     context_dict = {}
 
+    if request.GET.get("category"):
+        return HttpResponseRedirect('/index?category={}'.format(request.GET["category"]))
+
     try:
         articles = Article.objects.get(slug=article_name_slug)
         context_dict['articles'] = articles
@@ -47,4 +50,8 @@ def article(request, article_name_slug):
 def search(request):
 
     context_dict = {}
+
+    if request.GET.get("category"):
+        return HttpResponseRedirect('/index?category={}'.format(request.GET["category"]))
+
     return render(request, 'searchapp/search.html', context_dict)
