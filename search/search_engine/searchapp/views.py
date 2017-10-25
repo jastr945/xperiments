@@ -9,14 +9,19 @@ def base(request):
     return render(request, 'searchapp/base.html', context_dict)
 
 
-# rendering the main page with articles thumbnails
+# rendering the main page with articles thumbnails; if a specific category is selected, only articles from that category will be listed
 def index(request):
 
-    articles = Article.objects.all().order_by('-date')
+    context_dict = {}
 
-    context_dict = {
-        'articles': articles,
-    }
+    if request.GET:
+        articles = Article.objects.filter(category=request.GET.get("category").lower())
+        context_dict["articles"] = articles
+
+    else:
+        articles = Article.objects.all()
+        context_dict["articles"] = articles
+
     return render(request, 'searchapp/index.html', context_dict)
 
 
