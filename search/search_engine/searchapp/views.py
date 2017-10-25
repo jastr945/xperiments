@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from .models import Article
 
 
@@ -6,6 +6,10 @@ from .models import Article
 def base(request):
 
     context_dict = {}
+
+    if request.GET.get("category"):
+        return HttpResponseRedirect('/index?category={}'.format(request.GET["category"]))
+
     return render(request, 'searchapp/base.html', context_dict)
 
 
@@ -14,12 +18,11 @@ def index(request):
 
     context_dict = {}
 
-    if request.GET:
-        articles = Article.objects.filter(category=request.GET.get("category").lower())
-        context_dict["articles"] = articles
+    articles = Article.objects.all()
+    context_dict["articles"] = articles
 
-    else:
-        articles = Article.objects.all()
+    if request.GET.get("category"):
+        articles = Article.objects.filter(category=request.GET.get("category").lower())
         context_dict["articles"] = articles
 
     return render(request, 'searchapp/index.html', context_dict)
