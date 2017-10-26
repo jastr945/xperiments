@@ -244,6 +244,19 @@ footer {
   padding-bottom: 1em;
   border: none;
   color: $color1;
+
+  .container {
+    padding: 1em;
+    .left {
+      text-align: right;
+      padding-right: 2.5em;
+    }
+    .right {
+      padding-left: 0;
+      text-align: left;
+    }
+  }
+
   small {
     margin:0;
     padding:0;
