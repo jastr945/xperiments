@@ -56,18 +56,18 @@
     <div class="row justify-content-center">
       <div class="col-6 col-sm-6 left">
         <ul style="list-style: none;">
-          <li>all posts</li>
-          <li>blog posts</li>
-          <li>articles</li>
-          <li>poems</li>
+          <li><a href="{% url 'index' %}">all posts</a></li>
+          <li><form method="get"><input type="submit" name="category" value="blog posts"></form></li>
+          <li><form method="get"><input type="submit" name="category" value="articles"></form></li>
+          <li><form method="get"><input type="submit" name="category" value="poems"></form></li>
         </ul>
       </div>
       <div class="col-6 col-sm-6 right">
         <ul style="list-style: none;">
+          <li><a href="{% url 'base' %}">main page</a></li>
+          <li><a href="{% url 'search' %}">search</li>
           <li>about</li>
           <li>contact</li>
-          <li>search</li>
-          <li>subscribe</li>
         </ul>
       </div>
     </div>
