@@ -247,13 +247,33 @@ footer {
 
   .container {
     padding: 1em;
+
     .left {
       text-align: right;
       padding-right: 2.5em;
     }
+
     .right {
       padding-left: 0;
       text-align: left;
+    }
+
+    a:hover {
+      color: $color3;
+    }
+
+    li input {
+      padding: 0;
+      background-color: inherit;
+      color: $color1;
+      border: none;
+      &:focus {
+        border: none;
+      }
+      &:hover {
+        color: $color3;
+        border-bottom: 1px solid $color3;
+      }
     }
   }
 
