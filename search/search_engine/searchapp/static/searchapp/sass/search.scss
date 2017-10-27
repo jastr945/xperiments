@@ -131,6 +131,27 @@ body, html {
   background-attachment: fixed;
 }
 
+@keyframes fadein2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  };
+}
+
+#quote {
+  color: $color0;
+  background-color: rgba(64, 64, 64, 0.6);
+  margin: 23% 10% auto 50%;
+  padding: 1%;
+  border-radius: 10px;
+  animation: fadein2 4s;
+  h4 {
+    text-align: right;
+  }
+}
+
 .col-md-12 {
   background-color: rgba(64, 64, 64, 0.9);
   height: 90vh;
