@@ -70,9 +70,13 @@ body, html {
     }
 
     @media screen and (min-width: 768px) {
+
       .dropdown:hover>.dropdown-menu {
         display: block;
         animation: fadein 0.5s;
+      }
+      .dropdown-toggle:active {
+        pointer-events: none;
       }
     }
 
@@ -124,11 +128,16 @@ body, html {
   margin:0;
   padding:0;
   background-image: url("../img/cannon.jpg");
-  animation: move 5s;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+}
+
+@media screen and (min-width: 1300px) {
+  #main {
+    animation: move 5s;
+  }
 }
 
 @keyframes fadein2 {
@@ -190,6 +199,12 @@ body, html {
     width: 12em;
     height: 8em;
     object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .col-md-12 {
+    height: 85vh;
   }
 }
 
