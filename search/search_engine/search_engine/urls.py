@@ -24,7 +24,7 @@ app_name = 'searchapp'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', page_views.base, name='base'),
+    url(r'^$', page_views.start, name='start'),
     url(r'^index/', page_views.index, name='index'),
     url(r'^search/', page_views.search, name='search'),
     url(r'^tinymce/', include('tinymce.urls')),
