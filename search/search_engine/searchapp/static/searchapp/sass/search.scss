@@ -53,9 +53,10 @@ body, html {
     li a {
       color: $color1;
       padding-right: 1em;
-      &:hover {
-        border-bottom: 3px solid $color3;
-      }
+    }
+
+    li:hover {
+      border-bottom: 3px solid $color3;
     }
 
     @keyframes fadein {
@@ -79,10 +80,10 @@ body, html {
       text-align: right;
       background-color: $color2;
       border-radius: 5px;
+      margin-top: 2px;
 
       li:hover {
         background-color: $color0;
-        border-bottom: 3px solid $color3;
       }
 
       li input {
@@ -90,6 +91,7 @@ body, html {
         background-color: inherit;
         color: $color1;
         border: none;
+
         &:focus {
           border: none;
         }
