@@ -31,6 +31,6 @@ class Article(models.Model):
         return '{} - {}'.format(self.title, self.category)
 
     def save(self, *args, **kwargs):
-        """the slug will change every time the article changes"""
+        """the slug will change every time the article's title changes"""
         self.slug = slugify(self.title)
         super(Article, self).save(*args, **kwargs)
