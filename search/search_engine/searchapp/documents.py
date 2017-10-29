@@ -28,9 +28,8 @@ class ArticleDocument(DocType):
             'author',
         ]
 
-s = ArticleDocument.search().query("match", title="Bracing")
+s = ArticleDocument.search().query("match", body="beach")
+qs = s.to_queryset()
 
-for hit in s:
-    print(
-        "Article title: {}, author {}".format(hit.title, hit.author)
-    )
+for article in qs:
+    print(article.title, article.body[:10], article.date)
