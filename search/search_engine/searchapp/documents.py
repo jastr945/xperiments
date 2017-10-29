@@ -1,6 +1,12 @@
+from elasticsearch_dsl.connections import connections
+from elasticsearch_dsl import Search
 from django_elasticsearch_dsl import DocType, Index, fields
 from .models import Article
+from elasticsearch_dsl.connections import connections
 
+
+# Create a connection to ElasticSearch
+connections.create_connection(hosts=['localhost:9200'], http_auth='elastic:changeme')
 
 # Name of the Elasticsearch index
 article = Index('articles')
@@ -22,9 +28,9 @@ class ArticleDocument(DocType):
             'author',
         ]
 
-# s = ArticleDocument.search().query("match", title="Bracing")
-#
-# for hit in s:
-#     print(
-#         "Article title: {}, author {}".format(hit.title, hit.author)
-#     )
+s = ArticleDocument.search().query("match", title="Bracing")
+
+for hit in s:
+    print(
+        "Article title: {}, author {}".format(hit.title, hit.author)
+    )
