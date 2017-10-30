@@ -11,7 +11,8 @@ $('.form-control').focus(function(){
 
 // requesting data from Elasticsearch using a jQuery AJAX call; returning matching results into a div
 
-$('#search').submit(function() {
+$('#search').submit(function(e) {
+  e.preventDefault();
   var searchterm = $('.form-control').val();
   $.ajax({
     url: 'http://localhost:9200/articles/_search',
@@ -29,3 +30,10 @@ $('#search').submit(function() {
     }
   });
 });
+
+//test
+// $('#search').submit(function(e) {
+//   e.preventDefault();
+//   var searchterm = $('.form-control').val();
+//   $('#result').html(searchterm);
+// });
