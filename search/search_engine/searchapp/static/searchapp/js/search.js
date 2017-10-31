@@ -17,6 +17,8 @@ $('#search').submit(function(e) {
   $.ajax({
     url: 'http://localhost:9200/articles/_search',
     type: 'GET',
+    username: 'elastic',
+    password: 'changeme',
     crossDomain: true,
     dataType: 'json',
     data: {
@@ -26,6 +28,7 @@ $('#search').submit(function(e) {
     },
     success: function(data) {
       data = JSON.stringify(data);
+      console.log(data);
       $('#result').append(data);
     }
   });
