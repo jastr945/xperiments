@@ -12,7 +12,8 @@
 
       <!--Search Tab-->
       <div class="search col-xs-10 col-xs-offset-1">
-        <form id="search" method="get" role="search">
+        <form id="search" method="POST">
+          {% csrf_token %}
           <div class="input-group">
             <input class="form-control" placeholder="Start typing..." name="srch-term" id="ed-srch-term" type="text">
             <div class="input-group-btn">
@@ -20,9 +21,30 @@
             </div>
           </div>
         </form>
-        
         <div id="result">
-          results will appear here
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+            {% endfor %}
+          {% endif %}
+
+          {% for a in qs %}
+          <div class="panel-body">
+            <div class="media">
+              {% if a.img %}
+              <div class="media-left">
+                <img class="media-object" src="{{ a.img.url }}" alt="Article image">
+              </div>
+              {% endif %}
+              <div class="media-body">
+                <h3>{{ a.title }}</h3>
+                <h6>{{ a.date }}</h6>
+                <h6>Category:&nbsp;{{ a.category }}</h6>
+                <h5>{{ a.body|striptags|safe|truncatechars:350 }}<a href="{% url 'article' a.slug %}">&nbsp;Continue reading >>></a></h5>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
         </div>
       </div>
     </div>

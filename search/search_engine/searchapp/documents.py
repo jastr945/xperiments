@@ -27,9 +27,3 @@ class ArticleDocument(DocType):
             'body',
             'author',
         ]
-
-s = ArticleDocument.search().query("match", body="beach")
-qs = s.to_queryset()
-
-for article in qs:
-    print(article.title, article.body[:10], article.date)

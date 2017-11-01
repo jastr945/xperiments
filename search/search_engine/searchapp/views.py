@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .models import Article
+from .documents import *
 
 
 # the first view: rendering the clear main page without any articles
@@ -53,5 +54,10 @@ def search(request):
 
     if request.GET.get("category"):
         return HttpResponseRedirect('/index?category={}'.format(request.GET["category"]))
+
+    if request.POST:
+        s = ArticleDocument.search().query("match", body=request.POST["srch-term"])
+        qs = s.to_queryset()
+        context_dict['qs'] = qs
 
     return render(request, 'searchapp/search.html', context_dict)

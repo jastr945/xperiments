@@ -11,28 +11,31 @@ $('.form-control').focus(function(){
 
 // requesting data from Elasticsearch using a jQuery AJAX call; returning matching results into a div
 
-$('#search').submit(function(e) {
-  e.preventDefault();
-  var searchterm = $('.form-control').val();
-  $.ajax({
-    url: 'http://localhost:9200/articles/_search',
-    type: 'GET',
-    username: 'elastic',
-    password: 'changeme',
-    crossDomain: true,
-    dataType: 'json',
-    data: {
-        query:{match:{_all:searchterm}},
-        pretty: true,
-        fields: 'title'
-    },
-    success: function(data) {
-      data = JSON.stringify(data);
-      console.log(data);
-      $('#result').append(data);
-    }
-  });
-});
+// $('#search').submit(function(e) {
+//   e.preventDefault();
+//
+//   var data = {
+//               "query":{"match":{"title":"cannon"}}
+//               };
+//   $.ajax({
+//     url: 'http://localhost:9200/articles/_search?pretty=true',
+//     type: 'POST',
+//     contentType: 'application/json',
+//     username: 'elastic',
+//     password: 'changeme',
+//     crossDomain: true,
+//     async: true,
+//     dataType: 'json',
+//     data: JSON.stringify(data),
+//     success: function(data) {
+//       // console.log(data);
+//       console.log("something worked here");
+//     },
+//     error: function(data){
+//       console.log(JSON.stringify(data));
+//     }
+// });
+// });
 
 //test
 // $('#search').submit(function(e) {
