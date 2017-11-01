@@ -56,7 +56,7 @@ def search(request):
         return HttpResponseRedirect('/index?category={}'.format(request.GET["category"]))
 
     if request.POST:
-        s = ArticleDocument.search().query("match", body=request.POST["srch-term"])
+        s = ArticleDocument.search().query("match", _all=request.POST["srch-term"])
         qs = s.to_queryset()
         context_dict['qs'] = qs
 

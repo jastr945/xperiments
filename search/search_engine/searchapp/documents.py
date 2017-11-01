@@ -3,6 +3,7 @@ from elasticsearch_dsl import Search
 from django_elasticsearch_dsl import DocType, Index, fields
 from .models import Article
 from elasticsearch_dsl.connections import connections
+from elasticsearch_dsl import analyzer, tokenizer
 
 
 # Create a connection to ElasticSearch
@@ -16,14 +17,28 @@ article.settings(
     number_of_replicas=0
 )
 
+# a custom analyzer
+html_strip = analyzer(
+    'html_strip',
+    tokenizer="standard",
+    filter=["standard", "lowercase", "stop", "snowball"],
+    char_filter=["html_strip"]
+)
+
 @article.doc_type
 class ArticleDocument(DocType):
-    class Meta:
-        model = Article # The model associated with this DocType
 
-        # The fields of the model you want to be indexed in Elasticsearch
+    body = fields.StringField(
+        analyzer=html_strip,
+        fields={'raw': fields.StringField(index='not_analyzed')}
+    )
+
+    class Meta:
+        model = Article
         fields = [
             'title',
-            'body',
             'author',
+            'date',
+            'category',
+            'source',
         ]
