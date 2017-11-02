@@ -47,6 +47,12 @@ body, html {
     text-shadow: 2px 2px $color1;
   }
 
+  @media screen and (max-width: 500px) {
+    h1.navbar-brand.mb-0 {
+      font-size: 32px;
+    }
+  }
+
   .navbar-right {
     font-size: 24px;
 
