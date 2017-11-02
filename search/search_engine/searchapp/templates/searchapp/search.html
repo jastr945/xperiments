@@ -15,7 +15,7 @@
         <form id="search" method="POST">
           {% csrf_token %}
           <div class="input-group">
-            <input class="form-control" placeholder="Start typing..." name="srchterm" id="ed-srch-term" type="text" value={{request.POST.srchterm}}>
+            <input class="form-control" placeholder="Start typing..." name="srchterm" id="ed-srch-term" type="text" value="{{ request.POST.srchterm }}">
             <div class="input-group-btn">
               <button type="submit" id="searchbtn">search</button>
             </div>
