@@ -167,6 +167,15 @@ body, html {
   }
 }
 
+@media screen and (max-width: 500px) {
+  #quote {
+    margin: 70% 10% auto 20%;
+    h3, h4 {
+      font-size: 90%;
+    }
+  }
+}
+
 .col-md-12 {
   background-color: rgba(64, 64, 64, 0.9);
   height: 90vh;
