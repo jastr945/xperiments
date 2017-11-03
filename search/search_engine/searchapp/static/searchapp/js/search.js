@@ -7,3 +7,11 @@ $('.form-control').focus(function(){
 }).blur(function(){
    $(this).attr('placeholder', $(this).data('placeholder'));
 });
+
+
+// media section layout rearranges on small screen devices
+$(window).resize(function(){
+	if ($(window).width() <= 550){
+		$('.pic').removeClass("media-left").addClass("media-top").css("margin-bottom", "1em");
+	}
+});
