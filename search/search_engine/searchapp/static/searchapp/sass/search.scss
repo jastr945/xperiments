@@ -252,6 +252,7 @@ body, html {
 
 @media screen and (max-width: 600px) {
   .col-md-12 {
+    height: 81vh;
     .media {
       .media-object {
         width: 6em;
@@ -308,6 +309,32 @@ body, html {
     text-align: right;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .article-container {
+    padding: 0 0.1em;
+
+    .article-img {
+      max-width: 15em;
+      max-height: 15em;
+      padding: 0;
+    }
+
+    h2 {
+      font-size: 1.2em;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    h4, h5 {
+      font-size: 15px;
+      text-align: center;
+    }
+  }
+}
+
 
 /* Search Tab */
 
