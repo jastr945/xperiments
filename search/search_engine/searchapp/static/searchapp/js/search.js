@@ -14,4 +14,4 @@ $(window).resize(function(){
 	if ($(window).width() <= 550){
 		$('.pic').removeClass("media-left").addClass("media-top").css("margin-bottom", "1em");
 	}
-});
+}).resize(); // causes an initial widow.resize to occur
