@@ -47,9 +47,9 @@ body, html {
     text-shadow: 2px 2px $color1;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 900px) {
     h1.navbar-brand.mb-0 {
-      font-size: 32px;
+      font-size: 28px;
     }
   }
 
@@ -91,6 +91,11 @@ body, html {
       background-color: $color2;
       border-radius: 5px;
       margin-top: 2px;
+
+      li a {
+        text-decoration: none;
+        color: $color1;
+      }
 
       li:hover {
         background-color: $color0;
@@ -176,6 +181,8 @@ body, html {
   }
 }
 
+/* Articles thumbnails / search results page */
+
 .col-md-12 {
   background-color: rgba(64, 64, 64, 0.9);
   height: 90vh;
@@ -199,6 +206,12 @@ body, html {
       color: $color3;
     }
 
+    .media-object {
+      width: 12em;
+      height: 8em;
+      object-fit: cover;
+    }
+
     .media-body {
       h3 {
       margin-top: 0;
@@ -209,12 +222,6 @@ body, html {
       background-color: darken($color5, 10%)
     }
   }
-
-  .media-object {
-    width: 12em;
-    height: 8em;
-    object-fit: cover;
-  }
 }
 
 @media screen and (max-width: 1500px) {
@@ -222,6 +229,47 @@ body, html {
     height: 85vh;
   }
 }
+
+@media screen and (max-width: 950px) {
+  .col-md-12 {
+    .media {
+      padding: 0.8em;
+      margin-top: 0;
+      .media-object {
+        height: 10em;
+      }
+      .media-body {
+        h3 {
+          font-size: 18px;
+        }
+        h5 {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .col-md-12 {
+    .media {
+      .media-object {
+        width: 6em;
+        height: 4em;
+      }
+      .media-body {
+        h3 {
+          font-size: 14px;
+        }
+        h5 {
+          font-size: 11px;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
 
 /* Single article page */
 
