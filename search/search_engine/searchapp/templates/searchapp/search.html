@@ -47,8 +47,10 @@
             </div>
           </div>
           {% endfor %}
-          {% else %}
-          <h4>No matching records found.</h4>
+          {% endif %}
+          <!--Show error message if no results are found-->
+          {% if messages %}
+            <h4>{{ message }}</h4>
           {% endif %}
         </div>
       </div>

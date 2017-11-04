@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from .models import Article
 from .documents import *
 import json
+from django.contrib import messages
 
 
 # the first view: rendering the clear main page without any articles
@@ -59,7 +60,10 @@ def search(request):
     if request.POST:
         s = ArticleDocument.search().query("common", _all=request.POST["srchterm"])
         qs = s.to_queryset()
-        context_dict['qs'] = qs
+        if qs.exists():
+            context_dict['qs'] = qs
+        else:
+            messages.error(request, "No matching results found.")
 
     return render(request, 'searchapp/search.html', context_dict)
 
