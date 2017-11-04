@@ -23,9 +23,10 @@
         </form>
 
         <div id="result">
+          <!--Show error message if no results found-->
           {% if messages %}
             {% for message in messages %}
-              <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+              <h4>{{ message|safe }}</h4>
             {% endfor %}
           {% endif %}
 
@@ -47,10 +48,6 @@
             </div>
           </div>
           {% endfor %}
-          {% endif %}
-          <!--Show error message if no results are found-->
-          {% if messages %}
-            <h4>{{ message }}</h4>
           {% endif %}
         </div>
       </div>
