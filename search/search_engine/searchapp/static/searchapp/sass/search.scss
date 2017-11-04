@@ -386,6 +386,15 @@ body, html {
   border-radius: 0 50px 50px 0 !important;
 }
 
+#ui-id-1 {
+  border-radius: 7px;
+  .ui-menu-item {
+    font-family: 'Raleway', sans-serif;
+    color: $color1;
+    padding-left: 1em;
+  }
+}
+
 footer {
   background-color: $color2;
   text-align: center;
