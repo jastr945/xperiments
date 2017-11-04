@@ -1,6 +1,7 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from .models import Article
 from .documents import *
+import json
 
 
 # the first view: rendering the clear main page without any articles
@@ -61,3 +62,13 @@ def search(request):
         context_dict['qs'] = qs
 
     return render(request, 'searchapp/search.html', context_dict)
+
+
+# passing titles to JQuery autocomplete
+def get_titles(request):
+    q = request.GET.get('term')
+    articles = Article.objects.filter(title__icontains=q)
+    results = []
+    for a in articles:
+        results.append(a.title)
+    return HttpResponse(json.dumps(results),'application/json')

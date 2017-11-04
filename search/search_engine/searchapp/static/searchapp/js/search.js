@@ -17,32 +17,9 @@ $(window).resize(function(){
 }).resize(); // causes an initial widow.resize to occur
 
 
+// Jquery Autocomplete plugin working on the search field
 $(document).ready(function() {
-  var availableTags = [
-    "ActionScript",
-    "AppleScript",
-    "Asp",
-    "BASIC",
-    "C",
-    "C++",
-    "Clojure",
-    "COBOL",
-    "ColdFusion",
-    "Erlang",
-    "Fortran",
-    "Groovy",
-    "Haskell",
-    "Java",
-    "JavaScript",
-    "Lisp",
-    "Perl",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Scala",
-    "Scheme"
-  ];
   $( "#ed-srch-term" ).autocomplete({
-    source: availableTags
+    source: "/get_titles"
   });
 });

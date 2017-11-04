@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^index/', page_views.index, name='index'),
     url(r'^search/', page_views.search, name='search'),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^(?P<article_name_slug>[-\w]+)/$', page_views.article, name='article'),
+    url(r'^get_titles/', page_views.get_titles, name='get_titles'),
+    url(r'^texts/(?P<article_name_slug>[-\w]+)/$', page_views.article, name='article'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
