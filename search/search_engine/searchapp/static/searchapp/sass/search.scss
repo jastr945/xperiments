@@ -234,6 +234,7 @@ body, html {
 
 @media screen and (max-width: 950px) {
   .col-md-12 {
+    height: 90vh;
     .media {
       padding: 0.8em;
       margin-top: 0;
@@ -254,7 +255,7 @@ body, html {
 
 @media screen and (max-width: 600px) {
   .col-md-12 {
-    height: 81vh;
+    height: 84vh;
     .media {
       .media-object {
         width: 6em;

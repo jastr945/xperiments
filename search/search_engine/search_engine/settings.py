@@ -130,8 +130,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,spellchecker,paste,searchreplace,emotions,autosave,preview,wordcount",
     'theme': "advanced",
+    'plugins': "table,spellchecker,paste,searchreplace,emotions,autosave,preview,wordcount",
+    'menubar': "tools",
+    'toolbar': "spellchecker",
+    'theme_advanced_buttons3' : "table,spellchecker,paste,searchreplace,emotions,autosave,preview,wordcount",
     'width': 1200,
     'height': 700,
     'font-size': '12px',
