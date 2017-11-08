@@ -33,10 +33,14 @@ class ArticleDocument(DocType):
         fields={'raw': fields.StringField(index='not_analyzed')}
     )
 
+    title = fields.StringField(
+        analyzer=html_strip,
+        fields={'raw': fields.StringField(index='not_analyzed')}
+    )
+
     class Meta:
         model = Article
         fields = [
-            'title',
             'author',
             'date',
             'category',
