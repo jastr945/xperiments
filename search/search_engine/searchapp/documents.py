@@ -18,29 +18,31 @@ article.settings(
 )
 
 # a custom analyzer
-html_strip = analyzer(
-    'html_strip',
-    tokenizer="standard",
-    filter=["standard", "lowercase", "stop", "snowball"],
-    char_filter=["html_strip"]
-)
+# html_strip = analyzer(
+#     'html_strip',
+#     tokenizer="standard",
+#     filter=["standard", "lowercase", "stop", "snowball"],
+#     char_filter=["html_strip"]
+# )
 
 @article.doc_type
 class ArticleDocument(DocType):
-
-    body = fields.StringField(
-        analyzer=html_strip,
-        fields={'raw': fields.StringField(index='not_analyzed')}
-    )
-
-    title = fields.StringField(
-        analyzer=html_strip,
-        fields={'raw': fields.StringField(index='not_analyzed')}
-    )
+    #
+    # body = fields.StringField(
+    #     analyzer=html_strip,
+    #     fields={'raw': fields.StringField(index='not_analyzed')}
+    # )
+    #
+    # title = fields.StringField(
+    #     analyzer=html_strip,
+    #     fields={'raw': fields.StringField(index='not_analyzed')}
+    # )
 
     class Meta:
         model = Article
         fields = [
+            'title',
+            'body',
             'author',
             'date',
             'category',
