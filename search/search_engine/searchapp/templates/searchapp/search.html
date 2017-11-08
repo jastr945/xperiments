@@ -1,5 +1,6 @@
 {% extends 'searchapp/base.html' %}
 {% load static %}
+{% load custom_tags %}
 
 {% block content %}
 
@@ -40,10 +41,10 @@
               </div>
               {% endif %}
               <div class="media-body">
-                <h3>{{ a.title }}</h3>
+                <h3>{{ a.title|highlight:'away' }}</h3>
                 <h6>{{ a.date }}</h6>
                 <h6>Category:&nbsp;{{ a.category }}</h6>
-                <h5>{{ a.body|striptags|safe|truncatechars:350 }}<a href="{% url 'article' a.slug %}">&nbsp;Continue reading >>></a></h5>
+                <h5>{{ a.body|striptags|safe|truncatechars:350|highlight:'all' }}<a href="{% url 'article' a.slug %}">&nbsp;Continue reading >>></a></h5>
               </div>
             </div>
           </div>
