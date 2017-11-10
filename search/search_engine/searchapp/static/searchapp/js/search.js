@@ -1,5 +1,13 @@
 'use strict';
 
+
+// randomly changing a background image on reload
+$(document).ready(function() {
+  var images = ['cannon.jpg', 'cannon2.JPG', 'cannon3.JPG', 'cannon4.jpg'];
+  $('#main').css({'background-image': 'url(/static/searchapp/img/' + images[Math.floor(Math.random() * images.length)] + ')'});
+});
+
+
 // removing placeholder from the search tab on focus and bringing it back on blur
 $('.form-control').focus(function(){
    $(this).data('placeholder', $(this).attr('placeholder'))
