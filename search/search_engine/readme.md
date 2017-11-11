@@ -8,4 +8,5 @@ A renponsive Django web app providing ***a full-text search engine*** for findin
 - JqueryUI Autocomplete plugin using data from the Django view via an AJAX call
 - Customized rich-text editor built into the admin interface
 - Matching search terms are highlighted with the custom template tag
-- Responsive Bootstrap front-end
+- Responsive Bootstrap front-end, looking good on any screen
+- Background image changes randomly on every reload
