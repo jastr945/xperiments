@@ -127,6 +127,12 @@ body, html {
   }
 }
 
+@media screen and (max-width: 900px) {
+  .navbar {
+    background-color: $color5;
+  }
+}
+
 @keyframes move {
   0% {
     background-size: 105%;
@@ -140,7 +146,6 @@ body, html {
   height: 100%;
   margin:0;
   padding:0;
-  // background-image: url("../img/cannon.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -176,7 +181,7 @@ body, html {
 
 @media screen and (max-width: 500px) {
   #quote {
-    margin: 70% 10% auto 20%;
+    margin: 60% 10% auto 20%;
     h3, h4 {
       font-size: 90%;
     }
@@ -234,7 +239,7 @@ body, html {
 
 @media screen and (max-width: 950px) {
   .col-md-12 {
-    height: 90vh;
+    height: 85vh;
     .media {
       padding: 0.8em;
       margin-top: 0;
@@ -255,7 +260,7 @@ body, html {
 
 @media screen and (max-width: 600px) {
   .col-md-12 {
-    height: 84vh;
+    height: 73.5vh;
     .media {
       .media-object {
         width: 6em;
