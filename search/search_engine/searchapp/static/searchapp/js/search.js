@@ -3,7 +3,7 @@
 
 // randomly changing a background image on reload
 $(document).ready(function() {
-  var images = ['cannon.jpg', 'cannon2.JPG', 'cannon3.JPG', 'cannon4.jpg'];
+  var images = ['cannon.jpg', 'cannon2.JPG', 'cannon3.jpg', 'cannon4.JPG'];
   $('#main').css({'background-image': 'url(/static/searchapp/img/' + images[Math.floor(Math.random() * images.length)] + ')'});
 });
 
