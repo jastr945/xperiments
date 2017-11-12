@@ -133,12 +133,12 @@ body, html {
   }
 }
 
-@keyframes move {
+@-webkit-keyframes move {
   0% {
-    background-size: 105%;
+    -webkit-background-size: 105%;
   }
   100% {
-    background-size: 100%;
+    -webkit-background-size: 100%;
   };
 }
 
@@ -152,9 +152,9 @@ body, html {
   background-attachment: fixed;
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1024px) {
   #main {
-    animation: move 5s;
+    -webkit-animation: move 5s;
   }
 }
 
@@ -233,7 +233,7 @@ body, html {
 
 @media screen and (max-width: 1500px) {
   .col-md-12 {
-    height: 85vh;
+    height: 89vh;
   }
 }
 
