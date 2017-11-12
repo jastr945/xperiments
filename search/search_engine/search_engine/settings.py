@@ -143,16 +143,17 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 TINYMCE_SPELLCHECKER = True
+
 TINYMCE_COMPRESSOR = True
 
-STATIC_DIR = [
-    os.path.join(BASE_DIR, 'searchapp', 'static')
-]
-
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'searchapp', 'static')]
 
 STATIC_ROOT = '/staticfiles'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
+
+MEDIA_ROOT = '/searchmedia'
