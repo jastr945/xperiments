@@ -20,24 +20,22 @@ body, html {
 
   #arrow-left {
     height:0;
-    width: 5em;
+    width: 2em;
     padding:0;
-    left: 1%;
     margin-top: 48%;
     border-top: 3em solid transparent;
-    border-right: 5em solid white;
+    border-right: 3em solid white;
     border-bottom: 3em solid transparent;
     cursor: pointer;
   }
 
   #arrow-right {
     height:0;
-    width: 5em;
+    width: 2em;
     padding:0;
-    right: 1%;
     margin-top: 48%;
     border-top: 3em solid transparent;
-    border-left: 5em solid white;
+    border-left: 3em solid white;
     border-bottom: 3em solid transparent;
     cursor: pointer;
   }
