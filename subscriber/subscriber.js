@@ -1,7 +1,7 @@
 'use strict';
 
 
-var images = [ 'sea1.JPG', 'sea2.JPG', 'passiflora.JPG'];
+var images = [ 'sea1.JPG', 'sea2.JPG', 'passiflora.JPG', 'river.JPG'];
 var i = 0;
 
 
@@ -12,12 +12,12 @@ function reset() {
 $(document).ready(function() {
   $('#arrow-right').click(function() {
     reset();
-    if (i < images.length) {
-      $('#main').css({'background-image': 'url(' + images[i] + ')'});
-      i++;
-    } else {
+    if (i === images.length) {
       $('#main').css({'background-image': 'url(' + images[0] + ')'});
       i = 0;
+    } else {
+      $('#main').css({'background-image': 'url(' + images[i] + ')'});
+      i++;
     }
   });
 });
