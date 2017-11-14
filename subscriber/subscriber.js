@@ -13,26 +13,26 @@ function reset() {
 
 $(document).ready(function() {
   $('#arrow-right').click(function() {
-    console.log(i);
     reset();
     if (i === images.length - 1) {
-      $('#main').css({'background-image': 'url(' + images[i] + ')'});
       i = 0;
-    } else {
       $('#main').css({'background-image': 'url(' + images[i] + ')'});
+    } else {
       i++;
+      $('#main').css({'background-image': 'url(' + images[i] + ')'});
     }
+    console.log(i);
   });
 
   $('#arrow-left').click(function() {
     reset();
-    console.log(i);
     if (i <= 0) {
+      i = images.length - 1;
       $('#main').css({'background-image': 'url(' + images[images.length - 1] + ')'});
-      i = images.length - 2;
     } else {
-      $('#main').css({'background-image': 'url(' + images[i] + ')'});
       i = i - 1;
+      $('#main').css({'background-image': 'url(' + images[i] + ')'});
     }
+    console.log(i);
   });
 });
