@@ -1,7 +1,9 @@
 'use strict';
 
 
-var images = [ 'sea1.JPG', 'sea2.JPG', 'passiflora.JPG', 'river.JPG'];
+// Background pictures slider; images change upon cllicking right or left arrow
+
+var images = [ 'coffee.jpg', 'coffee3.jpg', 'coffee2.jpg', 'coffee4.jpg', 'coffee5.jpg'];
 var i = 0;
 
 
@@ -11,26 +13,26 @@ function reset() {
 
 $(document).ready(function() {
   $('#arrow-right').click(function() {
+    console.log(i);
     reset();
-    if (i === images.length) {
-      $('#main').css({'background-image': 'url(' + images[0] + ')'});
+    if (i === images.length - 1) {
+      $('#main').css({'background-image': 'url(' + images[i] + ')'});
       i = 0;
     } else {
       $('#main').css({'background-image': 'url(' + images[i] + ')'});
       i++;
     }
   });
-});
 
-$(document).ready(function() {
   $('#arrow-left').click(function() {
     reset();
-    if (i < 0) {
+    console.log(i);
+    if (i <= 0) {
       $('#main').css({'background-image': 'url(' + images[images.length - 1] + ')'});
-      i=images.length-2;
+      i = images.length - 2;
     } else {
       $('#main').css({'background-image': 'url(' + images[i] + ')'});
-      i=i-1;
+      i = i - 1;
     }
   });
 });
