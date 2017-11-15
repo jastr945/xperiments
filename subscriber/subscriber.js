@@ -21,7 +21,6 @@ $(document).ready(function() {
       i++;
       $('#main').css({'background-image': 'url(' + images[i] + ')'});
     }
-    console.log(i);
   });
 
   $('#arrow-left').click(function() {
@@ -33,6 +32,5 @@ $(document).ready(function() {
       i = i - 1;
       $('#main').css({'background-image': 'url(' + images[i] + ')'});
     }
-    console.log(i);
   });
 });

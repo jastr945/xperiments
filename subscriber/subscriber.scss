@@ -6,9 +6,8 @@ body, html {
 
 #main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
   background-image: url("coffee2.jpg");
   height: 100%;
   margin:0;
@@ -18,25 +17,61 @@ body, html {
   background-position: center;
   background-attachment: fixed;
 
-  #arrow-left {
-    height:0;
-    width: 2em;
-    padding:0;
-    margin-top: 48%;
-    border-top: 3em solid transparent;
-    border-right: 3em solid white;
-    border-bottom: 3em solid transparent;
-    cursor: pointer;
+  #buttons {
+    // background-color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 8% auto 0 auto;
+    width: 15%;
+
+    @keyframes move {
+      0% {}
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    .button {
+      background: none;
+      width: 6em;
+      height: 6em;
+      border-radius: 50%;
+      border: 3px solid #009999;
+
+      &:hover {
+        animation: move 1s;
+      }
+    }
   }
 
-  #arrow-right {
-    height:0;
-    width: 2em;
-    padding:0;
-    margin-top: 48%;
-    border-top: 3em solid transparent;
-    border-left: 3em solid white;
-    border-bottom: 3em solid transparent;
-    cursor: pointer;
+  #arrows {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30%;
+
+    #arrow-left {
+      height:0;
+      width: 2em;
+      padding:0;
+      border-top: 3em solid transparent;
+      border-right: 3em solid white;
+      border-bottom: 3em solid transparent;
+      cursor: pointer;
+    }
+
+    #arrow-right {
+      height:0;
+      width: 2em;
+      padding:0;
+      border-top: 3em solid transparent;
+      border-left: 3em solid white;
+      border-bottom: 3em solid transparent;
+      cursor: pointer;
+    }
   }
 }
