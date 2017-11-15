@@ -21,10 +21,9 @@ body, html {
     // background-color: white;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-around;
-    margin: 8% auto 0 auto;
-    width: 20%;
+    margin: 8vh auto 0 auto;
+    width: 17%;
 
     @keyframes move {
       0% {}
@@ -35,11 +34,18 @@ body, html {
     }
 
     .button {
+      display: flex;
+      justify-content: center;
+      margin: auto;
       width: 106px;
       height: 106px;
       border-radius: 50%;
-      background-color: white;
+      background: none;
       position: relative;
+
+      .icon {
+        width: 65px;
+      }
     }
 
     .button:before {
@@ -62,7 +68,7 @@ body, html {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 30%;
+    margin-top: 30vh;
 
     #arrow-left {
       height:0;
