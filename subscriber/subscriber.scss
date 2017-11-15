@@ -24,7 +24,7 @@ body, html {
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 8% auto 0 auto;
-    width: 15%;
+    width: 20%;
 
     @keyframes move {
       0% {}
@@ -35,15 +35,25 @@ body, html {
     }
 
     .button {
+      width: 106px;
+      height: 106px;
+      border-radius: 50%;
+      background-color: white;
+      position: relative;
+    }
+
+    .button:before {
+      content: "";
+      position: absolute;
       background: none;
-      width: 6em;
-      height: 6em;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       border: 3px solid #009999;
+    }
 
-      &:hover {
-        animation: move 1s;
-      }
+    .button:hover:before {
+      animation: move 1s forwards;
     }
   }
 
