@@ -28,8 +28,8 @@ body, html {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 20%;
-    margin: 8vh auto 0 auto;
+    width: 25%;
+    margin: 5vh auto 0 auto;
 
 
     @keyframes move {
@@ -74,7 +74,7 @@ body, html {
 
   @media screen and (max-width: 600px) {
     #buttons {
-      width: 60%;
+      width: 70%;
 
       .button {
         width: 56px;
@@ -100,7 +100,7 @@ body, html {
 
   @media screen and (max-width: 1400px) {
     #buttons {
-      width: 40%;
+      width: 65%;
     }
   }
 
@@ -137,7 +137,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     background-color: rgba(64, 64, 64, 0.5);
-    margin-top: 23vh;
+    margin-top: 26vh;
     color: #FFFFFF;
 
     #container {
