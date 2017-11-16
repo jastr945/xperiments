@@ -136,11 +136,16 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgba(64, 64, 64, 0.3);
+    background-color: rgba(64, 64, 64, 0.5);
+    margin-top: 23vh;
+    color: #FFFFFF;
 
     #container {
       margin: 1em auto;
       text-align: center;
+      ul {
+        padding-left: 0;
+      }
     }
 
     small {
