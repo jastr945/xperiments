@@ -7,7 +7,6 @@ body, html {
 #main {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   background-image: url("coffee2.jpg");
   height: 100%;
   margin:0;
@@ -18,12 +17,13 @@ body, html {
   background-attachment: fixed;
 
   #buttons {
-    // background-color: white;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
+    width: 20%;
     margin: 8vh auto 0 auto;
-    width: 17%;
+
 
     @keyframes move {
       0% {}
@@ -65,7 +65,7 @@ body, html {
     }
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 600px) {
     #buttons {
       width: 60%;
 
@@ -87,7 +87,7 @@ body, html {
 
   @media screen and (max-width: 800px) {
     #buttons {
-      width: 60%;
+      width: 70%;
     }
   }
 
@@ -97,11 +97,6 @@ body, html {
     }
   }
 
-  @media screen and (max-width: 1400px) {
-    #buttons {
-      width: 20%;
-    }
-  }
 
   #arrows {
     display: flex;
