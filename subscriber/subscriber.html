@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Subscriber</title>
     <link rel="stylesheet" type="text/css" href="subscriber.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="subscriber.js"></script>
 </head>
 <body>
   <div id="main">
+    <div id="brand"><h1>Subscriber</h1></div>
     <div id="buttons">
       <div class="button"><img class="icon" src="coffee.svg" alt="coffee"/></div>
       <div class="button"><img class="icon" src="envelope.svg" alt="envelope"/></div>
@@ -18,6 +20,21 @@
       <div id="arrow-left"></div>
       <div id="arrow-right"></div>
     </div>
+    <footer>
+      <div id="container">
+        <ul style="list-style: none;">
+          <li><a href="#">coffee recipes</a></li>
+          <li><a href="#">subscribe</a></li>
+          <li><a href="http://github.com/jastr945/xperiments/tree/master/search/search_engine#elasticsearch-app" target="_blank">about</a></li>
+          <li><a href="http://polina.mee.how" target="_blank">contact</a></li>
+        </ul>
+      </div>
+      <small>&copy;
+        <script type="text/javascript">
+          document.write(new Date().getFullYear());
+        </script>
+        &nbsp;Polina Jastrzebska</small>
+    </footer>
   </div>
 </body>
 </html>

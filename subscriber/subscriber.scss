@@ -16,6 +16,13 @@ body, html {
   background-position: center;
   background-attachment: fixed;
 
+  #brand {
+    color: #00FFFF;
+    padding-top: 0.5em;
+    padding-left: 1.5em;
+    font-family: 'Lobster', cursive;
+  }
+
   #buttons {
     display: flex;
     flex-direction: row;
@@ -97,13 +104,12 @@ body, html {
     }
   }
 
-
   #arrows {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 30vh;
+    margin-top: 20vh;
 
     #arrow-left {
       height:0;
@@ -123,6 +129,22 @@ body, html {
       border-left: 3em solid white;
       border-bottom: 3em solid transparent;
       cursor: pointer;
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(64, 64, 64, 0.3);
+
+    #container {
+      margin: 1em auto;
+      text-align: center;
+    }
+
+    small {
+      margin: 0 auto;
     }
   }
 }
