@@ -141,6 +141,24 @@ body, html {
     }
   }
 
+  @media screen and (max-width: 600px) {
+    #arrows {
+      #arrow-left {
+        width: 0.5em;
+        border-top: 1em solid transparent;
+        border-right: 1em solid $color2;
+        border-bottom: 1em solid transparent;
+      }
+
+      #arrow-right {
+        width: 0.5em;
+        border-top: 1em solid transparent;
+        border-left: 1em solid $color2;
+        border-bottom: 1em solid transparent;
+      }
+    }
+  }
+
   footer {
     display: flex;
     flex-direction: column;
