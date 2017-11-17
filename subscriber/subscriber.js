@@ -39,6 +39,6 @@ $(document).ready(function() {
 // footer shows and hides upon the info-button click
 $(document).ready(function() {
   $('#infoButton').click(function() {
-    $('footer').toggle("slow");
+    $('footer').slideToggle("slow");
   });
 });
