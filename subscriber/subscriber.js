@@ -3,7 +3,7 @@
 
 // Background pictures slider; images change upon cllicking right or left arrow
 
-var images = [ 'coffee.jpg', 'coffee3.jpg', 'coffee2.jpg', 'coffee4.jpg', 'coffee5.jpg'];
+var images = [ 'coffee.jpg', 'coffee3.jpeg', 'coffee2.jpg', 'coffee4.jpg', 'coffee5.jpg'];
 var i = 0;
 
 
