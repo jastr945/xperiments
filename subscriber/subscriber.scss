@@ -145,6 +145,7 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position:sticky;
     background-color: rgba(64, 64, 64, 0.5);
     margin-top: 29vh;
     color: $color2;
