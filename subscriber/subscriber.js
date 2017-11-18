@@ -46,3 +46,11 @@ $(document).ready(function() {
     }
   });
 });
+
+// transforming a menu-item on click
+$(document).ready(function() {
+  $('.menu-item').click(function() {
+    $('.menu-item').not(this).removeClass('clicked');
+    $(this).toggleClass('clicked');
+  });
+});
