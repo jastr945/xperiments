@@ -39,6 +39,10 @@ $(document).ready(function() {
 // footer shows and hides upon the info-button click
 $(document).ready(function() {
   $('#infoButton').click(function() {
-    $('footer').slideToggle("slow");
+    if ($('footer').hasClass('invisible')) {
+      $('footer').removeClass('invisible').addClass('visible');
+    } else {
+      $('footer').removeClass('visible').addClass('invisible');
+    }
   });
 });

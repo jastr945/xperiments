@@ -10,6 +10,7 @@ body, html {
 #main {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-image: url("coffee2.jpg");
   height: 100%;
   margin:0;
@@ -38,7 +39,8 @@ body, html {
     flex-wrap: wrap;
     justify-content: space-around;
     width: 25%;
-    margin: 3vh auto 0 auto;
+    // margin: 3vh auto 0 auto;
+    margin: auto;
 
 
     @keyframes move {
@@ -118,7 +120,7 @@ body, html {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 20vh;
+    // margin-top: 20%;
 
     #arrow-left {
       height:0;
@@ -157,6 +159,14 @@ body, html {
         border-bottom: 1em solid transparent;
       }
     }
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  .visible {
+    visibility: visible;
   }
 
   footer {
@@ -203,6 +213,21 @@ body, html {
 
     small {
       margin: 0.5em auto;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    footer {
+      font-size: 0.8em;
+      // margin-top: 30%;
+
+      #container {
+        margin: 0.1em auto;
+      }
+
+      small {
+        margin: 0.1em auto;
+      }
     }
   }
 }
