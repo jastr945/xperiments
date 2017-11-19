@@ -159,7 +159,6 @@ body, html {
         align-content: center;
         height: 100%;
         width: 30%;
-        // background-color: pink;
 
         @keyframes scaling {
           100% {
@@ -168,11 +167,10 @@ body, html {
         }
 
         .clicked {
-          animation: scaling 0.5s forwards;
+          animation: scaling 0.2s forwards;
         }
 
         .menu-item {
-          // background-color: blue;
           display: flex;
           flex-direction: row;
           justify-content: flex-start;

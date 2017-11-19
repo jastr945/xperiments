@@ -47,10 +47,14 @@ $(document).ready(function() {
   });
 });
 
-// transforming a menu-item on click
+
+// selected menu item shows a corresponding recipe segment
 $(document).ready(function() {
   $('.menu-item').click(function() {
     $('.menu-item').not(this).removeClass('clicked');
     $(this).toggleClass('clicked');
+    var index = $('.menu-item').index(this);
+    $('.text-item').eq(index).show(); // showing a corresponding text item
+    $('.text-item').not($('.text-item').eq(index)).hide(); // hiding all other text items
   });
 });
