@@ -21,6 +21,23 @@ body, html {
   background-position: center;
   background-attachment: fixed;
 
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .invisible {
+    opacity: 0;
+  }
+
+  .visible {
+    animation: appear 1s forwards;
+  }
+
   #brand {
     color: $color1;
     padding-top: 0.5em;
@@ -251,23 +268,6 @@ body, html {
         border-bottom: 1em solid transparent;
       }
     }
-  }
-
-  @keyframes appear {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  .invisible {
-    opacity: 0;
-  }
-
-  .visible {
-    animation: appear 1s forwards;
   }
 
   footer {

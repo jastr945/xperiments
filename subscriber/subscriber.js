@@ -36,15 +36,20 @@ $(document).ready(function() {
 });
 
 
-// footer shows and hides upon the info-button click
-$(document).ready(function() {
-  $('#infoButton').click(function() {
-    if ($('footer').hasClass('invisible')) {
-      $('footer').removeClass('invisible').addClass('visible');
+// target shows and hides upon clicking an item
+function showhide(item, target) {
+  $(item).click(function() {
+    if ($(target).hasClass('invisible')) {
+      $(target).removeClass('invisible').addClass('visible');
     } else {
-      $('footer').removeClass('visible').addClass('invisible');
+      $(target).removeClass('visible').addClass('invisible');
     }
   });
+};
+
+$(document).ready(function() {
+  showhide('#infoButton', 'footer');
+  showhide('#coffeeButton', '.content');
 });
 
 
