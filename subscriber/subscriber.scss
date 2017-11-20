@@ -254,14 +254,24 @@ body, html {
     .subscribe {
       position: fixed;
       display: flex;
-      align-self: center;
-      flex-direction: row;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      background-color: $color1;
+      background-color: $color3;
       margin: 2em 15%;
       border-radius: 10px;
-      height: 30em;
+      height: auto;
       width: 70%;
+      color: $color2;
+      font-family: 'Montserrat', sans-serif;
+
+      p {
+        padding-top: 3em;
+      }
+
+      form {
+        padding: 3em 0;
+      }
     }
   }
 
