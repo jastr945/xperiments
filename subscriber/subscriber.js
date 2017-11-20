@@ -36,7 +36,7 @@ $(document).ready(function() {
 });
 
 
-// target shows and hides upon clicking an item
+// target shows and hides upon clicking an item; only content field or subscribe form can be shown at a time
 function showhide(item, target) {
   $(item).click(function() {
     if ($(target).hasClass('invisible')) {
@@ -50,11 +50,25 @@ function showhide(item, target) {
 
 $(document).ready(function() {
   showhide('#infoButton', 'footer');
-  showhide('#coffeeButton', '.content');
-  showhide('#subscribeButton', '.subscribe');
+  // showhide('#coffeeButton', '.content');
+  // showhide('#subscribeButton', '.subscribe');
 });
 
+$(document).ready(function() {
+  $('#coffeeButton').click(function() {
+    if ($('.content').hasClass('invisible')) {
+    $('.content').removeClass('invisible').addClass('visible');
+    $('.subscribe').removeClass('visible').addClass('invisible');
+  } else { $('.content').removeClass('visible').addClass('invisible');}
+  });
 
+  $('#subscribeButton').click(function() {
+    if ($('.subscribe').hasClass('invisible')) {
+    $('.subscribe').removeClass('invisible').addClass('visible');
+    $('.content').removeClass('visible').addClass('invisible');
+  } else { $('.subscribe').removeClass('visible').addClass('invisible');}
+  });
+});
 // // showing and hiding the subscription form
 // $(document).ready(function() {
 //   $('#subscribeButton').click(function() {
