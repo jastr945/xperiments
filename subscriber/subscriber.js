@@ -47,10 +47,20 @@ function showhide(item, target) {
   });
 };
 
+
 $(document).ready(function() {
   showhide('#infoButton', 'footer');
   showhide('#coffeeButton', '.content');
+  showhide('#subscribeButton', '.subscribe');
 });
+
+
+// // showing and hiding the subscription form
+// $(document).ready(function() {
+//   $('#subscribeButton').click(function() {
+//     $('.subscribe').toggle();
+//   });
+// });
 
 
 // selected menu item shows a corresponding recipe segment

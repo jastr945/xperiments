@@ -250,6 +250,19 @@ body, html {
         }
       }
     }
+
+    .subscribe {
+      position: fixed;
+      display: flex;
+      align-self: center;
+      flex-direction: row;
+      align-items: center;
+      background-color: $color1;
+      margin: 2em 15%;
+      border-radius: 10px;
+      height: 30em;
+      width: 70%;
+    }
   }
 
   @media screen and (max-width: 600px) {
