@@ -258,10 +258,10 @@ body, html {
       justify-content: center;
       align-items: center;
       background-color: $color3;
-      margin: 2em 15%;
+      margin: 2em 30%;
       border-radius: 10px;
       height: auto;
-      width: 70%;
+      width: 40%;
       color: $color2;
       font-family: 'Montserrat', sans-serif;
 
@@ -270,7 +270,26 @@ body, html {
       }
 
       form {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
         padding: 3em 0;
+        width: 80%;
+
+        input {
+          width: 70%;
+          border-radius: 5px;
+          border: 2px solid $color1;
+          margin-right: 0.2em;
+          font-size: 1.2em;
+        }
+
+        button {
+          border-radius: 5px;
+          border: 2px solid $color1;
+          font-size: 1.2em;
+          cursor: pointer;
+        }
       }
     }
   }
