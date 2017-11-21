@@ -258,7 +258,7 @@ body, html {
       justify-content: center;
       align-items: center;
       background-color: $color3;
-      margin: 2em 30%;
+      margin: 0 30%;
       border-radius: 10px;
       height: auto;
       width: 40%;
@@ -273,7 +273,7 @@ body, html {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        padding: 3em 0;
+        padding: 1em 0 3em 0;
         width: 80%;
 
         input {
@@ -289,6 +289,8 @@ body, html {
           border: 2px solid $color1;
           font-size: 1.2em;
           cursor: pointer;
+          font-family: 'Montserrat', sans-serif;
+          background-color: $color2;
         }
       }
     }
