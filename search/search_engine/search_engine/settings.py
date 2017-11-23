@@ -25,7 +25,7 @@ SECRET_KEY = 'qz1h9##hp6f!$s6jnkb)e%$g5am7rln9r&nv)84z5ctz7kii@4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '192.168.0.109']
+ALLOWED_HOSTS = ['localhost', '192.168.0.109', 'search.mee.how']
 
 
 # Application definition
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'search_engine.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': '/var/lib/search_engine/search_engine',
     }
 }
 
@@ -151,8 +151,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'searchapp', 'static')]
 
 STATIC_ROOT = '/staticfiles'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
