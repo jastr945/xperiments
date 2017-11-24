@@ -44,7 +44,7 @@ def article(request, article_name_slug):
         context_dict['articles'] = articles
 
     except Article.DoesNotExist:
-        print('Error. There is no such article.')
+        messages.error(request, "Oops! There is no such article in the database.")
 
     return render(request, 'searchapp/article.html', context_dict)
 

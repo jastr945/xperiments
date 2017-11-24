@@ -5,11 +5,17 @@
 
 <!--Single article container-->
 
-{% if articles %}
 <div class="container" id="textspace">
+
   <div class="row">
     <div class="col-md-12">
       <a href="{% url 'start' %}">home</a>&nbsp;/&nbsp;<a href="{% url 'index' %}">back to all posts</a>
+      {% if messages %}
+        {% for message in messages %}
+          <h4>{{ message|safe }}</h4>
+        {% endfor %}
+      {% endif %}
+      {% if articles %}
       <div class="article-container">
       <h4>Date posted:&nbsp;{{ articles.date }}</h4>
       <h2>{{ articles.title }}</h2>
@@ -24,8 +30,8 @@
         <h5>Source:&nbsp;<a href="{{ articles.source }}" target="_blank">{{ articles.source }}</a></h5>
       {% endif %}
       </div>
+      {% endif %}
     </div>
   </div>
 </div>
-{% endif %}
 {% endblock %}

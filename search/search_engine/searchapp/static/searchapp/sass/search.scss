@@ -202,6 +202,11 @@ body, html {
   font-size: 1.2em;
   overflow-y: auto;
 
+  h4 {
+    padding-top: 2em;
+    padding-left: 1em;
+  }
+
   .panel-body {
     padding:0.5em;
   }
@@ -261,6 +266,9 @@ body, html {
 @media screen and (max-width: 600px) {
   .col-md-12 {
     height: 73.5vh;
+    h4 {
+      font-size: 0.8em;
+    }
     .media {
       .media-object {
         width: 6em;
