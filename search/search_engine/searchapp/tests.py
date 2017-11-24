@@ -30,6 +30,7 @@ class ArticleViewTest(TestCase):
         resp = self.client.get(reverse('article', args=(article.slug,)))
         self.assertEqual(resp.status_code, 200)
 
+
     def test_start_url(self):
         resp = self.client.get(reverse('start'))
         self.assertEqual(resp.status_code, 200)
