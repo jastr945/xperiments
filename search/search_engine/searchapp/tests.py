@@ -23,13 +23,17 @@ class ArticleViewTest(TestCase):
         resp = self.client.get('/index/?category={}'.format('foo'))
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(len(resp.context['articles']), 1)
-        print(resp.context)
 
     def test_article_url(self):
         article = Article.objects.get(title="Django")
         resp = self.client.get(reverse('article', args=(article.slug,)))
         self.assertEqual(resp.status_code, 200)
 
+    def test_article_url_fail(self):
+        article = Article.objects.get(title="Django")
+        resp = self.client.get('/texts/foo')
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(len(resp.context['articles']), 1)
 
     def test_start_url(self):
         resp = self.client.get(reverse('start'))
