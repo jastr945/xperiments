@@ -8,7 +8,7 @@
       "date": "2016-10-17",
       "author": "Terumi Pong",
       "source": "https://blog.trekaroo.com/a-coastal-weekend-away-from-it-all-in-cannon-beach/",
-      "img": "/search_engine/media/A Coastal Weekend Away from it All in Cannon Beach/CB002.jpg",
+      "img": "/A Coastal Weekend Away from it All in Cannon Beach/CB002.jpg",
       "slug": "a-coastal-weekend-away-from-it-all-in-cannon-beach",
       "category": "blog posts"
     }
@@ -39,6 +39,60 @@
       "img": "search_engine/media/Cannon Beach captures the best of Oregon's coast/CB004.jpg",
       "slug": "cannon-beach-captures-the-best-of-oregons-coast",
       "category": "articles"
+    }
+  },
+  {
+    "model": "searchapp.article",
+    "pk": 4,
+    "fields": {
+      "title": "Cannon Beach",
+      "body": "Cannon Beach is a lovely little seashore town located on the North Coast of Oregon. To the north of us is Ecola State Park and to the south are Arcadia Beach, Hug Point, and Oswald West State Parks. Standing just offshore is Haystack Rock - possibly the most photographed chunk of basalt in the world. The scenic grandeur of our surroundings and our moderate year-round climate makes Cannon Beach a popular destination for travelers from all over the world. The Arts Back in the '70s a small artists enclave got started here and has grown to include over twenty galleries featuring work by local, regional, and nationally known artists. Cannon Beach is a good place to find art for decoration or investment. Two galleries specialize in bronzes, one in classical fine art and bronzes, one in local wildlife, quite a few of them show the work of their owner/artists, the rest are general galleries featuring work from local and non-local artists.",
+      "date": "2013-02-25",
+      "author": "Wild Bird Shop",
+      "source": "http://www.wildbirdshop.com/Cannon_Beach/cb.html",
+      "img": "search_engine/media/Cannon Beach/CB001.jpg",
+      "slug": "cannon-beach",
+      "category": "articles"
+    }
+  },
+  {
+    "model": "searchapp.article",
+    "pk": 5,
+    "fields": {
+      "title": "Bracing",
+      "body": "I guzzle and guzzle the last<br>morning of bristling light this autumn—<br>again and again from my fatalist<br>stance behind the kitchen sink.<br> On the stereo Dexter Gordon tongues<br>grace notes to the head of Cheese Cake.<br>In the yard a season is shredding<br>notes, the Sweetgum’s spire<br>a cadenza of yellow to mulberry.<br>Woody stems stripped of basil<br>crisscross the cutting board. Seven jars of<br>tomatoes rumble from a canner bath.<br>The sink water is rosy with pulp.<br>Out beyond the gate clutches of goldfinches<br>filch, pester, free kernels from tawny stalks<br>of teasel; they’ll fly the oil to the river.<br>The saxophone is an effervescing brut.<br>Sound ripples my hollow like<br>the grain in Oregon myrtle, this bowl<br>milled to mollify one vagrant heart<br>tipped over on home dirt.",
+      "date": "2017-01-01",
+      "author": "Tim Whitsel",
+      "source": "http://www.timwhitsel.com/sample-poems/",
+      "slug": "bracing",
+      "category": "poems"
+    }
+  },
+  {
+    "model": "searchapp.article",
+    "pk": 6,
+    "fields": {
+      "title": "Winter Flight",
+      "body": "We could have been parting<br>a Red Sea, the Super Duty pickups idling<br>like behemoths, hazard lights<br>signaling breaths. The ridge above<br>a stole of Doug fir, bottomlands fringed in skeletal ash.<br>What smell<br>or snap eroded discipline, what fledged the breakaway?<br>Four cow elk and a young Bugle Boy<br>bull cross the road early tonight<br>to bed down<br>on new pasture, stitch our river. A sanctuary lit up<br>with accident and blown clouds.<br>They are not game, they are epiphany and pentecost.<br>The way home hums with distraught<br>headlights and soccer moms.",
+      "date": "2017-10-13",
+      "author": "Tim Whitsel",
+      "source": "http://www.timwhitsel.com/sample-poems/",
+      "img": "search_engine/media/Winter Flight/izozMXKStSmY.jpg",
+      "slug": "winter-flight",
+      "category": "poems"
+    }
+  },
+  {
+    "model": "searchapp.article",
+    "pk": 7,
+    "fields": {
+      "title": "Ferment",
+      "body": "On the darkest autumn morning I must<br>hope, pressing through an afternoon<br>of intermittence, come and go mist,<br>the occasional truck Jake-braking, a dog wearing<br>his coat down to a sad meander.<br>Beyond my small river<br>cholera, hunger, polio<br>grab at children on both sides<br>of a faraway skirmish. Paralysis, pox<br>not peace. A lanyard of dust<br>two million faces long.<br>I should become their purse<br>of cool clean water, a shoulder bag of<br>fresh baguettes turning scripture and trespass<br>into the carbonic must it was meant to be.<br>Hire a road crew of apostrophes<br>so that anybody can have all they need<br>and some left over to ferment into new light.",
+      "date": "2017-09-25",
+      "author": "Tim Whitsel",
+      "source": "http://www.timwhitsel.com/sample-poems/",
+      "slug": "ferment",
+      "category": "poems"
     }
   }
 ]
