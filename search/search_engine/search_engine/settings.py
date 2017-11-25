@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'search_engine.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/var/lib/search_engine/search_engine',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -152,6 +152,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'searchapp', 'static')]
 
 STATIC_ROOT = '/staticfiles'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 
-MEDIA_ROOT = '/searchmedia'
+# MEDIA_ROOT = '/media/'

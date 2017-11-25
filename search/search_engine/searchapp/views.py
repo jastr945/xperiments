@@ -11,7 +11,7 @@ def start(request):
     context_dict = {}
 
     if request.GET.get("category"):
-        return HttpResponseRedirect('/index?category={}'.format(request.GET["category"]))
+        return HttpResponseRedirect('/index?category={}'.format((request.GET["category"]).lower()))
 
     return render(request, 'searchapp/start.html', context_dict)
 
@@ -37,7 +37,7 @@ def article(request, article_name_slug):
     context_dict = {}
 
     if request.GET.get("category"):
-        return HttpResponseRedirect('/index?category={}'.format(request.GET["category"]))
+        return HttpResponseRedirect('/index?category={}'.format((request.GET["category"]).lower()))
 
     try:
         articles = Article.objects.get(slug=article_name_slug)
@@ -55,7 +55,7 @@ def search(request):
     context_dict = {}
 
     if request.GET.get("category"):
-        return HttpResponseRedirect('/index?category={}'.format(request.GET["category"]))
+        return HttpResponseRedirect('/index?category={}'.format((request.GET["category"]).lower()))
 
     if request.POST:
         s = ArticleDocument.search().query("query_string", query=request.POST["srchterm"] + "~1")
