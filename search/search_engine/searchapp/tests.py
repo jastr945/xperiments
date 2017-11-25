@@ -47,3 +47,7 @@ class ArticleViewTest(TestCase):
     def test_search_url(self):
         resp = self.client.get(reverse('search'))
         self.assertEqual(resp.status_code, 200)
+
+    def test_get_titles_url(self):
+        resp = self.client.get('/get_titles/?term=foo')
+        self.assertEqual(resp.status_code, 200)
