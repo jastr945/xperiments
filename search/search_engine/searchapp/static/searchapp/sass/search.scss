@@ -203,7 +203,10 @@ body, html {
   overflow-y: auto;
 
   .pagination {
-    text-align: right;
+  
+    a {
+      color: $color3;
+    }
   }
 
   h4 {
