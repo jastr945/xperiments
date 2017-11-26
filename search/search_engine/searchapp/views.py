@@ -17,15 +17,11 @@ def start(request):
     return render(request, 'searchapp/start.html', context_dict)
 
 
-# rendering the main page with articles thumbnails; if a specific category is selected, only articles from that category will be listed; 10 articles per page is displayed
+# rendering the main page with articles thumbnails; articles can be filtered by category; 10 articles per page is displayed
 def index(request):
 
     articles = Article.objects.all()
     paginator = Paginator(articles, 10) # Show 10 articles per page
-
-    if request.GET.get("category"):
-        articles = Article.objects.filter(category=request.GET.get("category").lower())
-
     page = request.GET.get('page')
 
     try:
@@ -37,6 +33,22 @@ def index(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         articles = paginator.page(paginator.num_pages)
+
+    if request.GET.get("category"):
+
+        articles = Article.objects.filter(category=request.GET.get("category").lower())
+        paginator = Paginator(articles, 10) # Show 10 articles per page
+        page = request.GET.get('page')
+
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            articles = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            articles = paginator.page(paginator.num_pages)
+
 
     return render(request, 'searchapp/index.html', {'articles': articles})
 
