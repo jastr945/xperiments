@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from .models import Article
 from .documents import *
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import json
 from django.contrib import messages
 
@@ -16,7 +17,7 @@ def start(request):
     return render(request, 'searchapp/start.html', context_dict)
 
 
-# rendering the main page with articles thumbnails; if a specific category is selected, only articles from that category will be listed
+# rendering the main page with articles thumbnails; if a specific category is selected, only articles from that category will be listed; 10 articles per page is displayed
 def index(request):
 
     context_dict = {}

@@ -8,6 +8,21 @@
     <div class="col-md-12">
       <a href="{% url 'start' %}">home</a>&nbsp;/&nbsp;<a href="{% url 'index' %}">all posts</a>
       {% if articles %}
+      <div class="pagination">
+          <span class="step-links">
+              {% if articles.has_previous %}
+                  <a href="?page={{ articles.previous_page_number }}">previous</a>
+              {% endif %}
+
+              <span class="current">
+                  Page {{ articles.number }} of {{ articles.paginator.num_pages }}
+              </span>
+
+              {% if articles.has_next %}
+                  <a href="?page={{ articles.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+      </div>
       {% for a in articles %}
         <div class="panel-body">
           <div class="media">
