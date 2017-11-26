@@ -94,5 +94,61 @@
       "slug": "ferment",
       "category": "poems"
     }
+  },
+  {
+    "model": "searchapp.article",
+    "pk": 8,
+    "fields": {
+      "title": "Cannon Beach Is One of the Best Beaches In The World",
+      "body": "This week, a Canadian travel company named Cannon Beach one of the 50 best beaches in the world. At number 50, the rocky strip of Oregon coastline barely made it onto the list. But to be fair, it was mostly beat by tropical beaches where you can actually put your toes in the water without getting frostbite.<br>Flight Network, which is basically the Canadian equivalent of Expedia, determined their list by surveying hundreds of travel bloggers and agencies. Cannon Beach is the only beach on mainland US that made the list (unsurprisingly, the only other US beaches are all in Hawaii).<br>Each beach was rated for its remoteness, water quality and 'sheer untouched beauty.' The average temperature and number of sunny days per year is also listed for all of the beaches. Out of all the beaches on the list, Cannon Beach gets the least amount of sunshine (less than half the year) and is second coldest only to a beach in Iceland. So Flight Network suggests you 'experience the beach by strolling along the seaside cozy in a sweater while the sounds of beach life wrap you in comfort.'<br>The travel site gave high marks to Cannon Beach for 'sheer untouched beauty' and 'remoteness,' which is a little odd considering it's one of the most popular spots along Oregon's coast and there are many ice cream shops just a few feet off the sand. Still, we have to agree that Haystack Rock is pretty fucking majestic.<br>Check out our guide magazine to the Oregon here. It includes a few more obscure picks than this.",
+      "date": "2017-11-25",
+      "author": "Shannon Gormley",
+      "source": "http://www.wweek.com/outdoors/2017/11/24/cannon-beach-is-one-of-the-best-beaches-in-the-world-according-to-canada/",
+      "img": "/Cannon Beach Is One of the Best Beaches In The World/CB005.jpg",
+      "slug": "cannon-beach-is-one-of-the-best-beaches-in-the-world",
+      "category": "articles"
+    }
+  },
+  {
+    "model": "searchapp.article",
+    "pk": 9,
+    "fields": {
+      "title": "Destination Guide: Cannon Beach, Oregon",
+      "body": "Know Before You Go<br><br>Summer weather can be spectacular, or you can be hit by rain. Check the weather before you leave, and/or come prepared for varied weather conditions.<br>Winter brings great storm watching for the whole family.<br>Although you are headed to the beach this is no tropical location. The water is cold. If you plan on diving in or doing any surfing bring (or rent) a wetsuit.<br>Cannon Beach, OR is a sleepy little beach town that even over a holiday weekend isn’t jam packed with tourists. This also means that there aren’t things like arcades, mini golf, bowling, or a boardwalk that come along with many east coast beaches. If you are looking for a typical, crowded beach town you should head to Seaside down the road.<br><br>Packing<br><br>Rain gear<br>Sunscreen and sunglasses<br>Shovels, buckets, and other sandcastle equipment<br>Light layers in summer and heavier layers in winter. Day time can be warmer, but it does get chilly at night.<br><br>Driving to Cannon Beach<br><br>Cannon Beach, OR is about a 4- hour drive from Seattle, WA, and a 1.5 hour drive from Portland, OR. Rent a car from either airport and head to the coast for a little relaxation.<br><br>Food<br><br>Cannon Beach Bakery, 240 N Hemlock Street, Coaster Village– Haystack bread is the specialty but the Danish pastries are what will bring me back.<br>Insomnia Coffee  Company, 139 West 2nd Street– Pull up a seat, let the kids play for a bit while you enjoy a Aztec Mocha topped with chocolate whipped cream, or an ice chai on a warm day. You won’t be sorry.<br>Pig ‘N Pancake, 223 S. Hemlock Street– easy breakfast everyone will love. Pancakes, bacon, crepes, and more will fill your bellies before you go off to explore for the day.<br>Lazy Susan Cafe, 126 N. Hemlock Street- The lineup may not be worth it, but this cozy spot has good oatmeal waffles if you are in the mood.<br>Crepe Neptune, 175 2nd Street, big fan of the Cannon Beach crepe- Prosciutto, chevre goat cheese, fig and honey. The salmon crepe is equally good, but leave room for dessert!<br>The Local Grill and Scoop, 156 N Hemlock Street– easy, traditional american breakfasts the whole family can love.<br>Bill’s Tavern and Brewhouse, 188 N Hemlock Street– fantastic burgers! It’s seat yourself, so you may need to wait a few minutes for a table. Mike enjoyed the beer.<br>Fishes Sushi and Japanese Cuisine, 240 N Hemlock Street– the only sushi spot in town. A limited menu may mean less options, but they are tasty and worth a bite.<br>Driftwood Restaurant and Lounge, 179 N Hemlock Street– very family-friendly dinner spot with dishes on the pricey side, but the staff makes it all worth it. Fish dishes can be heavy on the butter and cream, so come hungry and don’t load up on appetizers.<br>Grocery Stores: There is a small market in town, but prices are high. Head up to Seaside to the Safeway to load up on food if you have a kitchen at your hotel or rental home.<br><br>Transportation<br><br>Car: Renting (or bringing your own) car is highly recommended if you plan on doing any extended exploring of the area.<br>Bikes: Bike rentals are available in town if you would like.<br><br>Activities<br><br>Ecola State Park<br>Hug Point State Park<br>Explore tide pools<br>Sunset walks on the beach<br>Fire pit cook out on the beach<br>Shopping<br>Biking<br>Fly kites",
+      "date": "2016-07-14",
+      "author": "Keryn Means",
+      "source": "https://walkingontravels.com/cannon-beach-oregon/",
+      "img": "/Destination Guide: Cannon Beach, Oregon/CB006.jpg",
+      "slug": "destination-guide-cannon-beach-oregon",
+      "category": "blog posts"
+    }
+  },
+  {
+    "model": "searchapp.article",
+    "pk": 10,
+    "fields": {
+      "title": "Cannon Beach Haiku",
+      "body": "<p style='text-align:center'>Your saltwater kisses<br>Rub our lips numb in the sun<br>Cannon beach Tuesday</p>",
+      "date": "2016-08-12",
+      "author": "Palmer",
+      "source": "https://hellopoetry.com/poem/2058541/cannon-beach-haiku/",
+      "img": "/Cannon Beach Haiku/CB007.jpg",
+      "slug": "cannon-beach-haiku",
+      "category": "poems"
+    }
+  },
+  {
+    "model": "searchapp.article",
+    "pk": 11,
+    "fields": {
+      "title": "Cannon Beach Haiku 2",
+      "body": "<p style='text-align:center'>Summer day heat wave<br>Writing secrets in the sand<br>Wild barefoot and free</p>",
+      "date": "2016-08-11",
+      "author": "Palmer",
+      "source": "https://hellopoetry.com/poem/1737124/cannon-beach-haiku/",
+      "img": "/Cannon Beach Haiku 2/CB008.jpg",
+      "slug": "cannon-beach-haiku-2",
+      "category": "poems"
+    }
   }
 ]

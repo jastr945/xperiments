@@ -17,7 +17,7 @@ class Article(models.Model):
     author = models.CharField(max_length=255, default='', null=True)
     source = models.CharField(max_length=255, default='', null=True)
     img = models.FileField(upload_to=upload_image, default='', blank=True, null=True)
-    slug = models.SlugField(max_length=50, default='', unique=True)
+    slug = models.SlugField(max_length=200, default='', unique=True)
 
     CATEGORY_CHOICES = (
         ('blog posts', 'blog posts'),
