@@ -19,6 +19,24 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'qz1h9##hp6f!$s6jnkb)e%$g5am7rln9r&nv)84z5ctz7kii@4')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+
+ALLOWED_HOSTS = ['localhost', 'search.mee.how']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'searchapp',
+        'USER': os.environ.get('DATABASE_USER', 'polina'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', '123qwe'),
+        'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
+        'PORT': os.environ.get('DATABASE_PORT', ''),
+    }
+}
 
 # Application definition
 
@@ -72,7 +90,7 @@ WSGI_APPLICATION = 'search_engine.wsgi.application'
 
 ELASTICSEARCH_DSL={
     'default': {
-        'hosts': 'elastic:changeme@localhost:9200'
+        'hosts': os.environ.get('DJANGO_ES_CREDENTIALS', 'elastic:changeme@localhost:9200')
     },
 }
 
@@ -141,4 +159,4 @@ STATIC_ROOT = '/staticfiles'
 
 MEDIA_URL = 'media/'
 
-# MEDIA_ROOT = '/media/'
+MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT', '')
