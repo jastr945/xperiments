@@ -29,12 +29,12 @@ ALLOWED_HOSTS = ['localhost', 'search.mee.how']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': os.environ.get('DATABASE_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'mysecretpassword'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DATABASE', 'myproject'),
+        'USER': os.environ.get('MYSQL_USER', 'myprojectuser'),
+        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD', 'password'),
         'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
-        'PORT': os.environ.get('DATABASE_PORT', '5432'),
+        'PORT': os.environ.get('DATABASE_PORT', ''),
     }
 }
 
