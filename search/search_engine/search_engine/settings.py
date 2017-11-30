@@ -30,9 +30,9 @@ ALLOWED_HOSTS = ['localhost', 'search.mee.how']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', 'myproject'),
-        'USER': os.environ.get('MYSQL_USER', 'myprojectuser'),
-        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD', 'password'),
+        'NAME': os.environ.get('MYSQL_DATABASE', 'database'),
+        # 'USER': os.environ.get('MYSQL_USER', 'root'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'password'),
         'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
         'PORT': os.environ.get('DATABASE_PORT', ''),
     }

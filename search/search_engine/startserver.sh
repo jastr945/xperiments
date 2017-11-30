@@ -1,3 +1,4 @@
-# echo "host all all 172.18.0.4/16 md5" >> /etc/postgresql/9.5/main/pg_hba.conf
+sleep 30
 python3 manage.py migrate
+python3 manage.py loaddata fixturefile.json
 uwsgi --chdir=./ --module=search_engine.wsgi:application --env DJANGO_SETTINGS_MODULE=search_engine.settings --socket=/tmp/search_engine.sock --master --http :80
