@@ -8,7 +8,7 @@
       "date": "2016-10-17",
       "author": "Terumi Pong",
       "source": "https://blog.trekaroo.com/a-coastal-weekend-away-from-it-all-in-cannon-beach/",
-      "img": "/A Coastal Weekend Away from it All in Cannon Beach/CB002.jpg",
+      "img": "media/A Coastal Weekend Away from it All in Cannon Beach/CB002.jpg",
       "slug": "a-coastal-weekend-away-from-it-all-in-cannon-beach",
       "category": "blog posts"
     }
@@ -22,7 +22,7 @@
       "date": "2014-10-23",
       "author": "Kristin Jackson",
       "source": "http://blogs.seattletimes.com/northwesttraveler/2014/10/23/going-to-cannon-beach-times-readers-tell-you-where-to-eat/",
-      "img": "/Going to Cannon Beach/CB003.jpg",
+      "img": "media/Going to Cannon Beach/CB003.jpg",
       "slug": "going-to-cannon-beach",
       "category": "blog posts"
     }
@@ -36,7 +36,7 @@
       "date": "2014-02-23",
       "author": "Alex Pulaski",
       "source": "http://www.latimes.com/travel/la-tr-road-trips-updates-snippet-oregon-coast-1495130358-htmlstory.html",
-      "img": "/Cannon Beach captures the best of Oregon's coast/CB004.jpg",
+      "img": "media/Cannon Beach captures the best of Oregon's coast/CB004.jpg",
       "slug": "cannon-beach-captures-the-best-of-oregons-coast",
       "category": "articles"
     }
@@ -50,7 +50,7 @@
       "date": "2013-02-25",
       "author": "Wild Bird Shop",
       "source": "http://www.wildbirdshop.com/Cannon_Beach/cb.html",
-      "img": "/Cannon Beach/CB001.jpg",
+      "img": "media/Cannon Beach/CB001.jpg",
       "slug": "cannon-beach",
       "category": "articles"
     }
@@ -77,7 +77,7 @@
       "date": "2017-10-13",
       "author": "Tim Whitsel",
       "source": "http://www.timwhitsel.com/sample-poems/",
-      "img": "/Winter Flight/izozMXKStSmY.jpg",
+      "img": "media/Winter Flight/izozMXKStSmY.jpg",
       "slug": "winter-flight",
       "category": "poems"
     }
@@ -104,7 +104,7 @@
       "date": "2017-11-25",
       "author": "Shannon Gormley",
       "source": "http://www.wweek.com/outdoors/2017/11/24/cannon-beach-is-one-of-the-best-beaches-in-the-world-according-to-canada/",
-      "img": "/Cannon Beach Is One of the Best Beaches In The World/CB005.jpg",
+      "img": "media/Cannon Beach Is One of the Best Beaches In The World/CB005.jpg",
       "slug": "cannon-beach-is-one-of-the-best-beaches-in-the-world",
       "category": "articles"
     }
@@ -118,7 +118,7 @@
       "date": "2016-07-14",
       "author": "Keryn Means",
       "source": "https://walkingontravels.com/cannon-beach-oregon/",
-      "img": "/Destination Guide: Cannon Beach, Oregon/CB006.jpg",
+      "img": "media/Destination Guide: Cannon Beach, Oregon/CB006.jpg",
       "slug": "destination-guide-cannon-beach-oregon",
       "category": "blog posts"
     }
@@ -132,7 +132,7 @@
       "date": "2016-08-12",
       "author": "Palmer",
       "source": "https://hellopoetry.com/poem/2058541/cannon-beach-haiku/",
-      "img": "/Cannon Beach Haiku/CB007.jpg",
+      "img": "media/Cannon Beach Haiku/CB007.jpg",
       "slug": "cannon-beach-haiku",
       "category": "poems"
     }
@@ -146,7 +146,7 @@
       "date": "2016-08-11",
       "author": "Palmer",
       "source": "https://hellopoetry.com/poem/1737124/cannon-beach-haiku/",
-      "img": "/Cannon Beach Haiku 2/CB008.jpg",
+      "img": "media/Cannon Beach Haiku 2/CB008.jpg",
       "slug": "cannon-beach-haiku-2",
       "category": "poems"
     }

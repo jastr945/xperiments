@@ -19,7 +19,7 @@
       <h4>Date posted:&nbsp;{{ articles.date }}</h4>
       <h2>{{ articles.title }}</h2>
       {% if articles.img %}
-      <img class="article-img" src="/media/{{ articles.img.url }}" alt="Article image"/>
+      <img class="article-img" src="{{ articles.img.url }}" alt="Article image"/>
       {% endif %}
       <p>{{ articles.body|safe }}</p>
       {% if articles.author %}

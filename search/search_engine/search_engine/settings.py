@@ -157,6 +157,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'searchapp', 'static')]
 
 STATIC_ROOT = '/staticfiles'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.environ.get('DJANGO_MEDIA_ROOT', '')
