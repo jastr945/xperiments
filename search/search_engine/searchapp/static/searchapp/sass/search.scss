@@ -133,13 +133,22 @@ body, html {
   }
 }
 
-@-webkit-keyframes move {
+@-webkit-keyframes zoomout {
   0% {
     -webkit-background-size: 105%;
   }
   100% {
     -webkit-background-size: 100%;
-  };
+  }
+}
+
+@keyframes zoomout {
+  0% {
+    background-size: 105%;
+  }
+  100% {
+    background-size: 100%;
+  }
 }
 
 #main {
@@ -154,7 +163,10 @@ body, html {
 
 @media screen and (min-width: 1024px) {
   #main {
-    -webkit-animation: move 5s;
+    animation: zoomout 5s;
+    -webkit-animation: zoomout 5s;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
   }
 }
 
@@ -203,7 +215,7 @@ body, html {
   overflow-y: auto;
 
   .pagination {
-  
+
     a {
       color: $color3;
     }
