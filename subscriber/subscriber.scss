@@ -284,19 +284,24 @@ body, html {
 
     @media screen and (max-width: 600px) {
       .content {
+        width: 75%;
+        padding: 0.8em;
+
         .menu {
           flex-direction: column;
           height: auto;
-          justify-content: center;
+          justify-content: flex-start;
+          padding-bottom: 0.5em;
 
           .menu-item {
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: flex-start;
             padding:0;
-            margin: 0 auto;
+            margin: 0 0 0 30%;
             align-items: center;
             padding: 0.5em;
+            font-size: 0.8em;
 
             img {
               margin: auto 0.5em auto 0;
@@ -306,6 +311,23 @@ body, html {
 
         .description {
           flex-direction: column;
+          justify-content: center;
+          padding: 0.2em;
+
+          .basic-info {
+            width: auto;
+            font-size: 0.8em;
+
+            .ingredients {
+              ul {
+                padding:0.5em;
+              }
+            }
+          }
+
+          .recipe-img {
+            margin: 0 auto;
+          }
         }
       }
     }
