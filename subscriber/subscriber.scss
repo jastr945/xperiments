@@ -20,6 +20,7 @@ body, html {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  overflow: auto;
 
   @keyframes appear {
     0% {
@@ -244,7 +245,7 @@ body, html {
 
           img {
             width: 90%;
-            height: 90%;
+            max-height: 90%;
             object-fit: cover;
           }
         }
@@ -275,7 +276,7 @@ body, html {
           padding: 1em;
 
           .recipe-img {
-            width: 30%;
+            width: 40%;
           }
         }
       }
@@ -402,13 +403,5 @@ body, html {
         margin: 0.1em auto;
       }
     }
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .main {
-    height: 100%;
-    overflow: auto;
-    background-size: auto;
   }
 }
