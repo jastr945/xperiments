@@ -369,6 +369,44 @@ body, html {
         }
       }
     }
+
+    @media screen and (max-width: 1400px) {
+      .subscribe {
+        width: 60%;
+        margin: 0 20%;
+      }
+    }
+
+    @media screen and (max-width: 970px) {
+      .subscribe {
+        width: 80%;
+        margin: 0 10%;
+
+        p {
+          width: auto;
+          font-size: 0.9em;
+          padding: 1em;
+          text-align: center;
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          input {
+            margin: 0.2em auto;
+            font-size: 0.9em;
+            width: 95%
+          }
+
+          button {
+            margin: 0.2em auto;
+            font-size: 0.9em;
+          }
+        }
+      }
+    }
   }
 
   @media screen and (max-width: 1400px) {
