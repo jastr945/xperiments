@@ -36,20 +36,17 @@ $(document).ready(function() {
 });
 
 
-// target shows and hides upon clicking an item; only content field or subscribe form can be shown at a time
-function showhide(item, target) {
-  $(item).click(function() {
-    if ($(target).hasClass('invisible')) {
-      $(target).removeClass('invisible').addClass('visible');
+// The Infobutton toggles footer; the view slides to the footer when appeared.
+$(document).ready(function() {
+  $('#infoButton').click(function() {
+    var element = document.getElementById("footer");
+    if ($('#footer').hasClass('invisible')) {
+      $('#footer').removeClass('invisible').addClass('visible');
+      element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
     } else {
-      $(target).removeClass('visible').addClass('invisible');
+      $('#footer').removeClass('visible').addClass('invisible');
     }
   });
-};
-
-
-$(document).ready(function() {
-  showhide('#infoButton', 'footer');
 });
 
 $(document).ready(function() {
