@@ -1,10 +1,6 @@
-*.pyc
-.idea
-db.sqlite3
-__pycache__
-env
+# See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# REACT dependencies
+# dependencies
 /node_modules
 
 # testing
