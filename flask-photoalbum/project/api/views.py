@@ -4,7 +4,7 @@ from project import db
 from sqlalchemy import exc
 
 
-users_blueprint = Blueprint('users', __name__, template_folder='./templates')
+users_blueprint = Blueprint('users', __name__)
 
 
 @users_blueprint.route('/', methods=['GET', 'POST'])
@@ -86,7 +86,7 @@ def get_single_user(user_id):
 @users_blueprint.route('/users', methods=['GET'])
 def get_all_users():
     """Get all users"""
-    users = User.query.order_by(User.created_at.desc()).all()
+    users = User.query.order_by(User.created_at.asc()).all()
     users_list = []
     for user in users:
         user_object = {
