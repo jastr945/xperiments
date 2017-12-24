@@ -7,6 +7,8 @@ services:
     build: ./project/db
     ports:
         - 5435:5432
+    volumes:
+      - dbdata:/var/lib/postgres/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -26,7 +28,7 @@ services:
       users-db:
         condition: service_healthy
     volumes:
-      - appdata:/var/lib/mysql/data
+      - appdata:/var/lib/photoalbum/data
     links:
       - users-db
 
@@ -45,4 +47,5 @@ services:
       - users-service
 
 volumes:
+  dbdata:
   appdata:

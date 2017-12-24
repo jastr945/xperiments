@@ -11,7 +11,7 @@ const UsersList = (props) => {
             <h4
               key={user.id}
               className="well"
-            >{user.username} - {user.email} - <Timestamp time={user.created_at} format='full' />
+            >{user.username} - {user.email} - <Timestamp time={user.created_at} format='full' /> - <Timestamp ago={user.created_at} includeDay={true} precision={3} autoUpdate={60} />
             </h4>
           )
         })
