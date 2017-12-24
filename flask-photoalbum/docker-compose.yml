@@ -25,6 +25,8 @@ services:
     depends_on:
       users-db:
         condition: service_healthy
+    volumes:
+      - appdata:/var/lib/mysql/data
     links:
       - users-db
 
@@ -41,3 +43,6 @@ services:
         condition: service_started
     links:
       - users-service
+
+volumes:
+  appdata:

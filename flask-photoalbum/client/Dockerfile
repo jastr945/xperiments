@@ -18,6 +18,7 @@ ADD package.json /usr/src/app/package.json
 RUN npm install --silent
 RUN npm install pushstate-server -g --silent
 RUN npm install axios@0.16.2 --save
+RUN npm install react-timestamp
 
 # add app
 ADD . /usr/src/app

@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request, render_template
 from project.api.models import User
 from project import db
 from sqlalchemy import exc
+import datetime
 
 
 users_blueprint = Blueprint('users', __name__)
@@ -76,7 +77,7 @@ def get_single_user(user_id):
                 'data': {
                   'username': user.username,
                   'email': user.email,
-                  'created_at': user.created_at
+                  'created_at': user.created_at.isoformat()
                 }
             }
             return jsonify(response_object), 200
@@ -93,7 +94,7 @@ def get_all_users():
             'id': user.id,
             'username': user.username,
             'email': user.email,
-            'created_at': user.created_at
+            'created_at': user.created_at.isoformat()
         }
         users_list.append(user_object)
     response_object = {
