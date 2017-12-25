@@ -2,7 +2,10 @@ import React from 'react';
 
 const AddAlbum = (props) => {
   return (
-    <form onSubmit={(event) => props.addAlbum(event)}>
+    <form onSubmit={(event) => props.addAlbum(event)} method="POST" enctype="multipart/form-data">
+      <div className="form-group">
+        <input className="form-control input-lg" type="file" name="photos" multiple />
+      </div>
       <div className="form-group">
         <input
           name="title"
