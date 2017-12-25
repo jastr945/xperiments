@@ -3,17 +3,16 @@ import datetime
 from project import db
 
 
-class User(db.Model):
-    __tablename__ = "users"
+class Album(db.Model):
+    __tablename__ = "albums"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    username = db.Column(db.String(128), nullable=False)
-    email = db.Column(db.String(128), nullable=False)
-    active = db.Column(db.Boolean(), default=False, nullable=False)
+    title = db.Column(db.String(300), nullable=False)
+    description = db.Column(db.String(1000), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), nullable=False)
 
-    def __init__(self, username, email, created_at=None):
+    def __init__(self, title, description, created_at=None):
         if not created_at:
             created_at = datetime.datetime.now()
-        self.username = username
-        self.email = email
+        self.title = title
+        self.description = description
         self.created_at = created_at

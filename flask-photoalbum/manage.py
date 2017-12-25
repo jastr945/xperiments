@@ -1,7 +1,7 @@
 from flask_script import Manager
 from project import create_app, db
 import unittest
-from project.api.models import User
+from project.api.models import Album
 
 
 app = create_app()
@@ -28,8 +28,8 @@ def test():
 @manager.command
 def seed_db():
     """Seeds the database."""
-    db.session.add(User(username='polina', email="polina@gmail.com"))
-    db.session.add(User(username='pofi', email="pofi@catsruletheworld.com"))
+    db.session.add(Album(title='polina', description="Polina's album with many awesome pictures."))
+    db.session.add(Album(title='pofi', description="Pofi's cute pictures."))
     db.session.commit()
 
 

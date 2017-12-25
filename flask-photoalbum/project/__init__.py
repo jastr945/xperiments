@@ -24,7 +24,7 @@ def create_app():
     db.init_app(app)
 
     # register blueprints
-    from project.api.views import users_blueprint
-    app.register_blueprint(users_blueprint)
+    from project.api.views import albums_blueprint
+    app.register_blueprint(albums_blueprint)
 
     return app

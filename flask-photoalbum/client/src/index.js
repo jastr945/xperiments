@@ -1,37 +1,37 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import UsersList from './components/UsersList';
-import AddUser from './components/AddUser';
+import AlbumsList from './components/AlbumsList';
+import AddAlbum from './components/AddAlbum';
 
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      users: [],
-      username: '',
-      email: ''
+      albums: [],
+      title: '',
+      description: ''
     }
   }
   componentDidMount() {
-    this.getUsers();
+    this.getAlbums();
   }
-  getUsers() {
-    axios.get('http://localhost:5001/users')
-    .then((res) => { this.setState({ users: res.data.data.users }); })
+  getAlbums() {
+    axios.get('http://localhost:5001/albums')
+    .then((res) => { this.setState({ albums: res.data.data.albums }); })
     .catch((err) => { console.log(err); })
   }
-  addUser(event) {
+  addAlbum(event) {
     event.preventDefault();
     const data = {
-      username: this.state.username,
-      email: this.state.email
+      title: this.state.title,
+      description: this.state.description
     }
-    axios.post('http://localhost:5001/users', data)
+    axios.post('http://localhost:5001/albums', data)
     .then((res) => {
-      this.getUsers();
-      this.setState({ username: '', email: '' });
+      this.getAlbums();
+      this.setState({ title: '', description: '' });
     })
     .catch((err) => { console.log(err); })
   }
@@ -46,16 +46,16 @@ class App extends Component {
         <div className="row">
           <div className="col-md-6">
             <br/>
-            <h1>All Users</h1>
+            <h1>Photo Album</h1>
             <hr/><br/>
-            <AddUser
-              username={this.state.username}
-              email={this.state.email}
+            <AddAlbum
+              title={this.state.title}
+              description={this.state.description}
               handleChange={this.handleChange.bind(this)}
-              addUser={this.addUser.bind(this)}
+              addAlbum={this.addAlbum.bind(this)}
             />
             <br/>
-            <UsersList users={this.state.users}/>
+            <AlbumsList albums={this.state.albums}/>
           </div>
         </div>
       </div>

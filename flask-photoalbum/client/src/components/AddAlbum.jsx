@@ -1,27 +1,27 @@
 import React from 'react';
 
-const AddUser = (props) => {
+const AddAlbum = (props) => {
   return (
-    <form onSubmit={(event) => props.addUser(event)}>
+    <form onSubmit={(event) => props.addAlbum(event)}>
       <div className="form-group">
         <input
-          name="username"
+          name="title"
           className="form-control input-lg"
           type="text"
-          placeholder="Enter a username"
+          placeholder="Enter a title..."
           required
-          value={props.username}
+          value={props.title}
           onChange={props.handleChange}
         />
       </div>
       <div className="form-group">
         <input
-          name="email"
+          name="description"
           className="form-control input-lg"
-          type="email"
-          placeholder="Enter an email address"
+          type="description"
+          placeholder="Enter some description..."
           required
-          value={props.email}
+          value={props.description}
           onChange={props.handleChange}
         />
       </div>
@@ -34,4 +34,4 @@ const AddUser = (props) => {
   )
 }
 
-export default AddUser;
+export default AddAlbum;

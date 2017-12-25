@@ -1,32 +1,32 @@
 from flask import Blueprint, jsonify, request, render_template
-from project.api.models import User
+from project.api.models import Album
 from project import db
 from sqlalchemy import exc
 import datetime
 
 
-users_blueprint = Blueprint('users', __name__)
+albums_blueprint = Blueprint('albums', __name__)
 
 
-@users_blueprint.route('/', methods=['GET', 'POST'])
+@albums_blueprint.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        username = request.form['username']
-        email = request.form['email']
-        db.session.add(User(username=username, email=email))
+        title = request.form['title']
+        description = request.form['description']
+        db.session.add(Album(title=title, description=description))
         db.session.commit()
-    users = User.query.order_by(User.created_at.desc()).all()
-    return render_template('index.html', users=users)
+    albums = Album.query.order_by(Album.created_at.desc()).all()
+    return render_template('index.html', albums=albums)
 
-@users_blueprint.route('/ping', methods=['GET'])
+@albums_blueprint.route('/ping', methods=['GET'])
 def ping_pong():
     return jsonify({
         'status': 'success',
         'message': 'kittykats!'
     })
 
-@users_blueprint.route('/users', methods=['POST'])
-def add_user():
+@albums_blueprint.route('/albums', methods=['POST'])
+def add_album():
     post_data = request.get_json()
     if not post_data:
         response_object = {
@@ -34,22 +34,22 @@ def add_user():
             'message': 'Invalid payload.'
         }
         return jsonify(response_object), 400
-    username = post_data.get('username')
-    email = post_data.get('email')
+    title = post_data.get('title')
+    description = post_data.get('description')
     try:
-        user = User.query.filter_by(email=email).first()
-        if not user:
-            db.session.add(User(username=username, email=email))
+        album = Album.query.filter_by(title=title).first()
+        if not album:
+            db.session.add(Album(title=title, description=description))
             db.session.commit()
             response_object = {
                 'status': 'success',
-                'message': f'{email} was added!'
+                'message': f'{title} was added!'
             }
             return jsonify(response_object), 201
         else:
             response_object = {
                 'status': 'fail',
-                'message': 'Sorry. That email already exists.'
+                'message': 'Sorry. That album already exists.'
             }
             return jsonify(response_object), 400
     except exc.IntegrityError as e:
@@ -60,47 +60,47 @@ def add_user():
         }
         return jsonify(response_object), 400
 
-@users_blueprint.route('/users/<user_id>', methods=['GET'])
-def get_single_user(user_id):
-    """Get single user details"""
+@albums_blueprint.route('/albums/<album_id>', methods=['GET'])
+def get_single_album(album_id):
+    """Get single album details"""
     response_object = {
         'status': 'fail',
-        'message': 'User does not exist'
+        'message': 'Album does not exist'
     }
     try:
-        user = User.query.filter_by(id=int(user_id)).first()
-        if not user:
+        album = Album.query.filter_by(id=int(album_id)).first()
+        if not album:
             return jsonify(response_object), 404
         else:
             response_object = {
                 'status': 'success',
                 'data': {
-                  'username': user.username,
-                  'email': user.email,
-                  'created_at': user.created_at.isoformat()
+                  'title': album.title,
+                  'description': album.description,
+                  'created_at': album.created_at.isoformat()
                 }
             }
             return jsonify(response_object), 200
     except ValueError:
         return jsonify(response_object), 404
 
-@users_blueprint.route('/users', methods=['GET'])
-def get_all_users():
-    """Get all users"""
-    users = User.query.order_by(User.created_at.desc()).all()
-    users_list = []
-    for user in users:
-        user_object = {
-            'id': user.id,
-            'username': user.username,
-            'email': user.email,
-            'created_at': user.created_at.isoformat()
+@albums_blueprint.route('/albums', methods=['GET'])
+def get_all_albums():
+    """Get all albums"""
+    albums = Album.query.order_by(Album.created_at.desc()).all()
+    albums_list = []
+    for album in albums:
+        album_object = {
+            'id': album.id,
+            'title': album.title,
+            'description': album.description,
+            'created_at': album.created_at.isoformat()
         }
-        users_list.append(user_object)
+        albums_list.append(album_object)
     response_object = {
         'status': 'success',
         'data': {
-            'users': users_list
+            'albums': albums_list
         }
     }
     return jsonify(response_object), 200
