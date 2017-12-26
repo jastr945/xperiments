@@ -8,7 +8,6 @@ from flask_cors import CORS
 db = SQLAlchemy()
 
 UPLOAD_FOLDER = '/static/uploads'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 def create_app():
 

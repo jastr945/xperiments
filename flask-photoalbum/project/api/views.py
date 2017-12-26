@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, render_template, redirect, url_for
 from werkzeug.utils import secure_filename
-from project.api.models import Album
+from project.api.models import Album, Image
 from project import db
 from sqlalchemy import exc
 import datetime
@@ -8,6 +8,11 @@ import datetime
 
 albums_blueprint = Blueprint('albums', __name__)
 
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @albums_blueprint.route('/', methods=['GET', 'POST'])
 def index():

@@ -1,7 +1,7 @@
 from flask_script import Manager
 from project import create_app, db
 import unittest
-from project.api.models import Album
+from project.api.models import Album, Image
 
 
 app = create_app()
