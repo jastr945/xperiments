@@ -28,8 +28,12 @@ def test():
 @manager.command
 def seed_db():
     """Seeds the database."""
-    db.session.add(Album(title='polina', description="Polina's album with many awesome pictures."))
-    db.session.add(Album(title='pofi', description="Pofi's cute pictures."))
+    img1 = Image(img='pigs3.jpg')
+    img2 = Image(img='pigs4.jpg')
+    img3 = Image(img='pigs7.jpg')
+    img4 = Image(img='pigs8.jpg')
+    db.session.add(Album(title='polina', description="Polina's album with many awesome pictures.", images=img1))
+    db.session.add(Album(title='pofi', description="Pofi's cute pictures.", images=img2))
     db.session.commit()
 
 

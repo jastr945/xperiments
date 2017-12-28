@@ -30,8 +30,7 @@ def index():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
+            return redirect(url_for('uploaded_file', filename=filename))
         title = request.form['title']
         description = request.form['description']
         db.session.add(Album(title=title, description=description))
@@ -98,7 +97,8 @@ def get_single_album(album_id):
                 'data': {
                   'title': album.title,
                   'description': album.description,
-                  'created_at': album.created_at.isoformat()
+                  'created_at': album.created_at.isoformat(),
+                  'images': str(album.images)
                 }
             }
             return jsonify(response_object), 200
@@ -115,7 +115,8 @@ def get_all_albums():
             'id': album.id,
             'title': album.title,
             'description': album.description,
-            'created_at': album.created_at.isoformat()
+            'created_at': album.created_at.isoformat(),
+            'images': str(album.images)
         }
         albums_list.append(album_object)
     response_object = {
