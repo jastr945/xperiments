@@ -116,7 +116,7 @@ def get_all_albums():
             'title': album.title,
             'description': album.description,
             'created_at': album.created_at.isoformat(),
-            'images': album.images.img
+            'images': str(album.images)
         }
         albums_list.append(album_object)
     response_object = {
