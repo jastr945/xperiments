@@ -19,6 +19,7 @@ RUN npm install --silent
 RUN npm install pushstate-server -g --silent
 RUN npm install axios@0.16.2 --save
 RUN npm install react-timestamp
+RUN npm install --save-dev url-loader file-loader
 
 # add app
 ADD . /usr/src/app
