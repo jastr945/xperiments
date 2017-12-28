@@ -13,8 +13,7 @@ const AlbumsList = (props) => {
               className="well"
             >{album.title} - {album.description} - <Timestamp time={album.created_at} format='full' /> - <Timestamp time={album.created_at} format='ago' includeDay={true} precision={2} autoUpdate={60} />
             <div>
-              {album.images}
-              <img src={require('./static/' + 'pigs4.jpg')} alt='album' />
+              <img src={require(`./static/${album.images}`)} alt='album' width={300} />
             </div>
             </h4>
           )
