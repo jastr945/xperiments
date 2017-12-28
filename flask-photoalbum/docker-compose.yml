@@ -22,9 +22,12 @@ services:
       - APP_SETTINGS=project.config.DevelopmentConfig
       - DATABASE_URL=postgres://postgres:postgres@albums-db:5432/albums_dev
       - DATABASE_TEST_URL=postgres://postgres:postgres@albums-db:5432/albums_test
+    command: /bin/sleep 1000000
     depends_on:
       albums-db:
         condition: service_healthy
+    volumes:
+      - /home/polina/projects/xperiments/flask-photoalbum:/usr/src/app
     links:
       - albums-db
 
