@@ -8,32 +8,15 @@ import datetime
 
 albums_blueprint = Blueprint('albums', __name__)
 
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 @albums_blueprint.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file', filename=filename))
         title = request.form['title']
         description = request.form['description']
-        db.session.add(Album(title=title, description=description))
+        photos_list = photos.save(request.files['photos'])
+        album = Album(title=title, description=description)
+        album.images = photos_list
+        db.session.add(album)
         db.session.commit()
     albums = Album.query.order_by(Album.created_at.desc()).all()
     return render_template('index.html', albums=albums)
