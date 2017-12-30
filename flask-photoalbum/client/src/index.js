@@ -13,7 +13,7 @@ class App extends Component {
       albums: [],
       title: '',
       description: '',
-      photos: []
+      photos: ''
     }
   }
   componentDidMount() {
@@ -26,6 +26,7 @@ class App extends Component {
   }
   addAlbum(event) {
     event.preventDefault();
+    console.log(this.state.photos)
     const data = {
       title: this.state.title,
       description: this.state.description,
@@ -34,7 +35,7 @@ class App extends Component {
     axios.post('http://localhost:5001/albums', data)
     .then((res) => {
       this.getAlbums();
-      this.setState({ title: '', description: '', photos: [] });
+      this.setState({ title: '', description: '', photos: '' });
     })
     .catch((err) => { console.log(err); })
   }
@@ -42,7 +43,12 @@ class App extends Component {
     try {
       const obj = {};
       if (obj[event.target.name] === 'photos') {
-        obj[event.target.name] = Array.from(event.target.value);
+        for (let size=0; size < event.target.files.length; size++) {
+          console.log("Image list length",event.target.files.length);
+          let images = [];
+          images.push(event.target.files[size]);
+          obj[event.target.name] = images;
+        }
       } else {
         obj[event.target.name] = event.target.value;
       }
@@ -53,7 +59,6 @@ class App extends Component {
     }
   }
   render() {
-    console.log(this.state.error);
     return (
       <div className="container">
         <div className="row">
