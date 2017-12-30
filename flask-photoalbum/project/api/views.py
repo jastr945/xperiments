@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, request, render_template, redirect, url_for
-from werkzeug.utils import secure_filename
 from project.api.models import Album, Image
 from project import db
 from sqlalchemy import exc
@@ -10,12 +9,13 @@ albums_blueprint = Blueprint('albums', __name__)
 
 @albums_blueprint.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
+    if request.method == 'POST' and 'photos' in request.form:
         title = request.form['title']
         description = request.form['description']
-        photos_list = photos.save(request.files['photos'])
+        photos_list = photos.save(request.form['photos'])
         album = Album(title=title, description=description)
         album.images = photos_list
+        import ipdb; ipdb.set_trace()
         db.session.add(album)
         db.session.commit()
     albums = Album.query.order_by(Album.created_at.desc()).all()
@@ -81,7 +81,7 @@ def get_single_album(album_id):
                   'title': album.title,
                   'description': album.description,
                   'created_at': album.created_at.isoformat(),
-                  'images': str(album.images)
+                  'images': [str(i.img) for i in album.images]
                 }
             }
             return jsonify(response_object), 200

@@ -5,12 +5,6 @@ from flask_cors import CORS
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 
 
-UPLOADS_DEFAULT_DEST = TOP_LEVEL_DIR + '/client/src/components/static/'
-UPLOADS_DEFAULT_URL = 'http://localhost:5001/static/'
-
-UPLOADED_IMAGES_DEST = TOP_LEVEL_DIR + '/client/src/components/static/'
-UPLOADED_IMAGES_URL = 'http://localhost:5001/static/'
-
 # instantiate the db
 db = SQLAlchemy()
 
@@ -31,6 +25,7 @@ def create_app():
 
     # set up image uploading via flask-uploads
     photos = UploadSet('photos', IMAGES)
+    app.config['UPLOADED_PHOTOS_DEST'] = '/client/src/components/static/'
     configure_uploads(app, photos)
 
     # register blueprints

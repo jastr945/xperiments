@@ -9,9 +9,11 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
+      error: null,
       albums: [],
       title: '',
-      description: ''
+      description: '',
+      photos: []
     }
   }
   componentDidMount() {
@@ -26,21 +28,32 @@ class App extends Component {
     event.preventDefault();
     const data = {
       title: this.state.title,
-      description: this.state.description
+      description: this.state.description,
+      photos: this.state.photos
     }
     axios.post('http://localhost:5001/albums', data)
     .then((res) => {
       this.getAlbums();
-      this.setState({ title: '', description: '' });
+      this.setState({ title: '', description: '', photos: [] });
     })
     .catch((err) => { console.log(err); })
   }
   handleChange(event) {
-    const obj = {};
-    obj[event.target.name] = event.target.value;
-    this.setState(obj);
+    try {
+      const obj = {};
+      if (obj[event.target.name] === 'photos') {
+        obj[event.target.name] = Array.from(event.target.value);
+      } else {
+        obj[event.target.name] = event.target.value;
+      }
+      this.setState(obj);
+      console.log(obj);
+    } catch (error) {
+      this.setState({ error });
+    }
   }
   render() {
+    console.log(this.state.error);
     return (
       <div className="container">
         <div className="row">
@@ -51,6 +64,7 @@ class App extends Component {
             <AddAlbum
               title={this.state.title}
               description={this.state.description}
+              photos={this.state.photos}
               handleChange={this.handleChange.bind(this)}
               addAlbum={this.addAlbum.bind(this)}
             />
