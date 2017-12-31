@@ -9,7 +9,7 @@ albums_blueprint = Blueprint('albums', __name__)
 
 @albums_blueprint.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST' and 'photos' in request.form:
+    if request.method == 'POST' and 'file' in request.files:
         title = request.form['title']
         description = request.form['description']
         photos_list = photos.save(request.form['photos'])

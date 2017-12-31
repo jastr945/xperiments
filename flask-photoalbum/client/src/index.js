@@ -20,7 +20,7 @@ class App extends Component {
     this.getAlbums();
   }
   getAlbums() {
-    axios.get('http://localhost:5001/albums')
+    axios.get('http://192.168.0.109:5001/albums')
     .then((res) => { this.setState({ albums: res.data.data.albums }); })
     .catch((err) => { console.log(err); })
   }
@@ -34,10 +34,11 @@ class App extends Component {
     }
     const config = {
       headers: {
-          'content-type': 'multipart/form-data'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       }
     }
-    axios.post('http://localhost:5001/albums', data, config)
+    axios.post('http://192.168.0.109/albums', data, config)
     .then((res) => {
       this.getAlbums();
       this.setState({ title: '', description: '', file: null });
