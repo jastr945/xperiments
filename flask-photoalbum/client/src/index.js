@@ -13,7 +13,7 @@ class App extends Component {
       albums: [],
       title: '',
       description: '',
-      photos: ''
+      file: null
     }
   }
   componentDidMount() {
@@ -26,37 +26,33 @@ class App extends Component {
   }
   addAlbum(event) {
     event.preventDefault();
-    console.log(this.state.photos)
+    console.log(this.state.file)
     const data = {
       title: this.state.title,
       description: this.state.description,
-      photos: this.state.photos
+      file: this.state.file
     }
-    axios.post('http://localhost:5001/albums', data)
+    const config = {
+      headers: {
+          'content-type': 'multipart/form-data'
+      }
+    }
+    axios.post('http://localhost:5001/albums', data, config)
     .then((res) => {
       this.getAlbums();
-      this.setState({ title: '', description: '', photos: '' });
+      this.setState({ title: '', description: '', file: null });
     })
     .catch((err) => { console.log(err); })
   }
+  handleFileChange(event) {
+    this.setState({
+      file: event.target.files[0]
+    });
+  }
   handleChange(event) {
-    try {
-      const obj = {};
-      if (obj[event.target.name] === 'photos') {
-        for (let size=0; size < event.target.files.length; size++) {
-          console.log("Image list length",event.target.files.length);
-          let images = [];
-          images.push(event.target.files[size]);
-          obj[event.target.name] = images;
-        }
-      } else {
-        obj[event.target.name] = event.target.value;
-      }
-      this.setState(obj);
-      console.log(obj);
-    } catch (error) {
-      this.setState({ error });
-    }
+    var obj = {};
+    obj[event.target.name] = event.target.value;
+    this.setState(obj);
   }
   render() {
     return (
@@ -69,8 +65,9 @@ class App extends Component {
             <AddAlbum
               title={this.state.title}
               description={this.state.description}
-              photos={this.state.photos}
+              file={this.state.file}
               handleChange={this.handleChange.bind(this)}
+              handleFileChange={this.handleFileChange.bind(this)}
               addAlbum={this.addAlbum.bind(this)}
             />
             <br/>

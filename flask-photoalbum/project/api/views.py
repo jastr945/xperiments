@@ -31,6 +31,7 @@ def ping_pong():
 @albums_blueprint.route('/albums', methods=['POST'])
 def add_album():
     post_data = request.get_json()
+    import ipdb; ipdb.set_trace()
     if not post_data:
         response_object = {
             'status': 'fail',
@@ -39,6 +40,7 @@ def add_album():
         return jsonify(response_object), 400
     title = post_data.get('title')
     description = post_data.get('description')
+    photo = post_data.get('photos')
     try:
         album = Album.query.filter_by(title=title).first()
         if not album:
