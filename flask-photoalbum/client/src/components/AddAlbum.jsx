@@ -6,6 +6,7 @@ const AddAlbum = (props) => {
       <div className="form-group">
         <input
           className="form-control input-lg"
+          name="photos"
           type="file"
           multiple
           onChange={props.handleFileChange}

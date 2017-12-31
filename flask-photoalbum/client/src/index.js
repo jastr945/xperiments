@@ -27,18 +27,16 @@ class App extends Component {
   addAlbum(event) {
     event.preventDefault();
     console.log(this.state.file)
-    const data = {
-      title: this.state.title,
-      description: this.state.description,
-      file: this.state.file
-    }
+    var formData = new FormData();
+    formData.append('photos', this.state.file);
+    formData.append('title', this.state.title);
+    formData.append('description', this.state.description);
     const config = {
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'multipart/form-data'
       }
     }
-    axios.post('http://192.168.0.109/albums', data, config)
+    axios.post('http://192.168.0.109:5001/albums', formData, config)
     .then((res) => {
       this.getAlbums();
       this.setState({ title: '', description: '', file: null });
