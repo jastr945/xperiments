@@ -3,9 +3,11 @@ from project.api.models import Album, Image
 from project import db
 from sqlalchemy import exc
 import datetime
+from flask_uploads import UploadSet, IMAGES, configure_uploads
 
 
 albums_blueprint = Blueprint('albums', __name__)
+photos = UploadSet('photos', IMAGES)
 
 @albums_blueprint.route('/', methods=['GET', 'POST'])
 def index():
@@ -15,7 +17,6 @@ def index():
         photos_list = photos.save(request.form['photos'])
         album = Album(title=title, description=description)
         album.images = photos_list
-        import ipdb; ipdb.set_trace()
         db.session.add(album)
         db.session.commit()
     albums = Album.query.order_by(Album.created_at.desc()).all()
@@ -30,39 +31,30 @@ def ping_pong():
 
 @albums_blueprint.route('/albums', methods=['POST'])
 def add_album():
-    if not request.form:
-        response_object = {
-            'status': 'fail',
-            'message': 'Invalid payload.'
-        }
-        return jsonify(response_object), 400
-    title = request.form['title']
-    description = request.form['description']
-    photo_data = request.files['photos']
-    photo = photo_data.save(photo_data)
-    import ipdb; ipdb.set_trace()
-    try:
-        album = Album.query.filter_by(title=title).first()
-        if not album:
-            album = Album(title=title, description=description)
-            image = Image(img=photo)
-            image.store()
-            album.images = [image]
-            db.session.add(album)
+    if request.method == 'POST' and 'photo' in request.files:
+        try:
+            title = request.form['title']
+            description = request.form['description']
+            filename = photos.save(request.files['photo'])
+            rec = Image(img=filename)
+            rec.store()
+            new_album = Album(title=title, description=description)
+            new_album.images=[rec]
+            db.session.add(new_album)
             db.session.commit()
+            import ipdb; ipdb.set_trace()
             response_object = {
                 'status': 'success',
                 'message': f'{title} was added!'
             }
-            return jsonify(response_object), 201
-        else:
+        except exc.IntegrityError as e:
+            db.session.rollback()
             response_object = {
                 'status': 'fail',
-                'message': 'Sorry. That album already exists.'
+                'message': 'Invalid payload.'
             }
             return jsonify(response_object), 400
-    except exc.IntegrityError as e:
-        db.session.rollback()
+    else:
         response_object = {
             'status': 'fail',
             'message': 'Invalid payload.'
