@@ -25,7 +25,7 @@ def create_app():
 
     # set up image uploading via flask-uploads
     photos = UploadSet('photos', IMAGES)
-    app.config['UPLOADED_PHOTOS_DEST'] = '/client/src/components/static/'
+    app.config['UPLOADED_PHOTOS_DEST'] = '/static/'
     configure_uploads(app, photos)
 
     # register blueprints

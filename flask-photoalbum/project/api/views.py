@@ -30,21 +30,25 @@ def ping_pong():
 
 @albums_blueprint.route('/albums', methods=['POST'])
 def add_album():
-    post_data = request.get_json()
-    import ipdb; ipdb.set_trace()
-    if not post_data:
+    if not request.form:
         response_object = {
             'status': 'fail',
             'message': 'Invalid payload.'
         }
         return jsonify(response_object), 400
-    title = post_data.get('title')
-    description = post_data.get('description')
-    photo = post_data.get('photos')
+    title = request.form['title']
+    description = request.form['description']
+    photo_data = request.files['photos']
+    photo = photo_data.save(photo_data)
+    import ipdb; ipdb.set_trace()
     try:
         album = Album.query.filter_by(title=title).first()
         if not album:
-            db.session.add(Album(title=title, description=description))
+            album = Album(title=title, description=description)
+            image = Image(img=photo)
+            image.store()
+            album.images = [image]
+            db.session.add(album)
             db.session.commit()
             response_object = {
                 'status': 'success',
