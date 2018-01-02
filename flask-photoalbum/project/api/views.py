@@ -7,7 +7,6 @@ from flask_uploads import UploadSet, IMAGES, configure_uploads
 
 
 albums_blueprint = Blueprint('albums', __name__)
-photos = UploadSet('photos', IMAGES)
 
 @albums_blueprint.route('/', methods=['GET', 'POST'])
 def index():
@@ -31,10 +30,21 @@ def ping_pong():
 
 @albums_blueprint.route('/albums', methods=['POST'])
 def add_album():
-    if request.method == 'POST' and 'photo' in request.files:
-        try:
-            title = request.form['title']
+    post_data = request.form
+    if not post_data:
+        response_object = {
+            'status': 'fail',
+            'message': 'Invalid payload.'
+        }
+        return jsonify(response_object), 400
+
+    title = request.form['title']
+    import ipdb; ipdb.set_trace()
+    try:
+        album = Album.query.filter_by(title=title).first()
+        if not album:
             description = request.form['description']
+            photos = UploadSet('photos', IMAGES)
             filename = photos.save(request.files['photo'])
             rec = Image(img=filename)
             rec.store()
@@ -42,19 +52,18 @@ def add_album():
             new_album.images=[rec]
             db.session.add(new_album)
             db.session.commit()
-            import ipdb; ipdb.set_trace()
             response_object = {
                 'status': 'success',
                 'message': f'{title} was added!'
             }
-        except exc.IntegrityError as e:
-            db.session.rollback()
+        else:
             response_object = {
                 'status': 'fail',
-                'message': 'Invalid payload.'
+                'message': 'Sorry. That title already exists.'
             }
             return jsonify(response_object), 400
-    else:
+    except (exc.IntegrityError, ValueError) as e:
+        db.session().rollback()
         response_object = {
             'status': 'fail',
             'message': 'Invalid payload.'
