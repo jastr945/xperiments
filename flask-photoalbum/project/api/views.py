@@ -1,19 +1,54 @@
-from flask import Blueprint, jsonify, request, render_template, redirect, url_for
+from flask import Blueprint, jsonify, request, render_template, redirect
 from project.api.models import Album, Image
 from project import db
 from sqlalchemy import exc
 import datetime
 from flask_uploads import UploadSet, IMAGES, configure_uploads
+import os
+from flask import Flask, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+from flask_uploads import UploadSet, IMAGES, configure_uploads
+
+
+# instantiate the db
+db = SQLAlchemy()
+
+def create_app():
+
+    # instantiate the app
+    app = Flask(__name__)
+
+    # enable CORS
+    CORS(app)
+
+    # set config
+    app_settings = os.getenv('APP_SETTINGS')
+    app.config.from_object(app_settings)
+
+    # set up extensions
+    db.init_app(app)
+
+    # set up image uploading via flask-uploads
+    photos = UploadSet('photos', IMAGES)
+    app.config['UPLOADED_PHOTOS_DEST'] = '/static/'
+    configure_uploads(app, photos)
+
+    # register blueprints
+    app.register_blueprint(albums_blueprint)
+
+    return app
 
 
 albums_blueprint = Blueprint('albums', __name__)
 
+photos = UploadSet('photos', IMAGES)
+
 @albums_blueprint.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST' and 'file' in request.files:
+    if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']
-        photos_list = photos.save(request.form['photos'])
         album = Album(title=title, description=description)
         album.images = photos_list
         db.session.add(album)
@@ -39,23 +74,22 @@ def add_album():
         return jsonify(response_object), 400
 
     title = request.form['title']
-    import ipdb; ipdb.set_trace()
     try:
         album = Album.query.filter_by(title=title).first()
         if not album:
             description = request.form['description']
-            photos = UploadSet('photos', IMAGES)
-            filename = photos.save(request.files['photo'])
-            rec = Image(img=filename)
-            rec.store()
+            filename = photos.save(request.files['photos'])
+            new_image = Image(img=filename)
             new_album = Album(title=title, description=description)
-            new_album.images=[rec]
+            new_album.images=[new_image]
             db.session.add(new_album)
             db.session.commit()
             response_object = {
                 'status': 'success',
                 'message': f'{title} was added!'
             }
+            return jsonify(response_object), 200
+            import ipdb; ipdb.set_trace()
         else:
             response_object = {
                 'status': 'fail',
