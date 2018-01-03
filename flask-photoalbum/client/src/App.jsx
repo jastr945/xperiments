@@ -60,7 +60,7 @@ class App extends Component {
         <div className="row">
           <div className="col-md-6">
             <br/>
-            <h1>Photo Album</h1>
+            <h1>React + Flask Photo Album</h1>
             <hr/><br/>
             <AddAlbum
               title={this.state.title}
@@ -71,6 +71,10 @@ class App extends Component {
               addAlbum={this.addAlbum.bind(this)}
             />
             <br/>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
             <AlbumsList albums={this.state.albums}/>
           </div>
         </div>

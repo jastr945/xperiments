@@ -1,0 +1,19 @@
+.albumSpace {
+  background-color: pink;
+  width: 100%;
+}
+
+.album {
+  background-color: lightblue;
+  margin: 1em 0;
+  padding: 0.5em;
+  width: 100%;
+}
+
+.image {
+  margin: 1em;
+}
+
+img {
+  object-fit: cover;
+}

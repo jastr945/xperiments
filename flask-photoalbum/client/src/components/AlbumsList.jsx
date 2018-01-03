@@ -6,24 +6,32 @@ const Timestamp = require('react-timestamp');
 
 const AlbumsList = (props) => {
   return (
-    <div>
+    <div className="albumSpace">
       {
         props.albums.map((album) => {
           return (
-            <h4
+            <div
               key={album.id}
-              className="well"
-            >{album.title} - {album.description} - <Timestamp time={album.created_at} format='full' /> - <Timestamp time={album.created_at} format='ago' includeDay={true} precision={2} autoUpdate={60} />
-            {
-              album.images.map((i) => {
-                return (
-                  <div key={i.id}>
-                    <img src={i} alt='album' width={300} />
-                  </div>
-                )
-              })
-            }
-            </h4>
+              className="container album"
+            >
+              {album.title} - {album.description} - <Timestamp time={album.created_at} format='full' /> - <Timestamp time={album.created_at} format='ago' includeDay={true} precision={2} autoUpdate={60} />
+              <div className="col-md-12">
+                <div className="row">
+                  {
+                    album.images.map((i) => {
+                      return (
+                        <div
+                          className="image col-md-2"
+                          key={i.id}
+                        >
+                          <img src={i} alt='album img' width={200} height={120} />
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+            </div>
           )
         })
       }
