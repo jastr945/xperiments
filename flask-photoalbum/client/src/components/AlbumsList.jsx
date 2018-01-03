@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './AlbumsList.css';
+
 const Timestamp = require('react-timestamp');
 
 const AlbumsList = (props) => {
