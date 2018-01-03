@@ -26,11 +26,13 @@ class App extends Component {
   }
   addAlbum(event) {
     event.preventDefault();
-    console.log(this.state.file)
     var formData = new FormData();
-    formData.append('photos', this.state.file);
+    for (let i=0; i < this.state.file.length; i++) {
+      formData.append('photos', this.state.file[i]);
+    }
     formData.append('title', this.state.title);
     formData.append('description', this.state.description);
+    console.log(formData);
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -45,7 +47,7 @@ class App extends Component {
   }
   handleFileChange(event) {
     this.setState({
-      file: event.target.files[0]
+      file: Array.from(event.target.files)
     });
   }
   handleChange(event) {

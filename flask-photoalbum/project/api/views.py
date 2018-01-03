@@ -52,11 +52,14 @@ def add_album():
         album = Album.query.filter_by(title=title).first()
         if not album:
             description = request.form['description']
-            filename = photos.save(request.files['photos'])
-            img_url = photos.url(filename) # saving images via Flask-Uploads
-            new_image = Image(name=filename, url=img_url)
             new_album = Album(title=title, description=description)
-            new_album.images=[new_image] # One-to-many relationship instantiation
+            new_album.images=[]
+            for i in request.files.getlist('photos'):
+                filename = photos.save(request.files['photos']) # saving images via Flask-Uploads
+                img_url = photos.url(filename) # extracting image url with Flask-Uploads
+                new_image = Image(name=filename, url=img_url)
+                new_album.images.append(new_image) # One-to-many relationship instantiation
+                import ipdb; ipdb.set_trace()
             db.session.add(new_album)
             db.session.commit()
             response_object = {
