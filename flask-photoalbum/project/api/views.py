@@ -3,7 +3,7 @@ from project.api.models import Album, Image
 from project import db
 from sqlalchemy import exc
 import datetime
-from flask_uploads import UploadSet, IMAGES, configure_uploads
+from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_class
 from flask import Flask, jsonify
 
 
@@ -12,6 +12,7 @@ app = Flask(__name__)
 app.config['UPLOADED_PHOTOS_DEST'] = 'static'
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
+patch_request_class(app, 32 * 1024 * 1024) # limits uploaded images to 32 megabytes
 
 # creating a blueprint
 albums_blueprint = Blueprint('albums', __name__)
