@@ -9,7 +9,7 @@ from flask import Flask, jsonify
 
 # creating an instance of an app and configuring Flask-Uploads
 app = Flask(__name__)
-app.config['UPLOADED_PHOTOS_DEST'] = '/static/'
+app.config['UPLOADED_PHOTOS_DEST'] = 'static'
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 
@@ -52,9 +52,11 @@ def add_album():
         if not album:
             description = request.form['description']
             filename = photos.save(request.files['photos'])
-            new_image = Image(img=filename)
+            img_url = photos.url(filename)
+            new_image = Image(name=filename, url=img_url)
             new_album = Album(title=title, description=description)
             new_album.images=[new_image]
+            import ipdb; ipdb.set_trace()
             db.session.add(new_album)
             db.session.commit()
             response_object = {
@@ -94,7 +96,7 @@ def get_single_album(album_id):
                   'title': album.title,
                   'description': album.description,
                   'created_at': album.created_at.isoformat(),
-                  'images': [str(i.img) for i in album.images]
+                  'images': [str(i.name) for i in album.images]
                 }
             }
             return jsonify(response_object), 200
@@ -112,7 +114,7 @@ def get_all_albums():
             'title': album.title,
             'description': album.description,
             'created_at': album.created_at.isoformat(),
-            'images': [str(i.img) for i in album.images]
+            'images': [str(i.name) for i in album.images]
         }
         albums_list.append(album_object)
     response_object = {

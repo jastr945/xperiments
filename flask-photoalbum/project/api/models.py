@@ -22,8 +22,10 @@ class Album(db.Model):
 class Image(db.Model):
     __tablename__ = "images"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    img = db.Column(db.String(1000), nullable=False)
+    name = db.Column(db.String(1000), nullable=False)
+    url = db.Column(db.String(1000), nullable=False)
     album_id = db.Column(db.Integer, db.ForeignKey('albums.id'))
 
-    def __init__(self, img):
-        self.img = img
+    def __init__(self, name, url):
+        self.name = name
+        self.url = url

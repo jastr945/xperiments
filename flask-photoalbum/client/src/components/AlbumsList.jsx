@@ -15,6 +15,7 @@ const AlbumsList = (props) => {
             {
               album.images.map((i) => {
                 return (
+
                   <div key={i.id}>
                     <img src={require(`./static/${i}`)} alt='album' width={300} />
                   </div>
