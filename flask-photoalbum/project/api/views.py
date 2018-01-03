@@ -52,10 +52,10 @@ def add_album():
         if not album:
             description = request.form['description']
             filename = photos.save(request.files['photos'])
-            img_url = photos.url(filename)
+            img_url = photos.url(filename) # saving images via Flask-Uploads
             new_image = Image(name=filename, url=img_url)
             new_album = Album(title=title, description=description)
-            new_album.images=[new_image]
+            new_album.images=[new_image] # One-to-many relationship instantiation
             db.session.add(new_album)
             db.session.commit()
             response_object = {
@@ -95,7 +95,7 @@ def get_single_album(album_id):
                   'title': album.title,
                   'description': album.description,
                   'created_at': album.created_at.isoformat(),
-                  'images': [str(i.url) for i in album.images]
+                  'images': [str(i.url) for i in album.images] # sending image url to React
                 }
             }
             return jsonify(response_object), 200
@@ -113,7 +113,7 @@ def get_all_albums():
             'title': album.title,
             'description': album.description,
             'created_at': album.created_at.isoformat(),
-            'images': [str(i.url) for i in album.images]
+            'images': [str(i.url) for i in album.images] # sending image url to React
         }
         albums_list.append(album_object)
     response_object = {

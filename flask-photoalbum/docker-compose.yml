@@ -10,6 +10,8 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    volumes:
+      - dbdata:/var/lib/postgres/data
     healthcheck:
       test: exit 0
 
@@ -26,7 +28,7 @@ services:
       albums-db:
         condition: service_healthy
     volumes:
-      - /home/polina/projects/xperiments/flask-photoalbum:/usr/src/app
+      - appdata:/usr/src/app
     links:
       - albums-db
 
@@ -43,3 +45,7 @@ services:
         condition: service_started
     links:
       - albums-service
+
+volumes:
+  dbdata:
+  appdata:
