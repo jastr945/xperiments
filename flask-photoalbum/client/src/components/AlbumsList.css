@@ -6,14 +6,15 @@
 .album {
   background-color: lightblue;
   margin: 1em 0;
-  padding: 0.5em;
+  padding: 0.5em 1em;
   width: 100%;
 }
 
 .image {
-  margin: 1em;
+  margin: 1em 0.8em;
 }
 
 img {
   object-fit: cover;
+  border-radius: 10px;
 }
