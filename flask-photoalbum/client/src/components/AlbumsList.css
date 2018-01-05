@@ -10,6 +10,14 @@
   width: 100%;
 }
 
+.slideshow {
+  padding: 0;
+}
+
+.arrow {
+  cursor: pointer;
+}
+
 .image {
   margin: 1em 0.8em;
 }
