@@ -3,6 +3,16 @@
   width: 100%;
 }
 
+/*.albumSpace::after {
+  content: "";
+  display: inline-block;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-image: url("https://image.flaticon.com/icons/svg/189/189280.svg");
+}*/
+
 .album {
   background-color: lightgrey;
   margin-top: 1em;
@@ -27,14 +37,25 @@
 }
 
 .allImages {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   /*background-color: yellow;*/
 }
 
 .image {
+  position: relative;
   margin: 1em 0.15em;
   background-color: purple;
   padding:0;
   width: 180px;
+  z-index: 0;
+}
+
+.expand {
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
 }
 
 img {
