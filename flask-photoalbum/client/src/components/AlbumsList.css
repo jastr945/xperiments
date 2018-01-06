@@ -1,32 +1,32 @@
 .albumSpace {
-  background-color: pink;
+  /*background-color: pink;*/
   width: 100%;
 }
 
 .album {
-  background-color: lightblue;
-  margin: 1em 0;
+  /*background-color: lightblue;*/
+  margin: 0;
   padding: 0.5em 1em;
   width: 100%;
 }
 
 .slideshow {
-  padding: 0;
+  background-color: grey;
 }
 
 .arrow {
   cursor: pointer;
-  background-color: green;
+  /*background-color: green;*/
   padding:0;
   margin:0;
 }
 
 .allImages {
-  background-color: yellow;
+  /*background-color: yellow;*/
 }
 
 .image {
-  margin: 1em 0.1em;
+  margin: 1em 0.15em;
   background-color: purple;
   padding:0;
   width: 180px;
