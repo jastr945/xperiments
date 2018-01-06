@@ -53,7 +53,10 @@
 }
 
 .expand {
+  display:inline-block;
   position: absolute;
+  top: 15%;
+  margin-left: 13%;
   cursor: pointer;
   z-index: 1;
 }

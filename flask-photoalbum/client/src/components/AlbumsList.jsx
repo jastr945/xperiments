@@ -28,8 +28,8 @@ const AlbumsList = (props) => {
                   album.images.map((i) => {
                     return (
                       <div className="imageContainer" key={i.id}>
-                        <img className="image" src={i} alt='album img' height={120} />
                         <img className="expand" src={require('./static/expand.png')} width={45} alt="arrow" />
+                        <img className="image" src={i} alt='album img' height={120} />
                       </div>
                     )
                   })
