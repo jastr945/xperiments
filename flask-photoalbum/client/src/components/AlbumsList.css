@@ -16,10 +16,20 @@
 
 .arrow {
   cursor: pointer;
+  background-color: green;
+  padding:0;
+  margin:0;
+}
+
+.allImages {
+  background-color: yellow;
 }
 
 .image {
-  margin: 1em 0.8em;
+  margin: 1em 0.1em;
+  background-color: purple;
+  padding:0;
+  width: 180px;
 }
 
 img {
