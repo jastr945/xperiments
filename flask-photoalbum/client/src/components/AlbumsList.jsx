@@ -14,9 +14,11 @@ const AlbumsList = (props) => {
               key={album.id}
               className="container album fill"
             >
-              <h2>{album.title}</h2>
-              <h6>{album.images.length} files - <Timestamp time={album.created_at} format='full' /> - <i><Timestamp time={album.created_at} format='ago' includeDay={true} precision={2} autoUpdate={60} /></i></h6>
-              <h5>{album.description}</h5>
+              <div className="header row">
+                <h2>{album.title}</h2>
+                <h6>{album.images.length} files - <Timestamp time={album.created_at} format='full' /> - <i><Timestamp time={album.created_at} format='ago' includeDay={true} precision={2} autoUpdate={60} /></i></h6>
+                <h5>{album.description}</h5>
+              </div>
               <div className="slideshow row align-items-center">
                 <div className="arrow col-md-1 text-center">
                   <img src={require('./static/arrow-left.png')} width={50} alt="arrow" />
