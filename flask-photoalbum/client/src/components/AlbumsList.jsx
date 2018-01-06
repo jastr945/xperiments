@@ -12,7 +12,7 @@ const AlbumsList = (props) => {
           return (
             <div
               key={album.id}
-              className="container album"
+              className="container album fill"
             >
               <h2>{album.title}</h2>
               <h6>{album.images.length} files - <Timestamp time={album.created_at} format='full' /> - <i><Timestamp time={album.created_at} format='ago' includeDay={true} precision={2} autoUpdate={60} /></i></h6>
