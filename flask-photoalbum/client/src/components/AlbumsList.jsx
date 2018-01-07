@@ -12,10 +12,14 @@ class AlbumsList extends React.Component {
       imgHovered: -1
     }
   }
-  handleHover(imgindex, albumindex) {
+  albumHover(albumindex) {
     this.setState({
-        albumHovered: this.state.albumHovered === albumindex ? -1 : albumindex,
-        imgHovered: this.state.imgHovered === imgindex ? -1 : imgindex,
+      albumHovered: this.state.albumHovered === albumindex ? -1 : albumindex
+    });
+  }
+  imgHover(imgindex) {
+    this.setState({
+      imgHovered: this.state.imgHovered === imgindex ? -1 : imgindex
     });
   }
   render() {
@@ -26,6 +30,7 @@ class AlbumsList extends React.Component {
             return (
               <div
                 key={albumindex}
+                onMouseEnter={this.albumHover.bind(this, albumindex)}
                 className="container album fill"
               >
                 <div className="header row">
@@ -45,7 +50,7 @@ class AlbumsList extends React.Component {
                       return (
                         <div className="imageContainer" key={imgindex}>
                           {imgHovered === imgindex && albumHovered === albumindex && <img className="expand" src={require('./static/expand.png')} width={45} alt="arrow" />}
-                          <img className="image" onMouseEnter={this.handleHover.bind(this, imgindex, albumindex)} src={i} alt='album img' height={120} />
+                          <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} src={i} alt='album img' height={120} />
                         </div>
                       )
                     })
