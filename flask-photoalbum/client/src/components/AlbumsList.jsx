@@ -8,22 +8,24 @@ class AlbumsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHovered: -1
+      albumHovered: -1,
+      imgHovered: -1
     }
   }
-  handleHover(index) {
+  handleHover(imgindex, albumindex) {
     this.setState({
-        isHovered: this.state.isHovered === index ? -1 : index,
+        albumHovered: this.state.albumHovered === albumindex ? -1 : albumindex,
+        imgHovered: this.state.imgHovered === imgindex ? -1 : imgindex,
     });
   }
   render() {
     return (
       <div className="albumSpace">
         {
-          this.props.albums.map((album) => {
+          this.props.albums.map((album, albumindex) => {
             return (
               <div
-                key={album.id}
+                key={albumindex}
                 className="container album fill"
               >
                 <div className="header row">
@@ -37,12 +39,13 @@ class AlbumsList extends React.Component {
                   </div>
                   <div className="allImages col-md-10 text-center">
                   {
-                    album.images.slice(0, 5).map((i, index) => {
-                      const { isHovered } = this.state
+                    album.images.slice(0, 5).map((i, imgindex) => {
+                      const { imgHovered, albumHovered } = this.state
+                      console.log(this.state.imgHovered, this.state.albumHovered);
                       return (
-                        <div className="imageContainer" key={index}>
-                          {isHovered === index && <img className="expand" src={require('./static/expand.png')} width={45} alt="arrow" />}
-                          <img className="image" onMouseEnter={this.handleHover.bind(this, index)} src={i} alt='album img' height={120} />
+                        <div className="imageContainer" key={imgindex}>
+                          {imgHovered === imgindex && albumHovered === albumindex && <img className="expand" src={require('./static/expand.png')} width={45} alt="arrow" />}
+                          <img className="image" onMouseEnter={this.handleHover.bind(this, imgindex, albumindex)} src={i} alt='album img' height={120} />
                         </div>
                       )
                     })
