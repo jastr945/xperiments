@@ -8,13 +8,12 @@ class AlbumsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHovered: false
+      isHovered: -1
     }
-    this.handleHover = this.handleHover.bind(this);
   }
-  handleHover() {
+  handleHover(index) {
     this.setState({
-        isHovered: !this.state.isHovered
+        isHovered: this.state.isHovered === index ? -1 : index,
     });
   }
   render() {
@@ -38,12 +37,12 @@ class AlbumsList extends React.Component {
                   </div>
                   <div className="allImages col-md-10 text-center">
                   {
-                    album.images.map((i, index) => {
-                      const iconClass = this.state.isHovered ? "expand" : "expand hovered";
+                    album.images.slice(0, 5).map((i, index) => {
+                      const { isHovered } = this.state
                       return (
                         <div className="imageContainer" key={index}>
-                          <img className={iconClass} src={require('./static/expand.png')} width={45} alt="arrow" />
-                          <img className="image" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} src={i} alt='album img' height={120} />
+                          {isHovered === index && <img className="expand" src={require('./static/expand.png')} width={45} alt="arrow" />}
+                          <img className="image" onMouseEnter={this.handleHover.bind(this, index)} src={i} alt='album img' height={120} />
                         </div>
                       )
                     })
