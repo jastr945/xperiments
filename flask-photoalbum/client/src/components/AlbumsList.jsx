@@ -9,7 +9,7 @@ class AlbumsList extends React.Component {
     super(props);
     this.state = {
       albumHovered: -1,
-      imgHovered: -1
+      imgHovered: -1,
     }
   }
   albumHover(albumindex) {
@@ -19,7 +19,7 @@ class AlbumsList extends React.Component {
   }
   imgHover(imgindex) {
     this.setState({
-      imgHovered: this.state.imgHovered === imgindex ? -1 : imgindex
+      imgHovered: this.state.imgHovered === imgindex ? -1 : imgindex,
     });
   }
   render() {
@@ -45,12 +45,12 @@ class AlbumsList extends React.Component {
                   <div className="allImages col-md-10 text-center">
                   {
                     album.images.slice(0, 5).map((i, imgindex) => {
-                      const { imgHovered, albumHovered } = this.state
-                      console.log(this.state.imgHovered, this.state.albumHovered);
+                      const {imgHovered, albumHovered} = this.state
+                      var imgClass = (imgHovered === imgindex && albumHovered === albumindex) ? "zoomed" : "imageContainer";
                       return (
-                        <div className="imageContainer" key={imgindex}>
+                        <div className={imgClass} key={imgindex}>
                           {imgHovered === imgindex && albumHovered === albumindex && <img className="expand" src={require('./static/expand.png')} width={45} alt="arrow" />}
-                          <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} src={i} alt='album img' height={120} />
+                          <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} src={i} alt='album img' />
                         </div>
                       )
                     })

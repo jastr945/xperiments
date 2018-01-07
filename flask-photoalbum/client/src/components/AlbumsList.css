@@ -48,22 +48,29 @@
   margin: 1em 0.15em;
   padding:0;
   width: 180px;
+  height: 120px;
   z-index: 0;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@keyframes zoom {
+  0% {
+  }
+  100% {
+    transform: scale(1.2);
+    z-index: 2;
+  }
+}
+
+.zoomed {
+  animation: zoom 0.5s forwards;
 }
 
 .expand {
   position: absolute;
   top: 15%;
-  margin-left: 13%;
+  margin-left: 70%;
   cursor: pointer;
   z-index: 1;
-}
-
-.hovered {
-  opacity: 0;
-}
-
-img {
-  object-fit: cover;
-  border-radius: 10px;
 }
