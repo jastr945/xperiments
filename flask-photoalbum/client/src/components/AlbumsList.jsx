@@ -38,10 +38,10 @@ class AlbumsList extends React.Component {
                   </div>
                   <div className="allImages col-md-10 text-center">
                   {
-                    album.images.map((i) => {
+                    album.images.map((i, index) => {
                       const iconClass = this.state.isHovered ? "expand" : "expand hovered";
                       return (
-                        <div className="imageContainer" key={i.id}>
+                        <div className="imageContainer" key={index}>
                           <img className={iconClass} src={require('./static/expand.png')} width={45} alt="arrow" />
                           <img className="image" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} src={i} alt='album img' height={120} />
                         </div>
