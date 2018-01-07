@@ -59,6 +59,10 @@
   z-index: 1;
 }
 
+.hovered {
+  opacity: 0;
+}
+
 img {
   object-fit: cover;
   border-radius: 10px;

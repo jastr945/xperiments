@@ -7,6 +7,15 @@ const Timestamp = require('react-timestamp');
 class AlbumsList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isHovered: false
+    }
+    this.handleHover = this.handleHover.bind(this);
+  }
+  handleHover() {
+    this.setState({
+        isHovered: !this.state.isHovered
+    });
   }
   render() {
     return (
@@ -30,10 +39,11 @@ class AlbumsList extends React.Component {
                   <div className="allImages col-md-10 text-center">
                   {
                     album.images.map((i) => {
+                      const iconClass = this.state.isHovered ? "expand" : "expand hovered";
                       return (
                         <div className="imageContainer" key={i.id}>
-                          <img className="expand" src={require('./static/expand.png')} width={45} alt="arrow" />
-                          <img className="image" src={i} alt='album img' height={120} />
+                          <img className={iconClass} src={require('./static/expand.png')} width={45} alt="arrow" />
+                          <img className="image" onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} src={i} alt='album img' height={120} />
                         </div>
                       )
                     })
