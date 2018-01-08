@@ -71,7 +71,7 @@
   animation: open 0.8s forwards;
 }
 
-.expand {
+.icon {
   position: absolute;
   top: 15%;
   margin-left: 70%;
