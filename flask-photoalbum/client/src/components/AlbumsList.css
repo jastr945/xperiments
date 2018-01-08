@@ -3,16 +3,6 @@
   width: 100%;
 }
 
-/*.albumSpace::after {
-  content: "";
-  display: inline-block;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  background-repeat: no-repeat;
-  background-image: url("https://image.flaticon.com/icons/svg/189/189280.svg");
-}*/
-
 .album {
   background-color: lightgrey;
   margin-top: 1em;
@@ -58,13 +48,17 @@
   0% {
   }
   100% {
-    transform: scale(1.2);
+    transform: scale(1.1920);
     z-index: 2;
   }
 }
 
 .zoomed {
   animation: zoom 0.5s forwards;
+}
+
+.opened {
+  transform: scale(1);
 }
 
 .expand {

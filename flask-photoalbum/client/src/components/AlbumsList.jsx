@@ -10,6 +10,7 @@ class AlbumsList extends React.Component {
     this.state = {
       albumHovered: -1,
       imgHovered: -1,
+      imgClicked: false
     }
   }
   albumHover(albumindex) {
@@ -20,6 +21,11 @@ class AlbumsList extends React.Component {
   imgHover(imgindex) {
     this.setState({
       imgHovered: this.state.imgHovered === imgindex ? -1 : imgindex,
+    });
+  }
+  openImg() {
+    this.setState({
+      imgClicked: true
     });
   }
   render() {
@@ -45,11 +51,14 @@ class AlbumsList extends React.Component {
                   <div className="allImages col-md-10 text-center">
                   {
                     album.images.slice(0, 5).map((i, imgindex) => {
-                      const {imgHovered, albumHovered} = this.state
-                      var imgClass = (imgHovered === imgindex && albumHovered === albumindex) ? "zoomed" : "imageContainer";
+                      const {imgHovered, albumHovered, imgClicked} = this.state
+                      var imgClass = (imgHovered === imgindex && albumHovered === albumindex) ? "zoomed" : "";
+                      var openImg = (imgHovered === imgindex && albumHovered === albumindex && imgClicked === "true") ? "opened" : "";
+                      var myClass = `imageContainer ${imgClass} ${openImg}`
+                      console.log(myClass);
                       return (
-                        <div className={imgClass} key={imgindex}>
-                          {imgHovered === imgindex && albumHovered === albumindex && <img className="expand" src={require('./static/expand.png')} width={45} alt="arrow" />}
+                        <div className={myClass} key={imgindex}>
+                          {imgHovered === imgindex && albumHovered === albumindex && <img className="expand" onClick={this.openImg.bind(this)} src={require('./static/expand.png')} width={45} alt="arrow" />}
                           <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} src={i} alt='album img' />
                         </div>
                       )
