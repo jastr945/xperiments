@@ -57,8 +57,18 @@
   animation: zoom 0.5s forwards;
 }
 
+@keyframes open {
+  0% {
+  }
+  100% {
+    transform: scale(5);
+    border-radius: 0;
+    z-index: 2;
+  }
+}
+
 .opened {
-  transform: scale(1);
+  animation: open 0.8s forwards;
 }
 
 .expand {

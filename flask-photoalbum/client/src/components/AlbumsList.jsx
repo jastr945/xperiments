@@ -52,12 +52,11 @@ class AlbumsList extends React.Component {
                   {
                     album.images.slice(0, 5).map((i, imgindex) => {
                       const {imgHovered, albumHovered, imgClicked} = this.state
-                      var imgClass = (imgHovered === imgindex && albumHovered === albumindex) ? "zoomed" : "";
-                      var openImg = (imgHovered === imgindex && albumHovered === albumindex && imgClicked === "true") ? "opened" : "";
-                      var myClass = `imageContainer ${imgClass} ${openImg}`
-                      console.log(myClass);
+                      var zoomedImg = (imgHovered === imgindex && albumHovered === albumindex) ? "zoomed" : "";
+                      var openImg = (imgHovered === imgindex && albumHovered === albumindex && imgClicked === true) ? "opened" : "";
+                      var imgClass = `imageContainer ${openImg} ${zoomedImg}`
                       return (
-                        <div className={myClass} key={imgindex}>
+                        <div className={imgClass} key={imgindex}>
                           {imgHovered === imgindex && albumHovered === albumindex && <img className="expand" onClick={this.openImg.bind(this)} src={require('./static/expand.png')} width={45} alt="arrow" />}
                           <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} src={i} alt='album img' />
                         </div>
