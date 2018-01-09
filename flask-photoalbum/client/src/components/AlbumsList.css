@@ -61,9 +61,14 @@
   0% {
   }
   100% {
+    top:30;
+    bottom: 0;
+    left: 30;
+    right: 0;
     transform: scale(5);
     border-radius: 0;
     z-index: 2;
+
   }
 }
 

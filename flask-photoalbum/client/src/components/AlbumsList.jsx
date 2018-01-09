@@ -37,9 +37,10 @@ class AlbumsList extends React.Component {
   }
   imgMouseLeave(imgindex) {
     var myindex = this.state.imgID;
-    if (imgindex === myindex) {
+    if (imgindex !== myindex) {
       this.setState({
-        imgClicked: false
+        imgClicked: false,
+        imgID: -1
       });
     }
   }
@@ -78,7 +79,7 @@ class AlbumsList extends React.Component {
                       var zoomedImg = (imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true) ? "zoomed" : "";
                       var openImg = (imgID === imgindex && albumID === albumindex && imgClicked === true && imgHovered === false) ? "opened" : "";
                       var imgClass = `imageContainer ${openImg} ${zoomedImg}`
-                      console.log(imgID, albumID, imgClicked, imgHovered);
+                      console.log(imgID);
                       return (
                         <div className={imgClass} key={imgindex}>
                           {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" src={require('./static/expand.png')} width={45} alt="arrow" />}
