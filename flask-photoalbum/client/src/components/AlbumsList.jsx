@@ -16,7 +16,7 @@ class AlbumsList extends React.Component {
   }
   albumHover(albumindex) {
     this.setState({
-      albumID: this.state.albumID === albumindex ? -1 : albumindex
+      albumID: this.state.albumID === albumindex ? -1 : albumindex,
     });
   }
   imgHover(imgindex) {
@@ -33,7 +33,9 @@ class AlbumsList extends React.Component {
   closeImg() {
     this.setState({
       imgClicked: false,
-      imgHovered: true
+      imgHovered: true,
+      albumID: -1,
+      imgID: -1
     });
   }
   render() {
@@ -61,17 +63,17 @@ class AlbumsList extends React.Component {
                     album.images.slice(0, 5).map((i, imgindex) => {
                       const {imgID, albumID, imgClicked, imgHovered} = this.state
                       var zoomedImg = (imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true) ? "zoomed" : "";
-                      var openImg = (imgID === imgindex && albumID === albumindex && imgClicked === true) ? "opened" : "";
+                      var openImg = (imgID === imgindex && albumID === albumindex && imgClicked === true && imgHovered === false) ? "opened" : "";
                       var imgClass = `imageContainer ${openImg} ${zoomedImg}`
                       console.log(imgClass);
-                      console.log('clicked' + imgClicked, 'hovered' + imgHovered);
+                      console.log(imgClicked, imgHovered);
                       return (
                         <div className={imgClass} key={imgindex}>
-                          {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" onClick={this.openImg.bind(this)} src={require('./static/expand.png')} width={45} alt="arrow" />}
+                          {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" src={require('./static/expand.png')} width={45} alt="arrow" />}
 
                           {imgID === imgindex && albumID === albumindex && imgClicked === true && <img className="icon" onClick={this.closeImg.bind(this)} src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
 
-                          <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} src={i} alt='album img' />
+                          <img className="image" onClick={this.openImg.bind(this)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={i} alt='album img' />
                         </div>
                       )
                     })
