@@ -8,29 +8,32 @@ class AlbumsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      albumHovered: -1,
-      imgHovered: -1,
+      albumID: -1,
+      imgID: -1,
+      imgHovered: true,
       imgClicked: false
     }
   }
   albumHover(albumindex) {
     this.setState({
-      albumHovered: this.state.albumHovered === albumindex ? -1 : albumindex
+      albumID: this.state.albumID === albumindex ? -1 : albumindex
     });
   }
   imgHover(imgindex) {
     this.setState({
-      imgHovered: this.state.imgHovered === imgindex ? -1 : imgindex,
+      imgID: this.state.imgID === imgindex ? -1 : imgindex
     });
   }
   openImg() {
     this.setState({
-      imgClicked: true,
+      imgHovered: false,
+      imgClicked: true
     });
   }
   closeImg() {
     this.setState({
       imgClicked: false,
+      imgHovered: true
     });
   }
   render() {
@@ -56,15 +59,17 @@ class AlbumsList extends React.Component {
                   <div className="allImages col-md-10 text-center">
                   {
                     album.images.slice(0, 5).map((i, imgindex) => {
-                      const {imgHovered, albumHovered, imgClicked} = this.state
-                      var zoomedImg = (imgHovered === imgindex && albumHovered === albumindex) ? "zoomed" : "";
-                      var openImg = (imgHovered === imgindex && albumHovered === albumindex && imgClicked === true) ? "opened" : "";
+                      const {imgID, albumID, imgClicked, imgHovered} = this.state
+                      var zoomedImg = (imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true) ? "zoomed" : "";
+                      var openImg = (imgID === imgindex && albumID === albumindex && imgClicked === true) ? "opened" : "";
                       var imgClass = `imageContainer ${openImg} ${zoomedImg}`
+                      console.log(imgClass);
+                      console.log('clicked' + imgClicked, 'hovered' + imgHovered);
                       return (
                         <div className={imgClass} key={imgindex}>
-                          {imgHovered === imgindex && albumHovered === albumindex && imgClicked === false && <img className="icon" onClick={this.openImg.bind(this)} src={require('./static/expand.png')} width={45} alt="arrow" />}
+                          {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" onClick={this.openImg.bind(this)} src={require('./static/expand.png')} width={45} alt="arrow" />}
 
-                          {imgHovered === imgindex && albumHovered === albumindex && imgClicked === true && <img className="icon" onClick={this.closeImg.bind(this)} src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
+                          {imgID === imgindex && albumID === albumindex && imgClicked === true && <img className="icon" onClick={this.closeImg.bind(this)} src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
 
                           <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} src={i} alt='album img' />
                         </div>
