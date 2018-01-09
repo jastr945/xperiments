@@ -82,7 +82,7 @@ class AlbumsList extends React.Component {
                       console.log(imgID);
                       return (
                         <div className={imgClass} key={imgindex}>
-                          {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" src={require('./static/expand.png')} width={45} alt="arrow" />}
+                          {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" src={require('./static/expand.png')} width={30} alt="arrow" />}
 
                           {imgID === imgindex && albumID === albumindex && imgClicked === true && imgHovered === false && <img className="icon" onClick={this.closeImg.bind(this)} src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
 

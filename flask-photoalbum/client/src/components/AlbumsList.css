@@ -75,7 +75,7 @@
 .icon {
   position: absolute;
   top: 15%;
-  margin-left: 70%;
+  right: 10%;
   cursor: pointer;
   z-index: 1;
 }
