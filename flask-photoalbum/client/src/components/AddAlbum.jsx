@@ -1,5 +1,8 @@
 import React from 'react';
 
+import './AddAlbum.css';
+
+
 const AddAlbum = (props) => {
   return (
     <form onSubmit={(event) => props.addAlbum(event)} method="POST" encType="multipart/form-data">

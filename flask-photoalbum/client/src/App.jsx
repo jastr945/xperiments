@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import AlbumsList from './components/AlbumsList';
 import AddAlbum from './components/AddAlbum';
+import './index.css';
 
 class App extends Component {
   constructor() {
