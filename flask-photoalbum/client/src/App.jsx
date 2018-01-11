@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import AlbumsList from './components/AlbumsList';
 import AddAlbum from './components/AddAlbum';
+import Navbar from './components/Navbar';
 import './index.css';
 
 class App extends Component {
@@ -57,29 +58,29 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            <br/>
-            <h1>React + Flask Photo Album</h1>
-            <hr/><br/>
-            <AddAlbum
-              title={this.state.title}
-              description={this.state.description}
-              file={this.state.file}
-              handleChange={this.handleChange.bind(this)}
-              handleFileChange={this.handleFileChange.bind(this)}
-              addAlbum={this.addAlbum.bind(this)}
-            />
-            <br/>
+      <body>
+        <Navbar />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <AddAlbum
+                title={this.state.title}
+                description={this.state.description}
+                file={this.state.file}
+                handleChange={this.handleChange.bind(this)}
+                handleFileChange={this.handleFileChange.bind(this)}
+                addAlbum={this.addAlbum.bind(this)}
+              />
+              <br/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              <AlbumsList albums={this.state.albums}/>
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-12">
-            <AlbumsList albums={this.state.albums}/>
-          </div>
-        </div>
-      </div>
+      </body>
     )
   }
 }
