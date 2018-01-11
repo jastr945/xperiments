@@ -8,6 +8,7 @@
   background-color: lightgrey;
   margin-top: 1em;
   border-radius: 10px;
+  height: auto;
 }
 
 .header {
@@ -17,21 +18,17 @@
 
 .slideshow {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  height: 100%;
+  height: auto;
 }
 
 .arrow {
   cursor: pointer;
   /*background-color: green;*/
   padding:0;
-}
-
-.allImages {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  /*background-color: yellow;*/
 }
 
 .image {
@@ -76,7 +73,7 @@
 .icon {
   position: absolute;
   top: 15%;
-  right: 10%;
+  right: 7%;
   cursor: pointer;
   z-index: 1;
 }
