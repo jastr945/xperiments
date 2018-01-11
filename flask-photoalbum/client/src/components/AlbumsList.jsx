@@ -28,7 +28,7 @@ class AlbumsList extends React.Component {
   }
   imgHover(imgindex) {
     this.setState({
-      imgID: this.state.imgID === imgindex ? -1 : imgindex,
+      imgID: imgindex,
       imgHovered: true
     });
   }
@@ -44,12 +44,11 @@ class AlbumsList extends React.Component {
   }
   openImg() {
     this.setState({
+      imgClicked: true,
+      imgHovered: false,
       albumID: -1,
       imgID: -1,
-      imgClicked: true,
-      imgHovered: false
     });
-
   }
   closeImg() {
     this.setState({
@@ -89,7 +88,7 @@ class AlbumsList extends React.Component {
                       console.log(imgID, albumID, imgClicked, imgHovered);
                       return (
                         <div className={imgClass} key={imgindex}>
-                          {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" onClick={this.openImg.bind(this)} src={require('./static/expand.png')} width={30} alt="expand" />}
+                          {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" onClick={this.openImg.bind(this)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
 
                           {imgID === imgindex && albumID === albumindex && imgClicked === true && <img className="icon" onClick={this.closeImg.bind(this)} src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
 
