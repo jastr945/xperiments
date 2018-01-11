@@ -20,20 +20,16 @@ class AlbumsList extends React.Component {
       imgHovered: true
     });
   }
+  albumMouseLeave() {
+    this.setState({
+      albumID: -1
+    });
+  }
   imgHover(imgindex) {
     this.setState({
       imgID: this.state.imgID === imgindex ? -1 : imgindex,
       imgHovered: true
     });
-  }
-  openImg(imgindex) {
-    var myindex = this.state.imgID;
-    if (imgindex === myindex) {
-      this.setState({
-        imgHovered: false,
-        imgClicked: true
-      });
-    }
   }
   imgMouseLeave(imgindex) {
     var myindex = this.state.imgID;
@@ -41,6 +37,15 @@ class AlbumsList extends React.Component {
       this.setState({
         imgClicked: false,
         imgID: -1
+      });
+    }
+  }
+  openImg(imgindex) {
+    var myindex = this.state.imgID;
+    if (imgindex === myindex) {
+      this.setState({
+        imgHovered: false,
+        imgClicked: true
       });
     }
   }
@@ -61,6 +66,7 @@ class AlbumsList extends React.Component {
               <div
                 key={albumindex}
                 onMouseEnter={this.albumHover.bind(this, albumindex)}
+                onMouseLeave={this.albumMouseLeave.bind(this)}
                 className="container album fill"
               >
                 <div className="header row">
