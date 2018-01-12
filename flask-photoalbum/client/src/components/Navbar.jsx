@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './Navbar.css';
+
 
 const Navbar = (props) => {
   return (
@@ -12,7 +14,7 @@ const Navbar = (props) => {
     				<span class="icon-bar"></span>
             <span class="icon-bar"></span>
     			</button>
-    			<a class="navbar-brand" href="#"><h1>React + Flask Photo Album</h1></a>
+    			<a class="navbar-brand" href="#">React + Flask Photo Album</a>
     		</div>
     		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     			<ul class="nav navbar-nav navbar-right">
