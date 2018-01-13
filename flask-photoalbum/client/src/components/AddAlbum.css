@@ -1,10 +1,17 @@
 .jumbotron {
+  
   margin-bottom: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
 }
 
 form {
   background-color: #f2d4c2;
   padding: 1em;
+  margin: 0 auto;
 }
 
 .form-control {
