@@ -1,9 +1,8 @@
 .jumbotron {
-  
   margin-bottom: 0;
 }
 
-.container {
+.jumbo {
   display: flex;
   justify-content: center;
 }
