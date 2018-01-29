@@ -11,7 +11,9 @@ class AlbumsList extends React.Component {
       albumID: -1,
       imgID: -1,
       imgHovered: false,
-      imgClicked: false
+      imgClicked: false,
+      start: 0,
+      finish: 5
     }
   }
   albumHover(albumindex) {
@@ -58,7 +60,30 @@ class AlbumsList extends React.Component {
       imgID: -1
     });
   }
+  leftClick() {
+    let start = this.state.start;
+    let finish = this.state.finish;
+    if (start > 0 && finish > 0) {
+      this.setState({
+        start: start - 5,
+        finish: finish - 5,
+      });
+    }
+  }
+  rightClick() {
+    let start = this.state.start;
+    let finish = this.state.finish;
+    if (finish < this.props.albums.images.length) {
+      this.setState({
+        start: start + 5,
+        finish: finish + 5
+      });
+    }
+  }
   render() {
+    var startindex = this.state.start;
+    var finishindex = this.state.finish;
+    console.log(startindex, finishindex);
     return (
       <div className="albumSpace">
         {
@@ -76,11 +101,11 @@ class AlbumsList extends React.Component {
                   <h5>{album.description}</h5>
                 </div>
                 <div className="slideshow row">
-                  <div className="arrow col-md-1 text-center">
+                  <div className="arrow col-md-1 text-center" onClick={this.leftClick.bind(this)}>
                     <img src={require('./static/arrow-left.png')} width={50} alt="arrow" />
                   </div>
                   {
-                    album.images.slice(0, 5).map((i, imgindex) => {
+                    album.images.slice(startindex, finishindex).map((i, imgindex) => {
                       const {imgID, albumID, imgClicked, imgHovered} = this.state
                       var zoomedImg = (imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true) ? "zoomed" : "";
                       var openImg = (imgID === imgindex && albumID === albumindex && imgClicked === true) ? "opened" : "";
@@ -97,7 +122,7 @@ class AlbumsList extends React.Component {
                       )
                     })
                   }
-                  <div className="arrow col-md-1 text-center">
+                  <div className="arrow col-md-1 text-center" onClick={this.rightClick.bind(this)}>
                     <img src={require('./static/arrow-right.png')} width={50} alt="arrow" />
                   </div>
                 </div>
