@@ -68,10 +68,8 @@ class App extends Component {
             handleFileChange={this.handleFileChange.bind(this)}
             addAlbum={this.addAlbum.bind(this)}
           />
-          <div className="row">
-            <div className="col-md-12">
-              <AlbumsList albums={this.state.albums}/>
-            </div>
+          <div className="container">
+            <AlbumsList albums={this.state.albums}/>
           </div>
       </body>
     )
