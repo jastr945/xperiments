@@ -60,30 +60,36 @@ class AlbumsList extends React.Component {
       imgID: -1
     });
   }
-  leftClick() {
-    let start = this.state.start;
-    let finish = this.state.finish;
-    if (start > 0 && finish > 0) {
-      this.setState({
-        start: start - 5,
-        finish: finish - 5,
-      });
+  leftClick(albumindex) {
+    var myindex = this.state.albumID;
+    if (albumindex === myindex) {
+      let start = this.state.start;
+      let finish = this.state.finish;
+      if (start > 0 && finish > 0) {
+        this.setState({
+          start: start - 5,
+          finish: finish - 5,
+        });
+      }
     }
   }
-  rightClick() {
-    let start = this.state.start;
-    let finish = this.state.finish;
-    if (finish < this.props.albums.images.length) {
-      this.setState({
-        start: start + 5,
-        finish: finish + 5
-      });
+  rightClick(albumindex) {
+    var myindex = this.state.albumID;
+    console.log(myindex, albumindex);
+    if (albumindex === myindex) {
+      let start = this.state.start;
+      let finish = this.state.finish;
+      if (finish < 10) {
+        this.setState({
+          start: start + 5,
+          finish: finish + 5
+        });
+      }
     }
   }
   render() {
     var startindex = this.state.start;
     var finishindex = this.state.finish;
-    console.log(startindex, finishindex);
     return (
       <div className="albumSpace">
         {
@@ -101,7 +107,7 @@ class AlbumsList extends React.Component {
                   <h5>{album.description}</h5>
                 </div>
                 <div className="slideshow row">
-                  <div className="arrow col-md-1 text-center" onClick={this.leftClick.bind(this)}>
+                  <div className="arrow col-md-1 text-center" onClick={this.leftClick.bind(this, albumindex)}>
                     <img src={require('./static/arrow-left.png')} width={50} alt="arrow" />
                   </div>
                   {
@@ -122,7 +128,7 @@ class AlbumsList extends React.Component {
                       )
                     })
                   }
-                  <div className="arrow col-md-1 text-center" onClick={this.rightClick.bind(this)}>
+                  <div className="arrow col-md-1 text-center" onClick={this.rightClick.bind(this, albumindex)}>
                     <img src={require('./static/arrow-right.png')} width={50} alt="arrow" />
                   </div>
                 </div>
