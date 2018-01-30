@@ -1,18 +1,4 @@
-.jumbotron {
-  margin-bottom: 0;
-  background-image: url("https://cdn.magdeleine.co/wp-content/uploads/2018/01/annie-spratt-511071-1400x932.jpg");
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.jumbo {
-  display: flex;
-  justify-content: center;
-  padding: 0;
-}
-
- @keyframes appear {
+@keyframes appear {
     0% {
       opacity: 0;
       transform:scale(0);

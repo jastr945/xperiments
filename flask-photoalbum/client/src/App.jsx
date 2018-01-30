@@ -69,22 +69,25 @@ class App extends Component {
     return (
       <body>
         <Navbar />
-        {formOpened ? (
-          <Form
-            title={this.state.title}
-            description={this.state.description}
-            file={this.state.file}
-            handleChange={this.handleChange.bind(this)}
-            handleFileChange={this.handleFileChange.bind(this)}
-            addAlbum={this.addAlbum.bind(this)}
-          />
-        ) : (
-          <UploadButton openForm={this.openForm} />
-        )}
-
-          <div className="container">
-            <AlbumsList albums={this.state.albums}/>
+        <div class="jumbotron">
+          <div class="jumbo container">
+            {formOpened ? (
+              <Form
+                title={this.state.title}
+                description={this.state.description}
+                file={this.state.file}
+                handleChange={this.handleChange.bind(this)}
+                handleFileChange={this.handleFileChange.bind(this)}
+                addAlbum={this.addAlbum.bind(this)}
+              />
+            ) : (
+              <UploadButton openForm={this.openForm} />
+            )}
           </div>
+        </div>
+        <div className="container">
+          <AlbumsList albums={this.state.albums}/>
+        </div>
       </body>
     )
   }
