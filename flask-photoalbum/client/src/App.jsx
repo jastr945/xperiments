@@ -15,8 +15,10 @@ class App extends Component {
       albums: [],
       title: '',
       description: '',
-      file: null
+      file: null,
+      formOpened: false
     }
+    this.openForm = this.openForm.bind(this);
   }
   componentDidMount() {
     this.getAlbums();
@@ -57,10 +59,17 @@ class App extends Component {
     obj[event.target.name] = event.target.value;
     this.setState(obj);
   }
+  openForm() {
+    this.setState({
+      formOpened: true
+    });
+  }
   render() {
+    const formOpened = this.state.formOpened;
     return (
       <body>
         <Navbar />
+        {formOpened ? (
           <Form
             title={this.state.title}
             description={this.state.description}
@@ -69,6 +78,10 @@ class App extends Component {
             handleFileChange={this.handleFileChange.bind(this)}
             addAlbum={this.addAlbum.bind(this)}
           />
+        ) : (
+          <UploadButton openForm={this.openForm} />
+        )}
+
           <div className="container">
             <AlbumsList albums={this.state.albums}/>
           </div>
