@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import AlbumsList from './components/AlbumsList';
-import AddAlbum from './components/AddAlbum';
+import UploadButton from './components/UploadButton';
+import Form from './components/AddAlbum';
 import Navbar from './components/Navbar';
 import './index.css';
 
@@ -60,7 +61,7 @@ class App extends Component {
     return (
       <body>
         <Navbar />
-          <AddAlbum
+          <Form
             title={this.state.title}
             description={this.state.description}
             file={this.state.file}

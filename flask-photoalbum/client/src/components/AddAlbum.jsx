@@ -3,7 +3,7 @@ import React from 'react';
 import './AddAlbum.css';
 
 
-const AddAlbum = (props) => {
+const Form = (props) => {
   return (
     <div class="jumbotron">
       <div class="jumbo container">
@@ -52,4 +52,4 @@ const AddAlbum = (props) => {
   )
 }
 
-export default AddAlbum;
+export default Form;
