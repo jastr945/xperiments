@@ -11,7 +11,7 @@ const AddAlbum = (props) => {
           <form onSubmit={(event) => props.addAlbum(event)} method="POST" encType="multipart/form-data">
             <div className="form-group">
               <input
-                className="form-control input-lg"
+                className="inputfile form-control input-lg"
                 name="photos"
                 type="file"
                 multiple
