@@ -4,18 +4,22 @@ footer {
   justify-content: center;
   padding-top: 1em;
   background-color: #222222;
+  color: #f2d4c2;
 }
 
 ul {
   list-style: none;
+  padding-left: 0;
+}
+
+a {
+  color: #c06046;
 }
 
 .footer {
   margin: 0.2em auto;
+
   text-align: center;
-  ul {
-    padding-left: 0;
-  }
 }
 
 small {
