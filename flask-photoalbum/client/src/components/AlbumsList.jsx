@@ -75,7 +75,7 @@ class AlbumsList extends React.Component {
   }
   rightClick(albumindex, length) {
     var myindex = this.state.albumID;
-    console.log(length);
+    console.log(albumindex, myindex);
     if (albumindex === myindex) {
       let start = this.state.start;
       let finish = this.state.finish;
