@@ -2,7 +2,8 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgba(64, 64, 64, 0.5);
+  padding-top: 1em;
+  background-color: #222222;
 }
 
 ul {

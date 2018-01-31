@@ -7,8 +7,7 @@ const Footer = (props) => {
     <footer>
       <div className="footer container">
         <ul>
-          <li><a href="#">coffee recipes</a></li>
-          <li><a href="#">subscribe</a></li>
+          <li><a href="#">photo album</a></li>
           <li><a href="#">about</a></li>
           <li><a href="#">contact</a></li>
         </ul>
