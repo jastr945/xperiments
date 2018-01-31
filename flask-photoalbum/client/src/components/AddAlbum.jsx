@@ -13,6 +13,7 @@ const Form = (props) => {
             name="photos"
             type="file"
             multiple
+            required
             onChange={props.handleFileChange}
           />
         </div>
