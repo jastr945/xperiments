@@ -1,0 +1,22 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(64, 64, 64, 0.5);
+}
+
+ul {
+  list-style: none;
+}
+
+.footer {
+  margin: 0.2em auto;
+  text-align: center;
+  ul {
+    padding-left: 0;
+  }
+}
+
+small {
+  margin: 0.5em auto;
+}

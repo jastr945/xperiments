@@ -5,6 +5,7 @@ import AlbumsList from './components/AlbumsList';
 import UploadButton from './components/UploadButton';
 import Form from './components/AddAlbum';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import './index.css';
 
 class App extends Component {
@@ -88,6 +89,7 @@ class App extends Component {
         <div className="container">
           <AlbumsList albums={this.state.albums}/>
         </div>
+        <Footer />
       </body>
     )
   }
