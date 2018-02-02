@@ -1,6 +1,8 @@
 import React from 'react';
 
 import './AlbumsList.css';
+import ImageRow from './components/ImageRow';
+
 
 const Timestamp = require('react-timestamp');
 
@@ -11,9 +13,7 @@ class AlbumsList extends React.Component {
       albumID: -1,
       imgID: -1,
       imgHovered: false,
-      imgClicked: false,
-      start: 0,
-      finish: 5
+      imgClicked: false
     }
   }
   albumHover(albumindex) {
@@ -60,41 +60,12 @@ class AlbumsList extends React.Component {
       imgID: -1
     });
   }
-  leftClick(albumindex) {
-    var myindex = this.state.albumID;
-    if (albumindex === myindex) {
-      let start = this.state.start;
-      let finish = this.state.finish;
-      if (start > 0 && finish > 0) {
-        this.setState({
-          start: start - 5,
-          finish: finish - 5,
-        });
-      }
-    }
-  }
-  rightClick(albumindex, length) {
-    var myindex = this.state.albumID;
-    console.log(albumindex, myindex);
-    if (albumindex === myindex) {
-      let start = this.state.start;
-      let finish = this.state.finish;
-      if (finish < length) {
-        this.setState({
-          start: start + 5,
-          finish: finish + 5
-        });
-      }
-    }
-  }
+
   render() {
     return (
       <div className="albumSpace">
         {
           this.props.albums.map((album, albumindex) => {
-            var startindex = this.state.start;
-            var finishindex = this.state.finish;
-            var length = album.images.length;
             return (
               <div
                 key={albumindex}
@@ -107,31 +78,7 @@ class AlbumsList extends React.Component {
                   <h6>{album.images.length} files - <Timestamp time={album.created_at} format='full' /> - <i><Timestamp time={album.created_at} format='ago' includeDay={true} precision={2} autoUpdate={60} /></i></h6>
                   <h5>{album.description}</h5>
                 </div>
-                <div className="slideshow row">
-                  <div className="arrow col-md-1 text-center" onClick={this.leftClick.bind(this, albumindex)}>
-                    <img src={require('./static/arrow-left.png')} width={50} alt="arrow" />
-                  </div>
-                  {
-                    album.images.slice(startindex, finishindex).map((i, imgindex) => {
-                      const {imgID, albumID, imgClicked, imgHovered} = this.state
-                      var zoomedImg = (imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true) ? "zoomed" : "";
-                      var openImg = (imgID === imgindex && albumID === albumindex && imgClicked === true) ? "opened" : "";
-                      var imgClass = `imageContainer ${openImg} ${zoomedImg}`
-                      return (
-                        <div className={imgClass} key={imgindex}>
-                          {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" onClick={this.openImg.bind(this)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
-
-                          {imgID === imgindex && albumID === albumindex && imgClicked === true && <img className="icon" onClick={this.closeImg.bind(this)} src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
-
-                          <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} onMouseLeave={this.imgMouseLeave.bind(this, imgindex)} src={i} alt='album img' />
-                        </div>
-                      )
-                    })
-                  }
-                  <div className="arrow col-md-1 text-center" onClick={this.rightClick.bind(this, albumindex, length)}>
-                    <img src={require('./static/arrow-right.png')} width={50} alt="arrow" />
-                  </div>
-                </div>
+                <ImageRow albums={this.props.albums} albumkey={albumindex} />
               </div>
             )
           })
