@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './AlbumsList.css';
-import ImageRow from './components/ImageRow';
+import ImageRow from './ImageRow';
 
 
 const Timestamp = require('react-timestamp');

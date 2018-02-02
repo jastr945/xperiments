@@ -2,7 +2,7 @@ import React from 'react';
 
 import './ImageRow.css';
 
-class ImageRow extends React.Component {
+class AlbumsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,9 +43,17 @@ class ImageRow extends React.Component {
         </div>
         {
           this.props.albums[this.props.albumkey].images.slice(startindex, finishindex).map((i, imgindex) => {
+            const {imgID, albumID, imgClicked, imgHovered} = this.state
+            var zoomedImg = (imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true) ? "zoomed" : "";
+            var openImg = (imgID === imgindex && albumID === albumindex && imgClicked === true) ? "opened" : "";
+            var imgClass = `imageContainer ${openImg} ${zoomedImg}`
             return (
-              <div className="" key={imgindex}>
-                <img className="image" src={i} alt='album img' />
+              <div className={imgClass} key={imgindex}>
+                {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" onClick={this.openImg.bind(this)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
+
+                {imgID === imgindex && albumID === albumindex && imgClicked === true && <img className="icon" onClick={this.closeImg.bind(this)} src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
+
+                <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} onMouseLeave={this.imgMouseLeave.bind(this, imgindex)} src={i} alt='album img' />
               </div>
             )
           })
