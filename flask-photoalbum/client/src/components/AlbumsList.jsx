@@ -28,22 +28,7 @@ class AlbumsList extends React.Component {
       imgClicked: false
     });
   }
-  imgHover(imgindex) {
-    this.setState({
-      imgID: imgindex,
-      imgHovered: true
-    });
-  }
-  imgMouseLeave(imgindex) {
-    var myindex = this.state.imgID;
-    if (imgindex !== myindex) {
-      this.setState({
-        imgID: -1,
-        imgHovered: false,
-        imgClicked: false
-      });
-    }
-  }
+
   openImg() {
     this.setState({
       imgClicked: true,

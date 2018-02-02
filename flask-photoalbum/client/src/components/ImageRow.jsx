@@ -9,8 +9,24 @@ class ImageRow extends React.Component {
       start: 0,
       finish: 5,
       fadedleft: true,
-      fadedright: false
+      fadedright: false,
+      imgHovered: false,
+      imgID: -1
     }
+  }
+
+  imgHover(imgindex) {
+    this.setState({
+      imgID: imgindex,
+      imgHovered: true
+    });
+  }
+
+  imgMouseLeave() {
+    this.setState({
+      imgHovered: false,
+      imgID: -1
+    });
   }
 
   leftClick() {
@@ -28,7 +44,7 @@ class ImageRow extends React.Component {
       });
     }
   }
-  
+
   rightClick(length) {
     let start = this.state.start;
     let finish = this.state.finish;
@@ -46,10 +62,11 @@ class ImageRow extends React.Component {
   }
 
   render() {
-    const {start, finish, fadedleft, fadedright} = this.state
+    const {start, finish, fadedleft, fadedright, imgHovered, imgID} = this.state
     const left = fadedleft ? "arrow-left col-md-1 text-center faded-left" : "arrow-left col-md-1 text-center";
     const right = fadedright ? "arrow-right col-md-1 text-center faded-right" : "arrow-right col-md-1 text-center";
     var length = this.props.albums[this.props.albumkey].images.length;
+
     return (
       <div className="slideshow row">
         <div className={left} onClick={this.leftClick.bind(this)}>
@@ -57,9 +74,11 @@ class ImageRow extends React.Component {
         </div>
         {
           this.props.albums[this.props.albumkey].images.slice(start, finish).map((i, imgindex) => {
+            var zoomedImg = imgHovered && imgID === imgindex ? "zoomed" : "";
+            var imgClass = `imageContainer ${zoomedImg}`
             return (
-              <div className="" key={imgindex}>
-                <img className="image" src={i} alt='album img' />
+              <div className={imgClass} key={imgindex}>
+                <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} onMouseLeave={this.imgMouseLeave.bind(this)} src={i} alt='album img' />
               </div>
             )
           })
