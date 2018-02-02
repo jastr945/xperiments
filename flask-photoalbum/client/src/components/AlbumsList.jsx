@@ -10,10 +10,7 @@ class AlbumsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      albumID: -1,
-      imgID: -1,
-      imgHovered: false,
-      imgClicked: false
+      albumID: -1
     }
   }
   albumHover(albumindex) {
@@ -26,23 +23,6 @@ class AlbumsList extends React.Component {
       albumID: -1,
       imgHovered: false,
       imgClicked: false
-    });
-  }
-
-  openImg() {
-    this.setState({
-      imgClicked: true,
-      imgHovered: false,
-      albumID: -1,
-      imgID: -1,
-    });
-  }
-  closeImg() {
-    this.setState({
-      imgClicked: false,
-      imgHovered: true,
-      albumID: -1,
-      imgID: -1
     });
   }
 

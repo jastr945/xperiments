@@ -38,6 +38,14 @@ class ImageRow extends React.Component {
     });
   }
 
+  closeImg() {
+    this.setState({
+      imgClicked: false,
+      imgHovered: true,
+      imgID: -1
+    });
+  }
+
   leftClick() {
     let start = this.state.start;
     let finish = this.state.finish;
@@ -90,7 +98,7 @@ class ImageRow extends React.Component {
               <div className={imgClass} key={imgindex}>
                 {imgClicked === false && imgHovered === true && <img className="icon" onClick={this.openImg.bind(this)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
 
-                <img className="icon" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />
+                {imgClicked === true && <img className="icon" onClick={this.closeImg.bind(this)} src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
 
                 <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} onMouseLeave={this.imgMouseLeave.bind(this)} src={i} alt='album img' />
               </div>
