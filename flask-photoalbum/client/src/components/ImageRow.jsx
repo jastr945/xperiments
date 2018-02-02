@@ -11,6 +11,7 @@ class ImageRow extends React.Component {
       fadedleft: true,
       fadedright: false,
       imgHovered: false,
+      imgClicked: false,
       imgID: -1
     }
   }
@@ -26,6 +27,14 @@ class ImageRow extends React.Component {
     this.setState({
       imgHovered: false,
       imgID: -1
+    });
+  }
+
+  openImg() {
+    this.setState({
+      imgClicked: true,
+      imgHovered: false,
+      imgID: -1,
     });
   }
 
@@ -62,7 +71,7 @@ class ImageRow extends React.Component {
   }
 
   render() {
-    const {start, finish, fadedleft, fadedright, imgHovered, imgID} = this.state
+    const {start, finish, fadedleft, fadedright, imgHovered, imgID, imgClicked} = this.state
     const left = fadedleft ? "arrow-left col-md-1 text-center faded-left" : "arrow-left col-md-1 text-center";
     const right = fadedright ? "arrow-right col-md-1 text-center faded-right" : "arrow-right col-md-1 text-center";
     var length = this.props.albums[this.props.albumkey].images.length;
@@ -75,9 +84,14 @@ class ImageRow extends React.Component {
         {
           this.props.albums[this.props.albumkey].images.slice(start, finish).map((i, imgindex) => {
             var zoomedImg = imgHovered && imgID === imgindex ? "zoomed" : "";
-            var imgClass = `imageContainer ${zoomedImg}`
+            var openImg = (imgID === imgindex && imgClicked === true) ? "opened" : "";
+            var imgClass = `imageContainer ${openImg} ${zoomedImg}`
             return (
               <div className={imgClass} key={imgindex}>
+                {imgClicked === false && imgHovered === true && <img className="icon" onClick={this.openImg.bind(this)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
+
+                <img className="icon" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />
+
                 <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} onMouseLeave={this.imgMouseLeave.bind(this)} src={i} alt='album img' />
               </div>
             )
