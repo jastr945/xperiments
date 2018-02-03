@@ -20,12 +20,9 @@ class AlbumsList extends React.Component {
   }
   albumMouseLeave() {
     this.setState({
-      albumID: -1,
-      imgHovered: false,
-      imgClicked: false
+      albumID: -1
     });
   }
-
   render() {
     return (
       <div className="albumSpace">

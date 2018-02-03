@@ -51,7 +51,7 @@ class AlbumsList extends React.Component {
               <div className={imgClass} key={imgindex}>
                 {imgID === imgindex && albumID === albumindex && imgClicked === false && imgHovered === true && <img className="icon" onClick={this.openImg.bind(this)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
 
-                {imgID === imgindex && albumID === albumindex && imgClicked === true && <img className="icon" onClick={this.closeImg.bind(this)} src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
+                {imgID === imgindex && albumID === albumindex && imgClicked === true && <img className="icon" onClick={this.closeImg.bind(this)}  src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
 
                 <img className="image" onMouseEnter={this.imgHover.bind(this, imgindex)} onMouseLeave={this.imgMouseLeave.bind(this, imgindex)} src={i} alt='album img' />
               </div>
