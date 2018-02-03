@@ -27,11 +27,13 @@ class ImageRow extends React.Component {
     });
   }
   openImg(imgindex) {
-    this.setState({
-      imgClicked: true,
-      imgHovered: false,
-      imgID: imgindex
-    });
+    if (this.state.imgID === imgindex) {
+      this.setState({
+        imgClicked: true,
+        imgHovered: false,
+        imgID: -1
+      });
+    }
   }
   closeImg() {
     this.setState({
