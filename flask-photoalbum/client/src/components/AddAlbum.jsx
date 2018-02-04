@@ -5,7 +5,7 @@ import './AddAlbum.css';
 
 const Form = (props) => {
   return (
-    <div class="col-md-6">
+    <div className="col-md-6">
       <form onSubmit={(event) => props.addAlbum(event)} method="POST" encType="multipart/form-data">
         <div className="form-group">
           <input

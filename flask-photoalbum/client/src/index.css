@@ -1,6 +1,7 @@
-body {
+.app {
   margin: 0;
   padding: 0;
+  height: 100%;
   font-family: sans-serif;
 }
 
@@ -9,7 +10,6 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 0;
-  background-image: url("https://cdn.magdeleine.co/wp-content/uploads/2018/01/annie-spratt-511071-1400x932.jpg");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;

@@ -67,11 +67,12 @@ class App extends Component {
   }
   render() {
     const formOpened = this.state.formOpened;
+    var bg = require('./components/static/landscape.jpg')
     return (
-      <body>
+      <div className="app">
         <Navbar />
-        <div class="jumbotron">
-          <div class="jumbo container">
+        <div className="jumbotron"  style ={{backgroundImage: "url("+bg+")"}} >
+          <div className="jumbo container">
             {formOpened ? (
               <Form
                 title={this.state.title}
@@ -90,7 +91,7 @@ class App extends Component {
           <AlbumsList albums={this.state.albums}/>
         </div>
         <Footer />
-      </body>
+      </div>
     )
   }
 }
