@@ -36,7 +36,7 @@ class Navbar extends Component  {
     				<li><a href="https://github.com/jastr945" target="_blank" >About</a></li>
     				<li><a href="http://polina.mee.how/" target="_blank" >Contact</a></li>
             <li>Hello, {this.state.user}!</li>
-            <li><a href="http://192.168.0.109:5001/index">Sign in</a></li>
+            <li><a href="http://192.168.0.109.nip.io:5001/login">Sign in</a></li>
     			</ul>
       	</div>
       </nav>
