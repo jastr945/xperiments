@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import './Navbar.css';
 
@@ -7,8 +8,16 @@ class Navbar extends Component  {
   constructor() {
     super()
     this.state = {
-      
+      user: null
     }
+  }
+  componentDidMount() {
+    this.getAlbums();
+  }
+  getAlbums() {
+    axios.get('http://192.168.0.109:5001//login/authorized')
+    .then((res) => { this.setState({ user: res.data.data }); })
+    .catch((err) => { console.log(err); })
   }
   render() {
     return (
@@ -26,7 +35,8 @@ class Navbar extends Component  {
     			<ul className="nav navbar-nav navbar-right">
     				<li><a href="https://github.com/jastr945" target="_blank" >About</a></li>
     				<li><a href="http://polina.mee.how/" target="_blank" >Contact</a></li>
-            <li><a href="#">Sign in</a></li>
+            <li>Hello, {this.state.user}!</li>
+            <li><a href="http://192.168.0.109:5001/index">Sign in</a></li>
     			</ul>
       	</div>
       </nav>

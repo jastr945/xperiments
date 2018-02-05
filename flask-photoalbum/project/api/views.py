@@ -42,7 +42,7 @@ def index():
     if 'google_token' in session:
         me = google.get('userinfo')
         return jsonify({"data": me.data})
-    return redirect(url_for('login'))
+    return redirect(url_for('albums.login'))
 
     if request.method == 'POST':
         title = request.form['title']
@@ -56,12 +56,12 @@ def index():
 
 @albums_blueprint.route('/login')
 def login():
-    return google.authorize(callback=url_for('authorized', _external=True))
+    return google.authorize(callback=url_for('albums.authorized', _external=True))
 
 @albums_blueprint.route('/logout')
 def logout():
     session.pop('google_token', None)
-    return redirect(url_for('index'))
+    return redirect(url_for('albums.index'))
 
 @albums_blueprint.route('/login/authorized')
 def authorized():
