@@ -19,6 +19,7 @@ const Navbar = (props) => {
   			<ul className="nav navbar-nav navbar-right">
   				<li><a href="https://github.com/jastr945" target="_blank" >About</a></li>
   				<li><a href="http://polina.mee.how/" target="_blank" >Contact</a></li>
+          <li><a href="#">Sign in</a></li>
   			</ul>
     	</div>
     </nav>
