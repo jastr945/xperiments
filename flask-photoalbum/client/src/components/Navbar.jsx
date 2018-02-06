@@ -12,12 +12,17 @@ class Navbar extends Component  {
     }
   }
   componentDidMount() {
-    this.getAlbums();
+    this.getUser();
   }
-  getAlbums() {
-    axios.get('http://192.168.0.109:5001//login/authorized')
-    .then((res) => { this.setState({ user: res.data.data }); })
+  getUser() {
+    axios.get('http://192.168.0.109.nip.io:5001')
+    .then((res) => { this.setState({ user: res.data.data }); console.log(res.data.data); })
     .catch((err) => { console.log(err); })
+    const config = {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }
   }
   render() {
     return (
@@ -35,8 +40,9 @@ class Navbar extends Component  {
     			<ul className="nav navbar-nav navbar-right">
     				<li><a href="https://github.com/jastr945" target="_blank" >About</a></li>
     				<li><a href="http://polina.mee.how/" target="_blank" >Contact</a></li>
-            <li>Hello, {this.state.user}!</li>
             <li><a href="http://192.168.0.109.nip.io:5001/login">Sign in</a></li>
+            <li>{this.state.user}</li>
+
     			</ul>
       	</div>
       </nav>

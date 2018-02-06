@@ -38,6 +38,7 @@ albums_blueprint = Blueprint('albums', __name__)
 
 @albums_blueprint.route('/', methods=['GET', 'POST'])
 def index():
+    albums = Album.query.order_by(Album.created_at.desc()).all()
     # Google authorization
     if 'google_token' in session:
         me = google.get('userinfo')
@@ -51,7 +52,6 @@ def index():
         album.images = photos_list
         db.session.add(album)
         db.session.commit()
-    albums = Album.query.order_by(Album.created_at.desc()).all()
     return render_template('index.html', albums=albums)
 
 @albums_blueprint.route('/login')
