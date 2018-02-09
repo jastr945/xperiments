@@ -48,7 +48,11 @@ class App extends Component {
       this.getAlbums();
       this.setState({ title: '', description: '', file: null });
     })
-    .catch((err) => { console.log(err); })
+    .catch((err) => {
+      if( err.response ){
+        console.log(err.data.message);
+      } else {console.log(err);}
+    })
   }
   handleFileChange(event) {
     this.setState({
