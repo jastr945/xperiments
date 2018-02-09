@@ -31,3 +31,11 @@ form {
 .inputfile {
 	height: auto;
 }
+
+.loginError {
+  padding: 0.5em;
+  text-align: center;
+  background-color: #cf6f55;
+  color: #FFFFFF;
+  font-size: 2em;
+}

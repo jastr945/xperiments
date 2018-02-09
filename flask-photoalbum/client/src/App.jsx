@@ -17,7 +17,8 @@ class App extends Component {
       title: '',
       description: '',
       file: null,
-      formOpened: false
+      formOpened: false,
+      loginErrorVisible: false
     }
     this.openForm = this.openForm.bind(this);
   }
@@ -85,6 +86,7 @@ class App extends Component {
                 handleChange={this.handleChange.bind(this)}
                 handleFileChange={this.handleFileChange.bind(this)}
                 addAlbum={this.addAlbum.bind(this)}
+                error={this.state.loginErrorVisible}
               />
             ) : (
               <UploadButton openForm={this.openForm} />

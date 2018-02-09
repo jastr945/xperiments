@@ -11,7 +11,19 @@ class Navbar extends Component  {
     }
   }
   fetch() {
-    fetch('/login');
+    fetch('/login', { method: 'GET', redirect: 'follow'})
+    .then(response => {
+      if (response.ok) {
+        console.log("ok");
+      } else if (response.status == 401) {
+        console.log("401");
+      } else {
+        console.log("something else");
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
   render() {
     return (

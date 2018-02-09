@@ -45,6 +45,7 @@ const Form = (props) => {
           value="Submit"
         />
       </form>
+      { props.error && <div className="loginError">Please sign in</div>}
     </div>
   )
 }
