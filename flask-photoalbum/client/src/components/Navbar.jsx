@@ -10,21 +10,6 @@ class Navbar extends Component  {
       useremail: ''
     }
   }
-  fetch() {
-    fetch('/login', { method: 'GET', redirect: 'follow'})
-    .then(response => {
-      if (response.ok) {
-        console.log("ok");
-      } else if (response.status == 401) {
-        console.log("401");
-      } else {
-        console.log("something else");
-      }
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  }
   render() {
     return (
       <nav className="navbar navbar-inverse navbar-static-top">
@@ -41,7 +26,7 @@ class Navbar extends Component  {
     			<ul className="nav navbar-nav navbar-right">
     				<li><a href="https://github.com/jastr945" target="_blank" >About</a></li>
     				<li><a href="http://polina.mee.how/" target="_blank" >Contact</a></li>
-            <li><div onClick={this.fetch.bind(this)}>Sign in</div></li>
+            <li><a href="http://192.168.0.109.nip.io:5001/login">Sign in</a></li>
             <li>{this.state.useremail}</li>
     			</ul>
       	</div>
