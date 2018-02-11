@@ -6,9 +6,11 @@ from sqlalchemy import exc
 import datetime
 from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_class
 from flask_oauthlib.client import OAuth
+from flask_cors import CORS
 
 # creating an instance of an app and configuring Flask-Uploads
 app = Flask(__name__)
+CORS(app)
 app.config['UPLOADED_PHOTOS_DEST'] = 'static'
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)

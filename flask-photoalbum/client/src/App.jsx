@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Switch, Route } from 'react-router-dom';
 
 import AlbumsList from './components/AlbumsList';
 import UploadButton from './components/UploadButton';
@@ -25,12 +24,8 @@ class App extends Component {
   }
   componentDidMount() {
     this.getAlbums();
-    this.getLogin();
-  }
-  getLogin() {
-    axios.get('http://192.168.0.109.nip.io:9000/login/authorized')
-    .then((res) => { console.log("lalala"); })
-    .catch((err) => { console.log(err); })
+    let data = JSON.parse(sessionStorage.getItem('userData'));
+    console.log(data);
   }
   getAlbums() {
     axios.get('http://192.168.0.109:5001/albums')
