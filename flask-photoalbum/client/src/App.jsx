@@ -24,13 +24,24 @@ class App extends Component {
   }
   componentDidMount() {
     this.getAlbums();
-    let data = JSON.parse(sessionStorage.getItem('userData'));
-    console.log(data);
+    this.getGoogleData();
   }
   getAlbums() {
     axios.get('http://192.168.0.109:5001/albums')
     .then((res) => { this.setState({ albums: res.data.data.albums }); })
     .catch((err) => { console.log(err); })
+  }
+  getGoogleData() {
+    let currentURL = window.location.href;
+    console.log(currentURL);
+    let token = currentURL.match(/[^\/]*$/);
+    console.log(token);
+    let baseURL = "/login/authorized?code=4/"
+    let newURL = baseURL + token;
+    console.log(newURL);
+    fetch(newURL, {})
+    .then(response => console.log(response.json()))
+    .catch(error => console.log(error))
   }
   addAlbum(event) {
     event.preventDefault();
