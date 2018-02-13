@@ -77,8 +77,6 @@ class ImageRow extends React.Component {
     const left = fadedleft ? "arrow-left col-md-1 text-center faded-left" : "arrow-left col-md-1 text-center";
     const right = fadedright ? "arrow-right col-md-1 text-center faded-right" : "arrow-right col-md-1 text-center";
     var length = this.props.albums[this.props.albumkey].images.length;
-    console.log(imgHovered, imgClicked, imgID);
-
     return (
       <div className="slideshow row">
         <div className={left} onClick={this.leftClick.bind(this)}>

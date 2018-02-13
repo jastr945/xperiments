@@ -1,4 +1,5 @@
 import React from 'react';
+import Observer from '@researchgate/react-intersection-observer';
 
 import './AlbumsList.css';
 import ImageRow from './ImageRow';
@@ -10,7 +11,8 @@ class AlbumsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      albumID: -1
+      albumID: -1,
+      visibility: 'hidden'
     }
   }
   albumHover(albumindex) {
@@ -23,25 +25,31 @@ class AlbumsList extends React.Component {
       albumID: -1
     });
   }
+  handleIntersection(event) {
+    this.setState({
+      visibility: event.isIntersecting ? 'visible' : 'invisible',
+    });
+  };
   render() {
     return (
-      <div className="albumSpace">
+      <div className="albumSpace" id="albumSpace">
         {
           this.props.albums.map((album, albumindex) => {
             return (
-              <div
-                key={albumindex}
-                onMouseEnter={this.albumHover.bind(this, albumindex)}
-                onMouseLeave={this.albumMouseLeave.bind(this)}
-                className="container album fill"
-              >
-                <div className="header row">
-                  <h2>{album.title}</h2>
-                  <h6>{album.images.length} files - <Timestamp time={album.created_at} format='full' /> - <i><Timestamp time={album.created_at} format='ago' includeDay={true} precision={2} autoUpdate={60} /></i></h6>
-                  <h5>{album.description}</h5>
+              <Observer key={albumindex} onChange={this.handleIntersection.bind(this)}>
+                <div
+                  onMouseEnter={this.albumHover.bind(this, albumindex)}
+                  onMouseLeave={this.albumMouseLeave.bind(this)}
+                  className={`container album ${this.state.visibility}`}
+                >
+                  <div className="header row">
+                    <h2>{album.title}</h2>
+                    <h6>{album.images.length} files - <Timestamp time={album.created_at} format='full' /> - <i><Timestamp time={album.created_at} format='ago' includeDay={true} precision={2} autoUpdate={60} /></i></h6>
+                    <h5>{album.description}</h5>
+                  </div>
+                  <ImageRow albums={this.props.albums} albumkey={albumindex} />
                 </div>
-                <ImageRow albums={this.props.albums} albumkey={albumindex} />
-              </div>
+              </Observer>
             )
           })
         }

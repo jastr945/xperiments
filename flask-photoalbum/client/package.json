@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://192.168.0.109.nip.io:5001",
   "dependencies": {
+    "@researchgate/react-intersection-observer": "^0.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",

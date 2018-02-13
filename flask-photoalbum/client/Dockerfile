@@ -20,6 +20,7 @@ RUN npm install pushstate-server -g --silent
 RUN npm install axios --save
 RUN npm install react-timestamp
 RUN npm install --save-dev url-loader file-loader
+RUN npm install --save @researchgate/react-intersection-observer
 
 # add app
 ADD . /usr/src/app
