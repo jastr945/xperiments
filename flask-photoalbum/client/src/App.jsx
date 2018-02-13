@@ -33,14 +33,12 @@ class App extends Component {
   }
   getGoogleData() {
     let currentURL = window.location.href;
-    console.log(currentURL);
     let token = currentURL.match(/[^\/]*$/);
-    console.log(token);
     let baseURL = "/login/authorized?code=4/"
     let newURL = baseURL + token;
     console.log(newURL);
     fetch(newURL, {})
-    .then(response => console.log(response.json()))
+    .then(response => console.log(JSON.stringify(response)))
     .catch(error => console.log(error))
   }
   addAlbum(event) {
@@ -51,7 +49,6 @@ class App extends Component {
     }
     formData.append('title', this.state.title);
     formData.append('description', this.state.description);
-    console.log(formData);
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -61,6 +58,7 @@ class App extends Component {
     .then((res) => {
       this.getAlbums();
       this.setState({ title: '', description: '', file: null });
+      document.getElementById("album-form").reset();
     })
     .catch((err) => {
       if( err.response ){
