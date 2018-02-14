@@ -1,4 +1,5 @@
 import React from 'react';
+import Observer from '@researchgate/react-intersection-observer';
 
 import './ImageRow.css';
 
@@ -12,7 +13,8 @@ class ImageRow extends React.Component {
       fadedright: false,
       imgHovered: false,
       imgClicked: false,
-      imgID: -1
+      imgID: -1,
+      visibility: null
     }
   }
   imgHover(imgindex) {
@@ -72,36 +74,43 @@ class ImageRow extends React.Component {
       });
     }
   }
+  handleIntersection(event) {
+    this.setState({
+      visibility: event.isIntersecting ? 'inview' : ''
+    });
+  };
   render() {
     const {start, finish, fadedleft, fadedright, imgHovered, imgID, imgClicked} = this.state
     const left = fadedleft ? "arrow-left col-md-1 text-center faded-left" : "arrow-left col-md-1 text-center";
     const right = fadedright ? "arrow-right col-md-1 text-center faded-right" : "arrow-right col-md-1 text-center";
     var length = this.props.albums[this.props.albumkey].images.length;
     return (
-      <div className="slideshow row">
-        <div className={left} onClick={this.leftClick.bind(this)}>
-          <img src={require('./static/arrow-left.png')} width={50} alt="arrow" />
-        </div>
-        {
-          this.props.albums[this.props.albumkey].images.slice(start, finish).map((i, imgindex) => {
-            var zoomedImg = imgHovered && imgID === imgindex ? "zoomed" : "";
-            var openImg = imgClicked && imgID === imgindex ? "opened" : "";
-            var imgClass = `imageContainer ${openImg} ${zoomedImg}`
-            return (
-              <div className={imgClass} key={imgindex}>
-                {imgID === imgindex && imgClicked === false && imgHovered === true && <img className="imgicon" onClick={this.openImg.bind(this, imgindex)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
+      <Observer onChange={this.handleIntersection.bind(this)}>
+        <div className={`slideshow row ${this.state.visibility}`}>
+          <div className={left} onClick={this.leftClick.bind(this)}>
+            <img src={require('./static/arrow-left.png')} width={50} alt="arrow" />
+          </div>
+          {
+            this.props.albums[this.props.albumkey].images.slice(start, finish).map((i, imgindex) => {
+              var zoomedImg = imgHovered && imgID === imgindex ? "zoomed" : "";
+              var openImg = imgClicked && imgID === imgindex ? "opened" : "";
+              var imgClass = `imageContainer ${openImg} ${zoomedImg}`
+              return (
+                <div className={imgClass} key={imgindex}>
+                  {imgID === imgindex && imgClicked === false && imgHovered === true && <img className="imgicon" onClick={this.openImg.bind(this, imgindex)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
 
-                {imgID === imgindex && imgClicked === true && <img className="imgicon" onClick={this.closeImg.bind(this)}  src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
+                  {imgID === imgindex && imgClicked === true && <img className="imgicon" onClick={this.closeImg.bind(this)}  src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={15} alt="close" />}
 
-                <img className="albumimage" onMouseEnter={this.imgHover.bind(this, imgindex)} onMouseLeave={this.imgMouseLeave.bind(this)} src={i} alt='album img' />
-              </div>
-            )
-          })
-        }
-        <div className={right} onClick={this.rightClick.bind(this, length)}>
-          <img src={require('./static/arrow-right.png')} width={50} alt="arrow" />
+                  <img className="albumimage" onMouseEnter={this.imgHover.bind(this, imgindex)} onMouseLeave={this.imgMouseLeave.bind(this)} src={i} alt='album img' />
+                </div>
+              )
+            })
+          }
+          <div className={right} onClick={this.rightClick.bind(this, length)}>
+            <img src={require('./static/arrow-right.png')} width={50} alt="arrow" />
+          </div>
         </div>
-      </div>
+      </Observer>
     )
   }
 }

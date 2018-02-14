@@ -6,6 +6,14 @@
   align-items: center;
   height: auto;
   margin: 0;
+  transform: translateY(-15%);
+  opacity: 0;
+  transition: 700ms transform cubic-bezier(0.55, 0.055, 0.675, 0.19), 700ms opacity cubic-bezier(0.55, 0.055, 0.675, 0.19) 300ms;
+}
+
+.inview {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .arrow-right, .arrow-left {
