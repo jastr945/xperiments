@@ -58,7 +58,7 @@ def index():
 
 @albums_blueprint.route('/login')
 def login():
-    return google.authorize(callback="http://192.168.0.109.nip.io:9000/login/authorized")
+    return google.authorize(callback=url_for('albums.authorized', _external=True))
 
 @albums_blueprint.route('/logout')
 def logout():
@@ -75,7 +75,7 @@ def authorized():
         )
     session['google_token'] = (resp['access_token'], '')
     me = google.get('userinfo')
-    return redirect(url_for('albums.index'))
+    return redirect("url_for('albums.index')")
 
 @google.tokengetter
 def get_google_oauth_token():

@@ -36,6 +36,8 @@ services:
       context: ./client
       args:
         - NODE_ENV=development
+    volumes:
+      - './client/:/usr/src/app/flask-photoalbum'
     ports:
       - '9000:9000'
     depends_on:

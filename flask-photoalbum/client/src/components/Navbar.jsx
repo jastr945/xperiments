@@ -26,7 +26,8 @@ class Navbar extends Component  {
     			<ul className="nav navbar-nav navbar-right">
     				<li><a href="https://github.com/jastr945" target="_blank" >About</a></li>
     				<li><a href="http://polina.mee.how/" target="_blank" >Contact</a></li>
-            <li><a href="http://192.168.0.109.nip.io:5001/login">Sign in</a></li>
+            <li><a href="/login">Sign in</a></li>
+            <li><a href="/logout">Log out</a></li>
             <li>{this.state.useremail}</li>
     			</ul>
       	</div>
