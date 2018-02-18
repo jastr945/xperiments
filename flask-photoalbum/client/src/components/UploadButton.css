@@ -11,3 +11,11 @@
 .formOpener:hover {
   background-color: #c06046;
 }
+
+@media screen and (max-width: 500px) {
+  .formOpener {
+    font-size: 2em;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+}
