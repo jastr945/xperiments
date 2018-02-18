@@ -75,7 +75,7 @@ def authorized():
         )
     session['google_token'] = (resp['access_token'], '')
     me = google.get('userinfo')
-    return redirect("url_for('albums.index')")
+    return jsonify({"data": me.data})
 
 @google.tokengetter
 def get_google_oauth_token():

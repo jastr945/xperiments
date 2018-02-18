@@ -32,7 +32,10 @@ class App extends Component {
     .catch((err) => { console.log(err); })
   }
   getGoogleData() {
-    fetch('/login/authorized', {})
+    fetch('/login/authorized', {
+    method: 'GET',
+    credentials: 'include'
+    })
     .then(response => console.log(JSON.stringify(response)))
     .catch(error => console.log(error))
   }
