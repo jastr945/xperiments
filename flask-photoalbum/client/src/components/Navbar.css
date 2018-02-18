@@ -11,3 +11,15 @@
 .navbar-right {
   font-size: 1.5em;
 }
+
+@media screen and (max-width: 500px) {
+  .navbar-brand {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar-brand {
+    font-size: 1em;
+  }
+}

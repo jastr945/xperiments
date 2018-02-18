@@ -34,9 +34,16 @@ class App extends Component {
   getGoogleData() {
     fetch('/login/authorized', {
     method: 'GET',
-    credentials: 'include'
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
     })
-    .then(response => console.log(JSON.stringify(response)))
+    .then(response => {
+      console.log(response);
+      return response.json();
+    })
     .catch(error => console.log(error))
   }
   addAlbum(event) {

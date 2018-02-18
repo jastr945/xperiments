@@ -18,10 +18,16 @@ a, a:hover, a:focus {
 
 .footer {
   margin: 0.2em auto;
-
   text-align: center;
 }
 
 small {
   margin: 0.5em auto;
+  text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    margin: 0 auto;
+  }
 }
