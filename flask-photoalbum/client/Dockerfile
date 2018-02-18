@@ -17,6 +17,7 @@ ENV REACT_APP_ALBUMS_SERVICE_URL $REACT_APP_ALBUMS_SERVICE_URL
 ADD package.json /usr/src/app/package.json
 RUN npm install --silent
 RUN npm install pushstate-server -g --silent
+RUN npm install react-router-dom
 RUN npm install axios --save
 RUN npm install react-timestamp
 RUN npm install --save-dev url-loader file-loader

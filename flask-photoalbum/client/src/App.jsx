@@ -32,12 +32,7 @@ class App extends Component {
     .catch((err) => { console.log(err); })
   }
   getGoogleData() {
-    let currentURL = window.location.href;
-    let token = currentURL.match(/[^\/]*$/);
-    let baseURL = "/login/authorized?code=4/"
-    let newURL = baseURL + token;
-    console.log(newURL);
-    fetch(newURL, {})
+    fetch('/login/authorized', {})
     .then(response => console.log(JSON.stringify(response)))
     .catch(error => console.log(error))
   }
