@@ -22,3 +22,9 @@
   align-items: center;
   padding: 0;
 }
+
+@media screen and (max-width: 500px) {
+  .jumbotron{
+    height: 35vh;
+  }
+}

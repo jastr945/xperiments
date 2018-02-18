@@ -39,3 +39,17 @@ form {
   color: #FFFFFF;
   font-size: 2em;
 }
+
+@media screen and (max-width: 500px) {
+  form {
+    padding: 0.5em 1em;
+  }
+
+  .inputfile {
+  	font-size: 1.2em;
+  }
+
+  .btn-primary {
+    font-size: 1.5em;
+  }
+}

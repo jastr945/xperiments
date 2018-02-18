@@ -19,7 +19,12 @@
 }
 
 @media screen and (max-width: 400px) {
+  .navbar {
+    padding: 0.2em;
+  }
+
   .navbar-brand {
-    font-size: 1em;
+    font-size: 1.3em;
+    padding: auto 0;
   }
 }
