@@ -4,7 +4,7 @@ import axios from 'axios';
 import AlbumsList from './components/AlbumsList';
 import UploadButton from './components/UploadButton';
 import Form from './components/AddAlbum';
-import Navbar from './components/Navbar';
+import Header from './components/Navbar';
 import Footer from './components/Footer';
 import './index.css';
 
@@ -91,7 +91,7 @@ class App extends Component {
     var bg = require('./components/static/landscape.jpg')
     return (
       <div className="app">
-        <Navbar />
+        <Header />
         <div className="jumbotron"  style ={{backgroundImage: "url("+bg+")"}} >
           <div className="jumbo container">
             {formOpened ? (
