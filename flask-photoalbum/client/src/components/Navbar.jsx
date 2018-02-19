@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 import './Navbar.css';
 
@@ -13,9 +13,9 @@ class Header extends Component  {
   }
   render() {
     return (
-      <Navbar>
+      <Navbar inverse fluid className="navbar">
         <Navbar.Header>
-          <Navbar.Brand>
+          <Navbar.Brand className="navbar-brand">
             <a href="#">React + Flask Photo Album</a>
           </Navbar.Brand>
           <Navbar.Toggle />

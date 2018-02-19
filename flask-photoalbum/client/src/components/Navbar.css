@@ -20,11 +20,16 @@
 
 @media screen and (max-width: 400px) {
   .navbar {
-    padding: 0.2em;
+    padding: 0.2em 0 0.2em 0.2em;
   }
 
   .navbar-brand {
     font-size: 1.3em;
-    padding: auto 0;
+    padding-right: 0;
+    padding-left: 0.2em;
+  }
+
+  .navbar-right {
+    font-size: 1.1em;
   }
 }
