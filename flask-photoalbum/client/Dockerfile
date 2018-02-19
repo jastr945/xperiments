@@ -22,6 +22,7 @@ RUN npm install axios --save
 RUN npm install react-timestamp
 RUN npm install --save-dev url-loader file-loader
 RUN npm install --save @researchgate/react-intersection-observer
+RUN npm install --save react-bootstrap
 
 # add app
 ADD . /usr/src/app
