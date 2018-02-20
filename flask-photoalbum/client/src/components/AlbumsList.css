@@ -1,5 +1,4 @@
 .albumSpace {
-  /*background-color: pink;*/
   width: 100%;
   margin: 0 auto 1em auto;
 }
@@ -12,9 +11,22 @@
 
 }
 
-
 .header {
-  /*background-color: yellow;*/
   padding: 1em 2em;
   margin: 0;
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    padding: 0 1em;
+  }
+
+  .album {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  h5, h6 {
+    text-align: justify;
+  }
 }

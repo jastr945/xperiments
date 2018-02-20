@@ -71,3 +71,10 @@
   cursor: pointer;
   z-index: 1;
 }
+
+@media screen and (max-width: 900px) {
+  .arrow-right, .arrow-left {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}

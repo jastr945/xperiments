@@ -25,6 +25,6 @@
 
 @media screen and (max-width: 500px) {
   .jumbotron{
-    height: 35vh;
+    height: auto;
   }
 }

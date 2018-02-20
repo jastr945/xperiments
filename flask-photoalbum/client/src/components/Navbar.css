@@ -12,13 +12,13 @@
   font-size: 1.5em;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .navbar-brand {
     font-size: 1.5em;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .navbar {
     padding: 0.2em 0 0.2em 0.2em;
   }
