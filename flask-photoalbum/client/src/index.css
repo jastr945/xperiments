@@ -13,7 +13,7 @@
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 45vh;
+  min-height: 45vh;
 }
 
 .jumbo {
@@ -24,7 +24,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .jumbotron{
+  .jumbotron {
     height: auto;
   }
 }
