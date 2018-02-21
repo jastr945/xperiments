@@ -44,12 +44,12 @@ class ImageRow extends React.Component {
         finish: 4,
         slideslength: 4
       });
-    } else if (this.state.screenSize < 1010 && this.state.screenSize > 770) {
+    } else if (this.state.screenSize < 1010 && this.state.screenSize > 920) {
       this.setState({
         finish: 3,
         slideslength: 3
       });
-    } else if (this.state.screenSize < 770 && this.state.screenSize > 590) {
+    } else if (this.state.screenSize < 920 && this.state.screenSize > 590) {
       this.setState({
         finish: 2,
         slideslength: 2
