@@ -82,3 +82,27 @@
     transform: translateY(0%);
   }
 }
+
+@media screen and (max-width: 380px) {
+  .arrow-left {
+    margin-left: 0;
+    margin-right: 0.5em;
+  }
+
+  .arrow-right {
+    margin-right: 0;
+    margin-left: 0.5em;
+  }
+
+  @keyframes zoom {
+    0% {
+    }
+    100% {
+      transform: scale(1.1120);
+      z-index: 2;
+    }
+  }
+
+
+
+}
