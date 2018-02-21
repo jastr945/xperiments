@@ -26,14 +26,14 @@ class AlbumsList extends React.Component {
 
   render() {
     return (
-      <div className="albumSpace" id="albumSpace">
+      <div className="container albumSpace">
         {
           this.props.albums.map((album, albumindex) => {
             return (
                 <div
                   onMouseEnter={this.albumHover.bind(this, albumindex)}
                   onMouseLeave={this.albumMouseLeave.bind(this)}
-                  className="container album"
+                  className="album"
                   key={albumindex}
                 >
                   <div className="header row">
