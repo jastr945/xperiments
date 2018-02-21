@@ -8,13 +8,57 @@ class ImageRow extends React.Component {
     super(props);
     this.state = {
       start: 0,
-      finish: 5,
+      finish: null,
+      slideslength: null,
+      screenSize: window.innerWidth,
       fadedleft: true,
       fadedright: false,
       imgHovered: false,
       imgClicked: false,
       imgID: -1,
       visibility: null
+    }
+    this.updateSize = this.updateSize.bind(this);
+  }
+  componentDidMount() {
+    window.addEventListener("resize", this.updateSize);
+    this.updateSize();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateSize);
+  }
+  updateSize() {
+    this.setState({
+      screenSize: window.innerWidth,
+      fadedleft: true,
+      fadedright: false,
+      start: 0
+    });
+    if (this.state.screenSize > 1200) {
+      this.setState({
+        finish: 5,
+        slideslength: 5,
+      });
+    } else if (this.state.screenSize < 1200 && this.state.screenSize > 1010) {
+      this.setState({
+        finish: 4,
+        slideslength: 4
+      });
+    } else if (this.state.screenSize < 1010 && this.state.screenSize > 770) {
+      this.setState({
+        finish: 3,
+        slideslength: 3
+      });
+    } else if (this.state.screenSize < 770 && this.state.screenSize > 590) {
+      this.setState({
+        finish: 2,
+        slideslength: 2
+      });
+    } else {
+      this.setState({
+        finish: 1,
+        slideslength: 1
+      });
     }
   }
   imgHover(imgindex) {
@@ -47,10 +91,11 @@ class ImageRow extends React.Component {
   leftClick() {
     let start = this.state.start;
     let finish = this.state.finish;
+    let slideslength = this.state.slideslength;
     if (start > 0 && finish > 0) {
       this.setState({
-        start: start - 5,
-        finish: finish - 5,
+        start: start - slideslength,
+        finish: finish - slideslength,
         fadedright: false
       });
     } else {
@@ -62,10 +107,11 @@ class ImageRow extends React.Component {
   rightClick(length) {
     let start = this.state.start;
     let finish = this.state.finish;
+    let slideslength = this.state.slideslength;
     if (finish < length) {
       this.setState({
-        start: start + 5,
-        finish: finish + 5,
+        start: start + slideslength,
+        finish: finish + slideslength,
         fadedleft: false
       });
     } else {
