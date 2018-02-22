@@ -42,7 +42,7 @@ class AlbumsList extends React.Component {
                     <h5>{album.description}</h5>
                   </div>
                   <ImageRow albums={this.props.albums} albumkey={albumindex} />
-                </div>
+              </div>
             )
           })
         }
