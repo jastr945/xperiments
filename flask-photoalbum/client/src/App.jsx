@@ -32,7 +32,7 @@ class App extends Component {
     .catch((err) => { console.log(err); })
   }
   getGoogleData() {
-    fetch('/login/authorized', {
+    fetch('http://192.168.0.109.nip.io:5001', {
     method: 'GET',
     credentials: 'include',
     headers: {

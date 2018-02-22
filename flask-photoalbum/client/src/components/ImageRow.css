@@ -25,15 +25,21 @@
   opacity: 0.4;
 }
 
-.albumimage {
-  position: relative;
-  margin: 1em 0.15em;
-  padding:0;
+.imageContainer {
+  display: flex;
   max-width: 180px;
   max-height: 120px;
+  margin: 1em 0.15em;
+  position: relative;
+  padding:0;
   z-index: 0;
+}
+
+.albumimage {
   object-fit: contain;
-  border-radius: 5px;
+  border-radius: 10px;
+  width: auto;
+  height: auto;
 }
 
 @keyframes zoom {
@@ -51,12 +57,15 @@
 
 @keyframes open {
   0% {
-    z-index: 2;
+    position: absolute;
   }
   100% {
-    transform: scale(5);
+    position: absolute;
+    max-width: 50vw;
+    max-height: 70vh;
     border-radius: 0;
     z-index: 2;
+    margin: auto;
   }
 }
 
@@ -102,7 +111,4 @@
       z-index: 2;
     }
   }
-
-
-
 }
