@@ -16,7 +16,7 @@ class ImageRow extends React.Component {
       imgHovered: false,
       imgClicked: false,
       imgID: -1,
-      visibility: null,
+      visibility: null
     }
     this.updateSize = this.updateSize.bind(this);
   }
@@ -140,7 +140,7 @@ class ImageRow extends React.Component {
             this.props.albums[this.props.albumkey].images.slice(start, finish).map((i, imgindex) => {
               var zoomedImg = imgHovered && imgID === imgindex ? "zoomed" : "";
               var openImg = imgClicked && imgID === imgindex ? "opened" : "";
-              var imgClass = `imageContainer ${openImg} ${zoomedImg}`
+              var imgClass = `imageContainer ${openImg} ${zoomedImg}`;
               return (
                 <div className={imgClass} key={imgindex}>
                   {imgID === imgindex && imgClicked === false && imgHovered === true && <img className="expandicon" onClick={this.openImg.bind(this, imgindex)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
