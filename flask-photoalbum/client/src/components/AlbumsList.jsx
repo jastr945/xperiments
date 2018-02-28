@@ -10,20 +10,22 @@ class AlbumsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      albumID: -1
+      albumID: -1,
+      albumHovered: false
     }
   }
   albumHover(albumindex) {
     this.setState({
-      albumID: this.state.albumID === albumindex ? -1 : albumindex,
+      albumID: albumindex,
+      albumHovered: true
     });
   }
   albumMouseLeave() {
     this.setState({
+      albumHovered: false,
       albumID: -1
     });
   }
-
   render() {
     return (
       <div className="container albumSpace">
@@ -41,7 +43,12 @@ class AlbumsList extends React.Component {
                     <h6>{album.images.length} files - <Timestamp time={album.created_at} format='full' /> - <i><Timestamp time={album.created_at} format='ago' includeDay={true} precision={2} autoUpdate={60} /></i></h6>
                     <h5>{album.description}</h5>
                   </div>
-                  <ImageRow albums={this.props.albums} albumkey={albumindex} />
+                  <ImageRow
+                  albums={this.props.albums}
+                  albumID={this.state.albumID}
+                  albumHovered={this.state.albumHovered}
+                  albumkey={albumindex}
+                  />
               </div>
             )
           })

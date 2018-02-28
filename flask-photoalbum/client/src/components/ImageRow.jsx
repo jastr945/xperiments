@@ -16,7 +16,8 @@ class ImageRow extends React.Component {
       imgHovered: false,
       imgClicked: false,
       imgID: -1,
-      visibility: null
+      visibility: null,
+      albumClicked: -1
     }
     this.updateSize = this.updateSize.bind(this);
   }
@@ -62,22 +63,24 @@ class ImageRow extends React.Component {
     }
   }
   imgHover(imgindex) {
-    this.setState({
-      imgID: imgindex,
-      imgHovered: true
-    });
+  if (!this.state.imgClicked) {
+      this.setState({
+        imgID: imgindex,
+        imgHovered: true
+      });
+    }
   }
   imgMouseLeave() {
     this.setState({
       imgHovered: false
     });
   }
-  openImg(imgindex) {
+  openImg(imgindex, albumIndex) {
     if (this.state.imgID === imgindex) {
       this.setState({
         imgClicked: true,
         imgHovered: false,
-        imgID: -1
+        albumClicked: albumIndex
       });
     }
   }
@@ -85,7 +88,7 @@ class ImageRow extends React.Component {
     this.setState({
       imgClicked: false,
       imgHovered: false,
-      imgID: -1
+      albumClicked: -1
     });
   }
   leftClick() {
@@ -126,26 +129,33 @@ class ImageRow extends React.Component {
     });
   };
   render() {
-    const {start, finish, fadedleft, fadedright, imgHovered, imgID, imgClicked} = this.state
+    const {start, finish, fadedleft, fadedright, imgHovered, imgID, imgClicked, albumClicked} = this.state
+    const albumID = this.props.albumID;
+    const albumIndex = this.props.albumkey;
+    const albumHovered = this.props.albumHovered;
     const left = fadedleft ? "arrow-left col-md-1 text-center faded-left" : "arrow-left col-md-1 text-center";
     const right = fadedright ? "arrow-right col-md-1 text-center faded-right" : "arrow-right col-md-1 text-center";
     var length = this.props.albums[this.props.albumkey].images.length;
+    // console.log("imgID: " + imgID, "albumID: " + albumID, "imgClicked: " + imgClicked, "imgHovered: " + imgHovered, "albumHovered: " + albumHovered);
+    var hiddenslides = (albumIndex !== albumClicked) ? "hiddenslides" : "";
+    console.log(hiddenslides);
+
     return (
       <Observer onChange={this.handleIntersection.bind(this)}>
-        <div className={`slideshow row ${this.state.visibility}`}>
+        <div className={`slideshow row ${this.state.visibility} ${hiddenslides}`}>
           <div className={left} onClick={this.leftClick.bind(this)}>
             <img src={require('./static/arrow-left.png')} width={50} alt="arrow" />
           </div>
           {
-            this.props.albums[this.props.albumkey].images.slice(start, finish).map((i, imgindex) => {
-              var zoomedImg = imgHovered && imgID === imgindex ? "zoomed" : "";
+            this.props.albums[albumIndex].images.slice(start, finish).map((i, imgindex) => {
+              var zoomedImg = imgHovered && albumHovered && imgID === imgindex && albumID === albumIndex ? "zoomed" : "";
               var openImg = imgClicked && imgID === imgindex ? "opened" : "";
               var imgClass = `imageContainer ${openImg} ${zoomedImg}`;
               return (
                 <div className={imgClass} key={imgindex}>
-                  {imgID === imgindex && imgClicked === false && imgHovered === true && <img className="expandicon" onClick={this.openImg.bind(this, imgindex)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
+                  {imgHovered && albumHovered && imgID === imgindex && albumID === albumIndex && <img className="expandicon" onClick={this.openImg.bind(this, imgindex, albumIndex)} onMouseEnter={this.imgHover.bind(this, imgindex)} src={require('./static/expand.png')} width={30} alt="expand" />}
 
-                  {imgID === imgindex && imgClicked === true && <img className="closeicon" onClick={this.closeImg.bind(this)}  src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={45} alt="close" />}
+                  {imgClicked && albumHovered && imgID === imgindex && albumID === albumIndex && <img className="closeicon" onClick={this.closeImg.bind(this)}  src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png" width={45} alt="close" />}
 
                   <img className="albumimage" onMouseEnter={this.imgHover.bind(this, imgindex)} onMouseLeave={this.imgMouseLeave.bind(this)} src={i} alt='album img' />
                 </div>
