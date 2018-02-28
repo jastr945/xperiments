@@ -27,12 +27,12 @@ class App extends Component {
     this.getGoogleData();
   }
   getAlbums() {
-    axios.get('http://192.168.0.109:5001/albums')
+    axios.get('http://192.168.0.107:5001/albums')
     .then((res) => { this.setState({ albums: res.data.data.albums }); })
     .catch((err) => { console.log(err); })
   }
   getGoogleData() {
-    fetch('http://192.168.0.109.nip.io:5001', {
+    fetch('http://192.168.0.107.nip.io:5001', {
     method: 'GET',
     credentials: 'include',
     headers: {
@@ -59,7 +59,7 @@ class App extends Component {
         'Content-Type': 'multipart/form-data'
       }
     }
-    axios.post('http://192.168.0.109:5001/albums', formData, config)
+    axios.post('http://192.168.0.107:5001/albums', formData, config)
     .then((res) => {
       this.getAlbums();
       this.setState({ title: '', description: '', file: null });
