@@ -41,7 +41,7 @@
 .albumimage {
   object-fit: contain;
   padding:0.2em 0;
-  width: inherit;
+  width: 100%;
 }
 
 @keyframes zoom {
