@@ -19,8 +19,11 @@
 }
 
 .hiddenslides {
-  background-color: green;
-  opacity: 0.1;
+  z-index: 0;
+}
+
+.open {
+  z-index: 1;
 }
 
 .arrow-right, .arrow-left {
@@ -65,12 +68,12 @@
 @keyframes open {
   0% {
     position: absolute;
-    z-index: 2;
+    z-index: 999;
   }
   100% {
     position: absolute;
     max-width: 80vw;
-    max-height: 150vh;
+    max-height: 90vh;
     border-radius: 0;
     z-index: 1000;
     margin: auto;

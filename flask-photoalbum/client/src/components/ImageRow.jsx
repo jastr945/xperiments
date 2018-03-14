@@ -17,7 +17,7 @@ class ImageRow extends React.Component {
       imgClicked: false,
       imgID: -1,
       visibility: null,
-      albumClicked: -1
+      albumClicked: -2
     }
     this.updateSize = this.updateSize.bind(this);
   }
@@ -137,8 +137,8 @@ class ImageRow extends React.Component {
     const right = fadedright ? "arrow-right col-md-1 text-center faded-right" : "arrow-right col-md-1 text-center";
     var length = this.props.albums[this.props.albumkey].images.length;
     // console.log("imgID: " + imgID, "albumID: " + albumID, "imgClicked: " + imgClicked, "imgHovered: " + imgHovered, "albumHovered: " + albumHovered);
-    var hiddenslides = (albumIndex !== albumClicked) ? "hiddenslides" : "";
-    console.log(hiddenslides);
+    console.log("albumID: " + albumID, "albumClicked: " + albumClicked, "imgClicked: " + imgClicked);
+    var hiddenslides = imgClicked && albumID === albumClicked ? "open" : "hiddenslides";
 
     return (
       <Observer onChange={this.handleIntersection.bind(this)}>

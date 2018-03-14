@@ -22,8 +22,7 @@ class AlbumsList extends React.Component {
   }
   albumMouseLeave() {
     this.setState({
-      albumHovered: false,
-      albumID: -1
+      albumHovered: false
     });
   }
   render() {
