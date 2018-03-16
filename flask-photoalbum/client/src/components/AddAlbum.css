@@ -23,7 +23,7 @@ form {
   border-color: #cf6f55;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:visited, .btn-primary:active:focus {
   background-color: #cf6f55;
   border-color: #c06046;
 }
