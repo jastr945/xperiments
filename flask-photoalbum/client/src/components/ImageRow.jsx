@@ -1,12 +1,14 @@
 import React from 'react';
 import Observer from '@researchgate/react-intersection-observer';
 
+import Loading from './Loading';
 import './ImageRow.css';
 
 class ImageRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       start: 0,
       finish: null,
       slideslength: null,
@@ -24,6 +26,9 @@ class ImageRow extends React.Component {
   componentDidMount() {
     window.addEventListener("resize", this.updateSize);
     this.updateSize();
+    this.setState({
+      loading: false
+    });
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateSize);
@@ -141,6 +146,7 @@ class ImageRow extends React.Component {
     var hiddenslides = imgClicked && albumID === albumClicked ? "open" : "hiddenslides";
 
     return (
+      this.state.loading ? <Loading /> :
       <Observer onChange={this.handleIntersection.bind(this)}>
         <div className={`slideshow row ${this.state.visibility} ${hiddenslides}`}>
           <div className={left} onClick={this.leftClick.bind(this)}>
