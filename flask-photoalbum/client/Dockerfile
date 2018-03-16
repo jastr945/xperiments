@@ -23,6 +23,7 @@ RUN npm install react-timestamp
 RUN npm install --save-dev url-loader file-loader
 RUN npm install --save @researchgate/react-intersection-observer
 RUN npm install --save react-bootstrap
+RUN npm i react-loading
 
 # add app
 ADD . /usr/src/app

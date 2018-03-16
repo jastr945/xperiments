@@ -137,7 +137,7 @@ class ImageRow extends React.Component {
     const right = fadedright ? "arrow-right col-md-1 text-center faded-right" : "arrow-right col-md-1 text-center";
     var length = this.props.albums[this.props.albumkey].images.length;
     // console.log("imgID: " + imgID, "albumID: " + albumID, "imgClicked: " + imgClicked, "imgHovered: " + imgHovered, "albumHovered: " + albumHovered);
-    console.log("albumID: " + albumID, "albumClicked: " + albumClicked, "imgClicked: " + imgClicked);
+    // console.log("albumID: " + albumID, "albumClicked: " + albumClicked, "imgClicked: " + imgClicked);
     var hiddenslides = imgClicked && albumID === albumClicked ? "open" : "hiddenslides";
 
     return (
