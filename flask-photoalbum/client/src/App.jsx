@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Loading from './components/Loading';
 import AlbumsList from './components/AlbumsList';
 import UploadButton from './components/UploadButton';
 import Form from './components/AddAlbum';
@@ -110,7 +109,6 @@ class App extends Component {
             )}
           </div>
         </div>
-        <Loading />
         <div className="container">
           <AlbumsList albums={this.state.albums}/>
         </div>
