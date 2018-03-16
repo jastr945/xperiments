@@ -26,9 +26,9 @@ class ImageRow extends React.Component {
   componentDidMount() {
     window.addEventListener("resize", this.updateSize);
     this.updateSize();
-    this.setState({
+    setTimeout(() => this.setState({
       loading: false
-    });
+    }), 1500);
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateSize);
