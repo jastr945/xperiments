@@ -23,7 +23,11 @@
 }
 
 .open {
-  z-index: 1;
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 10;
 }
 
 .arrow-right, .arrow-left {
