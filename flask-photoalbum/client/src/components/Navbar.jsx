@@ -9,7 +9,7 @@ class Header extends Component  {
     super()
     this.state = {
       useremail: null,
-      userpic: 'https://github.com/jastr945/PDXclass/blob/master/portfolio/myportfolio/portfoliopages/static/portfoliopages/img/pofi.jpg?raw=true'
+      userpic: null
     }
   }
   componentDidMount() {
@@ -28,9 +28,13 @@ class Header extends Component  {
       'Content-Type': 'application/json'
     },
     })
-    .then(response => {
-      console.log(response);
-      return response.json();
+    .then(res => {
+      console.log(res);
+      return res.json();
+      this.setState({
+        useremail: res.data.email,
+        userpic: res.data.picture
+      });
     })
     .catch(error => console.log(error))
   }
