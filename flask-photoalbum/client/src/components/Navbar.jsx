@@ -53,7 +53,7 @@ class Header extends Component  {
             <NavItem eventKey={2} href="http://polina.mee.how/" target="_blank">Contact</NavItem>
             {!this.state.useremail && <NavItem eventKey={3} href="http://192.168.0.107.nip.io:5001/login">Sign in</NavItem>}
             {this.state.useremail && <NavItem>{this.state.useremail} | <img src={this.state.userpic} height="22px" width="22px"/></NavItem>}
-            {this.state.useremail && <NavItem eventKey={3}>Log out</NavItem>}
+            {this.state.useremail && <NavItem eventKey={3} href="http://192.168.0.107.nip.io:5001/logout">Log out</NavItem>}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
