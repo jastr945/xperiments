@@ -32,7 +32,11 @@ class App extends Component {
     .catch((err) => { console.log(err); })
   }
   getGoogleData() {
-    fetch('http://192.168.0.107.nip.io:5001', {
+    var pathname = /^(?:\w+\:\/\/)?([^\/]+)(.*)$/.exec(window.location.href);
+    var path = pathname[2];
+    var finalurl = 'http://192.168.0.107.nip.io:5001' + path;
+    console.log(finalurl);
+    fetch(finalurl, {
     method: 'GET',
     credentials: 'include',
     headers: {
