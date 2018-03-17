@@ -12,6 +12,28 @@ class Header extends Component  {
       userpic: 'https://github.com/jastr945/PDXclass/blob/master/portfolio/myportfolio/portfoliopages/static/portfoliopages/img/pofi.jpg?raw=true'
     }
   }
+  componentDidMount() {
+    this.getGoogleData();
+  }
+  getGoogleData() {
+    var pathname = /^(?:\w+\:\/\/)?([^\/]+)(.*)$/.exec(window.location.href);
+    var path = pathname[2];
+    var finalurl = 'http://192.168.0.107.nip.io:5001' + path;
+    console.log(finalurl);
+    fetch(finalurl, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    })
+    .then(response => {
+      console.log(response);
+      return response.json();
+    })
+    .catch(error => console.log(error))
+  }
   render() {
     return (
       <Navbar inverse fluid className="navbar">
