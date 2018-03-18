@@ -18,7 +18,7 @@ class Header extends Component  {
   getGoogleData() {
     var pathname = /^(?:\w+\:\/\/)?([^\/]+)(.*)$/.exec(window.location.href);
     var path = pathname[2];
-    var finalurl = 'http://192.168.0.107.nip.io:5001' + path;
+    var finalurl = 'http://slider.mee.how:5001' + path;
     console.log(finalurl);
     fetch(finalurl, {
     method: 'GET',
@@ -51,9 +51,9 @@ class Header extends Component  {
           <Nav pullRight>
             <NavItem eventKey={1} href="https://github.com/jastr945" target="_blank">About</NavItem>
             <NavItem eventKey={2} href="http://polina.mee.how/" target="_blank">Contact</NavItem>
-            {!this.state.useremail && <NavItem eventKey={3} href="http://192.168.0.107.nip.io:5001/login">Sign in</NavItem>}
+            {!this.state.useremail && <NavItem eventKey={3} href="http://slider.mee.how:5001/login">Sign in</NavItem>}
             {this.state.useremail && <NavItem>{this.state.useremail} | <img src={this.state.userpic} height="22px" width="22px"/></NavItem>}
-            {this.state.useremail && <NavItem eventKey={3} href="http://192.168.0.107.nip.io:5001/logout">Log out</NavItem>}
+            {this.state.useremail && <NavItem eventKey={3} href="http://slider.mee.how:5001/logout">Log out</NavItem>}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

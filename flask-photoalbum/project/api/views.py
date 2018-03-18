@@ -58,7 +58,7 @@ def index():
 
 @albums_blueprint.route('/login')
 def login():
-    return google.authorize(callback="http://192.168.0.107.nip.io:9000/login/authorized")
+    return google.authorize(callback="http://slider.mee.how:9000/login/authorized")
 
 @albums_blueprint.route('/logout')
 def logout():
