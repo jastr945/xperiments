@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { GoogleLogin } from 'react-google-login';
 
 import './Navbar.css';
 
@@ -13,30 +14,11 @@ class Header extends Component  {
     }
   }
   componentDidMount() {
-    this.getGoogleData();
+    this.responseGoogle();
   }
-  getGoogleData() {
-    var pathname = /^(?:\w+\:\/\/)?([^\/]+)(.*)$/.exec(window.location.href);
-    var path = pathname[2];
-    var finalurl = 'http://slider.mee.how:5001' + path;
-    console.log(finalurl);
-    fetch(finalurl, {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    },
-    })
-    .then(res => {
-      console.log(res);
-      return res.json();
-      this.setState({
-        useremail: res.data.email,
-        userpic: res.data.picture
-      });
-    })
-    .catch(error => console.log(error))
+  responseGoogle(response) {
+    console.log(response);
+    console.log(response.profileObj.email);
   }
   render() {
     return (
@@ -51,7 +33,14 @@ class Header extends Component  {
           <Nav pullRight>
             <NavItem eventKey={1} href="https://github.com/jastr945" target="_blank">About</NavItem>
             <NavItem eventKey={2} href="http://polina.mee.how/" target="_blank">Contact</NavItem>
-            {!this.state.useremail && <NavItem eventKey={3} href="http://slider.mee.how:5001/login">Sign in</NavItem>}
+            {!this.state.useremail && <NavItem eventKey={3}>
+            <GoogleLogin
+              clientId="418257197191-75oafj28gkn84pj7ebgvt54av0vtt7br.apps.googleusercontent.com"
+              buttonText="Login"
+              onSuccess={this.responseGoogle}
+              onFailure={this.responseGoogle}
+            />
+            </NavItem>}
             {this.state.useremail && <NavItem>{this.state.useremail} | <img src={this.state.userpic} height="22px" width="22px"/></NavItem>}
             {this.state.useremail && <NavItem eventKey={3} href="http://slider.mee.how:5001/logout">Log out</NavItem>}
           </Nav>

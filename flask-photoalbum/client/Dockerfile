@@ -17,13 +17,13 @@ ENV REACT_APP_ALBUMS_SERVICE_URL $REACT_APP_ALBUMS_SERVICE_URL
 ADD package.json /usr/src/app/package.json
 RUN npm install --silent
 RUN npm install pushstate-server -g --silent
-RUN npm install react-router-dom
 RUN npm install axios --save
 RUN npm install react-timestamp
 RUN npm install --save-dev url-loader file-loader
 RUN npm install --save @researchgate/react-intersection-observer
 RUN npm install --save react-bootstrap
 RUN npm i react-loading
+RUN npm install react-google-login
 
 # add app
 ADD . /usr/src/app
