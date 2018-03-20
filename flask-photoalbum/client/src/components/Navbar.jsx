@@ -5,6 +5,7 @@ import { GoogleLogin } from 'react-google-login';
 import './Navbar.css';
 
 
+
 class Header extends Component  {
   constructor() {
     super()
@@ -13,12 +14,12 @@ class Header extends Component  {
       userpic: null
     }
   }
+
   componentDidMount() {
     this.responseGoogle();
   }
-  responseGoogle(response) {
+  responseGoogle = (response) => {
     console.log(response);
-    console.log(response.profileObj.email);
   }
   render() {
     return (
