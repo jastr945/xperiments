@@ -13,11 +13,9 @@ class Header extends Component  {
       useremail: null,
       userpic: null
     }
+    this.responseGoogle = this.responseGoogle.bind(this);
   }
 
-  componentDidMount() {
-    this.responseGoogle();
-  }
   responseGoogle = (response) => {
     console.log(response);
   }
@@ -40,6 +38,11 @@ class Header extends Component  {
               buttonText="Login"
               onSuccess={this.responseGoogle}
               onFailure={this.responseGoogle}
+              approvalPrompt="force"
+              responseType="code"
+              scope="profile email"
+              fetchBasicProfile={false}
+              isSignedIn={true}
             />
             </NavItem>}
             {this.state.useremail && <NavItem>{this.state.useremail} | <img src={this.state.userpic} height="22px" width="22px"/></NavItem>}
