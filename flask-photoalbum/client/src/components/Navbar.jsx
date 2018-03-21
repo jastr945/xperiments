@@ -17,7 +17,7 @@ class Header extends Component  {
   }
   responseGoogle = (response) => {
     console.log('login');
-    console.log(response.profileObj);
+    console.log(response);
     this.setState({
       useremail: response.profileObj.email,
       userpic: response.profileObj.imageUrl
@@ -51,8 +51,9 @@ class Header extends Component  {
               onFailure={this.responseGoogle}
               offline={true}
               approvalPrompt="force"
-              responseType="id_token"
-              isSignedIn={false}
+              responseType="id_token permission"
+              prompt="consent"
+              isSignedIn
             />
             </NavItem>}
             {this.state.useremail && <NavItem>{this.state.useremail} | <img src={this.state.userpic} height="22px" width="22px"/></NavItem>}
