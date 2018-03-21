@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
 import './Navbar.css';
-
 
 
 class Header extends Component  {
@@ -14,10 +13,22 @@ class Header extends Component  {
       userpic: null
     }
     this.responseGoogle = this.responseGoogle.bind(this);
+    this.logout = this.logout.bind(this);
   }
-
   responseGoogle = (response) => {
-    console.log(response);
+    console.log('login');
+    console.log(response.profileObj);
+    this.setState({
+      useremail: response.profileObj.email,
+      userpic: response.profileObj.imageUrl
+    });
+  }
+  logout = () => {
+    console.log('logout');
+    this.setState({
+      useremail: null,
+      userpic: null
+    });
   }
   render() {
     return (
@@ -38,15 +49,16 @@ class Header extends Component  {
               buttonText="Login"
               onSuccess={this.responseGoogle}
               onFailure={this.responseGoogle}
+              offline={true}
               approvalPrompt="force"
-              responseType="code"
-              scope="profile email"
-              fetchBasicProfile={false}
-              isSignedIn={true}
+              responseType="id_token"
+              isSignedIn={false}
             />
             </NavItem>}
             {this.state.useremail && <NavItem>{this.state.useremail} | <img src={this.state.userpic} height="22px" width="22px"/></NavItem>}
-            {this.state.useremail && <NavItem eventKey={3} href="http://slider.mee.how:5001/logout">Log out</NavItem>}
+            {this.state.useremail && <NavItem eventKey={3}>
+              <GoogleLogout buttonText="Logout" onLogoutSuccess={this.logout} />
+            </NavItem>}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
