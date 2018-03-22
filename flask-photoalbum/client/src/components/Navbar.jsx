@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
@@ -15,13 +16,30 @@ class Header extends Component  {
     this.responseGoogle = this.responseGoogle.bind(this);
     this.logout = this.logout.bind(this);
   }
+  getUser() {
+    axios.get('http://slider.mee.how:5001/login/authorized')
+    .then((res) => { console.log(res.data); })
+    .catch((err) => { console.log(err); })
+  }
   responseGoogle = (response) => {
     console.log('login');
     console.log(response);
-    this.setState({
-      useremail: response.profileObj.email,
-      userpic: response.profileObj.imageUrl
-    });
+    var token = response.tokenObj.id_token;
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + token,
+        'mode': 'no-cors'
+      }
+    }
+    axios.post('http://slider.mee.how:5001/login/authorized', config)
+    .then((res) => {
+      console.log('access code sent');
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    this.getUser();
   }
   logout = () => {
     console.log('logout');
@@ -51,15 +69,14 @@ class Header extends Component  {
               onFailure={this.responseGoogle}
               offline={true}
               approvalPrompt="force"
-              responseType="id_token permission"
+              responseType="id_token"
               prompt="consent"
               isSignedIn
             />
             </NavItem>}
             {this.state.useremail && <NavItem>{this.state.useremail} | <img src={this.state.userpic} height="22px" width="22px"/></NavItem>}
-            {this.state.useremail && <NavItem eventKey={3}>
-              <GoogleLogout buttonText="Logout" onLogoutSuccess={this.logout} />
-            </NavItem>}
+            {this.state.useremail &&
+              <GoogleLogout buttonText="Logout" onLogoutSuccess={this.logout} />}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

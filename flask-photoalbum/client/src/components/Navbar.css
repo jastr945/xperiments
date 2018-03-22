@@ -12,6 +12,7 @@
   font-size: 1.5em;
 }
 
+
 @media screen and (max-width: 600px) {
   .navbar-brand {
     font-size: 1.5em;
