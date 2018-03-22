@@ -21,7 +21,7 @@ class Header extends Component  {
   }
   getUser() {
     axios.get('http://slider.mee.how:5001/login/authorized')
-    .then((res) => { console.log(res.data); })
+    .then((res) => { console.log(res.json()); console.log("getting user"); })
     .catch((err) => { console.log(err); })
   }
   responseGoogle = (response) => {

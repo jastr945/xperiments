@@ -16,7 +16,6 @@ services:
   albums-service:
     container_name: albums-service
     build: .
-    command: 'sleep 200000'
     ports:
       - 5001:5000
     environment:
