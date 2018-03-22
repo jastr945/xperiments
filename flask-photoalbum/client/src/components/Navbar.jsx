@@ -16,6 +16,9 @@ class Header extends Component  {
     this.responseGoogle = this.responseGoogle.bind(this);
     this.logout = this.logout.bind(this);
   }
+  componentDidMount() {
+    this.getUser();
+  }
   getUser() {
     axios.get('http://slider.mee.how:5001/login/authorized')
     .then((res) => { console.log(res.data); })
@@ -39,7 +42,6 @@ class Header extends Component  {
     .catch((err) => {
       console.log(err);
     })
-    this.getUser();
   }
   logout = () => {
     console.log('logout');
