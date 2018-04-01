@@ -16,14 +16,15 @@
 <body>
   <div id="mainContainer">
     <div id="formBox">
-      <form>
-        <select>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <select name="itemtype">
          <option value="book">Book</option>
          <option value="movie">Movie</option>
         </select>
-        <input type="text" name="title" placeholder="Enter title..." />
+        <input type="text" name="title" placeholder="Enter title..." required />
         <input type="text" name="author" placeholder="Enter author or description..." />
-        <button type="button" value="submit">Add to the list</button>
+        <input type="submit" class="submitButton" name="submitButton" value="Add to the list"/>
       </form>
     </div>
     <div id="listBox">
