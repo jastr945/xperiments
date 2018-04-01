@@ -1,0 +1,66 @@
+body, html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 50%;
+  margin: auto;
+  background-color: #B4D1B6;
+  font-family: 'IBM Plex Serif', serif;
+  color: #000000;
+}
+
+#formBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  height: auto;
+  width: 60%;
+  margin: auto;
+  padding: 0.5em 1em;
+  font-size: 1.5em;
+  border-radius: 10px;
+}
+
+#formBox > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+}
+
+#formBox > form > select {
+  width: 25%;
+  margin: 0.1em auto;
+  padding: 0.2em;
+}
+
+#formBox > form > input {
+  margin: 0.1em 0;
+  padding: 0.2em;
+}
+
+#formBox > form > button {
+  width: 40%;
+  margin: 0.5em auto;
+  padding: 0.2em;
+}
+
+#listBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  background-color: white;
+  min-height: 60vh;
+  height: auto;
+  margin: 1em auto;
+  border-radius: 10px;
+}
