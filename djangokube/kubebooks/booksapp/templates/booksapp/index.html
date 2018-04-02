@@ -35,13 +35,19 @@
         <div class="author column">Author</div>
         <div class="delete column">Del</div>
       </div>
-      <div class="row">
-        <div class="id column">1</div>
-        <div class="type column">Book</div>
-        <div class="title column">Dune Messiah</div>
-        <div class="author column">Frank Herbert</div>
-        <div class="delete column">X</div>
-      </div>
+      {% if items %}
+      {% for i in items %}
+        <div class="row">
+          <div class="id column">{{ i.id }}</div>
+          <div class="type column">{{ i.itemtype }}</div>
+          <div class="title column">{{ i.title }}</div>
+          <div class="author column">{{ i.author }}</div>
+          <div class="delete column">X</div>
+        </div>
+      {% endfor %}
+      {% else %}
+      <h3>There are no entries yet.</h3>
+      {% endif %}
     </div>
   </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
