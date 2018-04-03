@@ -16,8 +16,7 @@ def index(request):
     return render(request, 'booksapp/index.html', {"items": items})
 
 
-def delete_entry(request):
+def delete_entry(request, entryid):
     """Deleting a single entry from the list."""
-
-    get_object_or_404(Item, id=request.GET['entry_id']).delete()
-    return HttpResponse("OK")
+    get_object_or_404(Item, id=entryid).delete()
+    return HttpResponse("deleted")

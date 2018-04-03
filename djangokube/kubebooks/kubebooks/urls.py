@@ -19,6 +19,6 @@ from booksapp import views as page_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', page_views.index, name='index'),
-    url(r'^delete_entry/', page_views.delete_entry, name='delete_entry'),
+    url(r'^index/', page_views.index, name='index'),
+    url(r'^delete_entry/(?P<entryid>\d+)', page_views.delete_entry, name='delete_entry'),
 ]

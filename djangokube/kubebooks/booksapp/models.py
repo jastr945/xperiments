@@ -9,5 +9,9 @@ class Item(models.Model):
     author = models.CharField(max_length=255, default='', null=False)
 
     def save(self, *args, **kwargs):
-        """Saving the Item instance in the database"""
+        """Saving an Item instance in the database"""
         super(Item, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        """Deleting an Item instance from the database"""
+        super(Item, self).delete(*args, **kwargs)
