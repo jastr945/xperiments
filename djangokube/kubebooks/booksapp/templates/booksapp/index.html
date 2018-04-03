@@ -31,7 +31,6 @@
     </div>
     <div id="listBox">
       <div class="row headers">
-        <div class="id column">#</div>
         <div class="type column">Type</div>
         <div class="title column">Title</div>
         <div class="author column">Author</div>
@@ -40,7 +39,6 @@
       {% if items %}
       {% for i in items %}
         <div class="row">
-          <div class="id column">{{ i.id }}</div>
           <div class="type column">{{ i.itemtype }}</div>
           <div class="title column">{{ i.title }}</div>
           <div class="author column">{{ i.author }}</div>
