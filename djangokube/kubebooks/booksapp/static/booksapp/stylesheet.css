@@ -107,3 +107,7 @@ h1 {
 .author {
   width: 30%;
 }
+
+.cross {
+  cursor: pointer;
+}

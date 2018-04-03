@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
 from .models import Item
 
 def index(request):
@@ -13,3 +14,10 @@ def index(request):
     except ValueError:
         pass
     return render(request, 'booksapp/index.html', {"items": items})
+
+
+def delete_entry(request):
+    """Deleting a single entry from the list."""
+
+    get_object_or_404(Item, id=request.GET['entry_id']).delete()
+    return HttpResponse("OK")
