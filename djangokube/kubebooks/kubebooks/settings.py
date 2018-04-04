@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'k)b&hy@rl69deygl#iizpuizu+$arsr&-&9bp&6el$0v2*6)t('
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'k)b&hy@rl69deygl#iizpuizu+$arsr&-&9bp&6el$0v2*6)t(')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['172.17.0.3', 'localhost']
 
 
 # Application definition
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'kubebooks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRESQL_DB', 'postgres'),
+        'USER': os.environ.get('POSTGRESQL_USER', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRESQL_PASSWORD', 'mysecretpassword'),
+        'HOST': os.environ.get('POSTGRESQL_HOST', 'postgres'),
+        'PORT': os.environ.get('POSTGRESQL_PORT', 5432),
     }
 }
 
