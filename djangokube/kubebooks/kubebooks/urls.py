@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from booksapp import views as page_views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/', page_views.index, name='index'),
     url(r'^delete_entry/(?P<entryid>\d+)', page_views.delete_entry, name='delete_entry'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
