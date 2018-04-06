@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubebooks
+spec:
+  containers:
+  - name: kubebooks
+    image: jastr945/kubebooks:1.0
+    volumeMounts:
+    - name: kubebooks-persistent-storage
+      mountPath: /data/kubebooks
+  volumes:
+  - name: kubebooks-persistent-storage
+    emptyDir: {}
