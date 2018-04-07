@@ -9,24 +9,6 @@ spec:
   ports:
   - port: 80
     targetPort: 80
+    protocol: TCP
   selector:
     name: kubebooks
-
-# apiVersion: extensions/v1beta1
-#   kind: Deployment
-#   metadata:
-#     name: kubebooks
-#     labels:
-#       name: kubebooks
-#   spec:
-#   replicas: 3
-#   template:
-#     metadata:
-#       labels:
-#         name: kubebooks
-#     spec:
-#       containers:
-#         - name: kubeapp
-#           image: jastr945/kubebooks:1.0
-#           ports:
-#             - containerPort: 80

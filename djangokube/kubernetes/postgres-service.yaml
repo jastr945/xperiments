@@ -10,29 +10,3 @@ spec:
       protocol: TCP
   selector:
     name: postgres
-
-# apiVersion: extensions/v1beta1
-#   kind: Deployment
-#   metadata:
-#     name: postgres
-#   spec:
-#     replicas: 1
-#       template:
-#         metadata:
-#           labels:
-#             name: postgres
-#         spec:
-#           containers:
-#             - name: postgres
-#               image: postgres
-#               env:
-#                 - name: POSTGRES_PASSWORD
-#                   value: mysecretpassword
-#               ports:
-#                 - containerPort: 5432
-#               volumeMounts:
-#                 - mountPath: /var/lib/postgresql/data
-#                 - name: pg-data
-#           volumes:
-#             - name: pg-data
-#               emptyDir:
