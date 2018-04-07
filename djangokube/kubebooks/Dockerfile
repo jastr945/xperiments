@@ -1,7 +1,7 @@
 FROM python:3.6
 
 WORKDIR /usr/src/app
-RUN pip install django uwsgi psycopg2
+RUN pip install django uwsgi psycopg2-binary
 COPY . .
 RUN mkdir /var/lib/kubebooks/
 EXPOSE 80
