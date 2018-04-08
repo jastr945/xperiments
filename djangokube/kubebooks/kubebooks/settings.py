@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'booksapp',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,29 @@ STATIC_DIR = [
 STATIC_URL = '/static/'
 
 STATIC_ROOT = '/staticfiles'
+
+# Auth0 configurations
+
+SOCIAL_AUTH_TRAILING_SLASH = False                    # Remove end slash from routes
+
+SOCIAL_AUTH_AUTH0_DOMAIN = 'wishlist945.auth0.com'
+
+SOCIAL_AUTH_AUTH0_KEY = os.environ.get('DJANGO_AUTH0_KEY', 'fRPda7JlaXetpi8DFQ6w6TkMsSYjvvqB')
+
+SOCIAL_AUTH_AUTH0_SECRET = os.environ.get('DJANGO_AUTH0_SECRET', 'ZvgWI5Z7FsCcvBhUx2lyFQgMc4Qg1t7pSGt_Vx-bG76K-zn4X7-cag05idwccA7B')
+
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile'
+]
+
+AUTHENTICATION_BACKENDS = {
+    'booksapp.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend'
+}
+
+LOGIN_URL = "/login/auth0"
+
+LOGIN_REDIRECT_URL = "/dashboard"
+
+LOGOUT_REDIRECT_URL = "/index"

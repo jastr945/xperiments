@@ -1,64 +1,11 @@
-{% load static %}
+{% extends 'booksapp/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- Bootstrap optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <link href="{% static 'booksapp/stylesheet.css' %}" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet">
-  <title>Wishlist</title>
-</head>
-<body>
-  <div id="mainContainer">
-    <h1>Books & Movies Wishlist</h1>
-    <div id="formBox">
-      <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <select name="itemtype">
-         <option value="book">Book</option>
-         <option value="movie">Movie</option>
-        </select>
-        <input type="text" name="title" placeholder="Enter title..." required />
-        <input type="text" name="author" placeholder="Enter author or description..." />
-        <input type="submit" class="submitButton" name="submitButton" value="Add to the list"/>
-      </form>
-    </div>
-    <div id="listBox">
-      <div class="row headers">
-        <div class="type column">Type</div>
-        <div class="title column">Title</div>
-        <div class="author column">Author</div>
-        <div class="delete column">Del</div>
-      </div>
-      {% if items %}
-      {% for i in items %}
-        <div class="row">
-          <div class="type column">{{ i.itemtype }}</div>
-          <div class="title column">{{ i.title }}</div>
-          <div class="author column">{{ i.author }}</div>
-          <div class="delete column">
-            <a class="deleteButton" href="{% url 'delete_entry' i.id %}">
-              <svg class="cross" viewBox="0 0 24 24">
-                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-              </svg>
-          </a>
-          </div>
-        </div>
-      {% endfor %}
-      {% else %}
-      <h3>There are no entries yet.</h3>
-      {% endif %}
-    </div>
-  </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="{% static 'booksapp/site.js' %}"></script>
-<!-- Bootstrap latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</body>
-</html>
+{% block login %}
+<div class="userinfo">
+  <a class="btn" href="/login/auth0">Log In</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<h5 class="message">Please log in to view your list.</h5>
+{% endblock %}

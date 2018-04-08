@@ -17,6 +17,46 @@ body, html {
   color: #000000;
 }
 
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5em auto;
+  width: 95%;
+}
+
+h1 {
+  font-family: 'Chicle', cursive;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+}
+
+.avatar {
+  border-radius: 10px;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.btn {
+  height: auto;
+  width: 110px;
+  text-align: center;
+  background-color: #7c9c87;
+  color: #000000;
+  text-decoration: none;
+  border: 2px solid #000000;
+}
+
+.message {
+  margin: 1em auto;
+}
+
 #formBox {
   display: flex;
   flex-direction: column;
@@ -28,11 +68,6 @@ body, html {
   padding: 0.5em 1em;
   font-size: 1.5em;
   border-radius: 10px;
-}
-
-h1 {
-  margin: 0.5em auto;
-  font-family: 'Chicle', cursive;
 }
 
 #formBox > form {
@@ -89,7 +124,6 @@ h1 {
 
 .column {
   margin: 0.2em 0;
-  /*background-color: blue;*/
   width: 33%;
 }
 
@@ -129,6 +163,16 @@ h1 {
 
 @media screen and (max-width: 850px) {
 
+  header {
+    flex-direction: column;
+    height: auto;
+    width: 95%;
+  }
+
+  .userinfo {
+    font-size: 1em;
+  }
+
   #formBox > form > select {
     width: 60%;
   }
@@ -137,7 +181,7 @@ h1 {
     width: 80%;
   }
 
-  .deleteButton{
+  .deleteButton {
     height: 28px;
     width: 28px;
   }

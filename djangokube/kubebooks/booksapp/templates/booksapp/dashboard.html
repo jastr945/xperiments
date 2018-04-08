@@ -1,0 +1,50 @@
+{% extends 'booksapp/base.html' %}
+
+{% block login %}
+<div class="userinfo">
+  <h4>Hi, {{ user.first_name }}</h4>
+  <img class="avatar" src="{{ auth0User.extra_data.picture }}" height="50px"/>
+  <a class="btn" href="/logout">Logout</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="formBox">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <select name="itemtype">
+     <option value="book">Book</option>
+     <option value="movie">Movie</option>
+    </select>
+    <input type="text" name="title" placeholder="Enter title..." required />
+    <input type="text" name="author" placeholder="Enter author or description..." />
+    <input type="submit" class="submitButton" name="submitButton" value="Add to the list"/>
+  </form>
+</div>
+<div id="listBox">
+  <div class="row headers">
+    <div class="type column">Type</div>
+    <div class="title column">Title</div>
+    <div class="author column">Author</div>
+    <div class="delete column">Del</div>
+  </div>
+  {% if items %}
+  {% for i in items %}
+    <div class="row">
+      <div class="type column">{{ i.itemtype }}</div>
+      <div class="title column">{{ i.title }}</div>
+      <div class="author column">{{ i.author }}</div>
+      <div class="delete column">
+        <a class="deleteButton" href="{% url 'delete_entry' i.id %}">
+          <svg class="cross" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+      </a>
+      </div>
+    </div>
+  {% endfor %}
+  {% else %}
+  <h5 class="message">There are no entries yet.</h5>
+  {% endif %}
+</div>
+{% endblock %}

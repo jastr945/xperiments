@@ -7,6 +7,8 @@ It displays a list of books and movies that users plan to read / watch. Once an 
 
 Future plans:
 
-1. Add user authentication;
+1. Add proper url redirects;
 2. Use some public API for auto-suggesting books and movies (eg. if users don't remember full titles);
-3. Manage secrets properly.
+3. Manage secrets properly in Kubernetes;
+4. Add persistent volumes in Kubernetes;
+5. Write better media queries.
