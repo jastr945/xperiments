@@ -22,7 +22,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', page_views.index, name='index'),
+    url(r'^$', page_views.index, name='index'),
+    url(r'^authorize/', page_views.authorize, name='authorize'),
     url(r'^dashboard/', page_views.dashboard, name='dashboard'),
     url(r'^delete_entry/(?P<entryid>\d+)', page_views.delete_entry, name='delete_entry'),
     url(r'^', include(('django.contrib.auth.urls', 'django.contrib.auth'), namespace='auth')),

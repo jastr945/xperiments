@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Item
 from django.contrib.auth.decorators import login_required
@@ -6,8 +6,15 @@ import json
 
 
 def index(request):
+    if request.user:
+        return redirect('dashboard')
+    else:
+        return redirect('authorize')
+    return HttpResponse("main")
+
+def authorize(request):
     context_dict = {}
-    return render(request, 'booksapp/index.html', context_dict)
+    return render(request, 'booksapp/authorize.html', context_dict)
 
 @login_required
 def dashboard(request):

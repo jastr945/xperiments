@@ -157,4 +157,4 @@ LOGIN_URL = "/login/auth0"
 
 LOGIN_REDIRECT_URL = "/dashboard"
 
-LOGOUT_REDIRECT_URL = "/index"
+LOGOUT_REDIRECT_URL = "/authorize"
