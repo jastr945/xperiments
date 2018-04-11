@@ -6,15 +6,16 @@ import json
 
 
 def index(request):
-    if request.user:
-        return redirect('dashboard')
+    """Redirecting to dashboard if the user is authorized."""
+    if request.user.is_anonymous == True:
+        return redirect('main')
     else:
-        return redirect('authorize')
-    return HttpResponse("main")
+        return redirect('dashboard')
+    return HttpResponse("OK")
 
-def authorize(request):
-    context_dict = {}
-    return render(request, 'booksapp/authorize.html', context_dict)
+def main(request):
+    """Invitation to log in."""
+    return render(request, 'booksapp/authorize.html', {})
 
 @login_required
 def dashboard(request):
