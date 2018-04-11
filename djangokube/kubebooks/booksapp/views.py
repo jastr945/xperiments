@@ -31,13 +31,14 @@ def dashboard(request):
     context_dict["userdata"] = json.dumps(userdata, indent=4)
     context_dict["auth0User"] = auth0user
     try:
-        items = Item.objects.all()
+        items = Item.objects.filter(user=auth0user.uid)
         context_dict["items"] = items
         if request.POST:
-            new_itemtype=request.POST['itemtype']
-            new_title=request.POST['title']
-            new_author=request.POST['author']
-            item_instance = Item(itemtype=new_itemtype, title=new_title, author=new_author)
+            new_itemtype = request.POST['itemtype']
+            new_title = request.POST['title']
+            new_author = request.POST['author']
+            belongs_to = auth0user.uid
+            item_instance = Item(itemtype=new_itemtype, title=new_title, author=new_author, user=belongs_to)
             item_instance.save()
     except ValueError:
         pass
