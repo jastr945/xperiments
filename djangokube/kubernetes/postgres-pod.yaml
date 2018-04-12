@@ -13,7 +13,10 @@ spec:
           image: postgres
           env:
             - name: POSTGRES_PASSWORD
-              value: mysecretpassword
+              valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: postgres
           livenessProbe:
             exec:
               command: ["pg_isready", "-U", "postgres", "-d", "postgres"]

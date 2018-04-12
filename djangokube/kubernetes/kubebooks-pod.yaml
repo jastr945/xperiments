@@ -13,5 +13,31 @@ spec:
       - name: kubebooks
         image: jastr945/kubebooks:3.0
         imagePullPolicy: Always
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: postgres
+          - name: DJANGO_SECRET_KEY
+            valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: secretkey
+          - name: DJANGO_DEBUG
+            valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: debug
+          - name: DJANGO_AUTH0_KEY
+            valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: authkey
+          - name: DJANGO_AUTH0_SECRET
+            valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: authsecret
         ports:
           - containerPort: 80
