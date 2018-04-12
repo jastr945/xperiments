@@ -10,5 +10,4 @@ Login with Google is provided by Auth0[https://auth0.com/].
 Future plans:
 
 1. Use some public API for auto-suggesting books and movies (eg. if users don't remember full titles);
-2. Manage secrets properly in Kubernetes;
-3. Add persistent volumes in Kubernetes;
+2. Add persistent volumes in Kubernetes;
