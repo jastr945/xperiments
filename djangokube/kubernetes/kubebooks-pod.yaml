@@ -14,7 +14,7 @@ spec:
         image: jastr945/kubebooks:3.0
         imagePullPolicy: Always
         env:
-          - name: POSTGRES_PASSWORD
+          - name: POSTGRESQL_PASSWORD
             valueFrom:
             secretKeyRef:
               name: mysecret

@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'k)b&hy@rl69deygl#iizpuizu+$arsr&-&9bp&6el$0v2*6)t(')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
@@ -139,9 +139,9 @@ SOCIAL_AUTH_TRAILING_SLASH = False                    # Remove end slash from ro
 
 SOCIAL_AUTH_AUTH0_DOMAIN = 'wishlist945.auth0.com'
 
-SOCIAL_AUTH_AUTH0_KEY = os.environ.get('DJANGO_AUTH0_KEY', 'fRPda7JlaXetpi8DFQ6w6TkMsSYjvvqB')
+SOCIAL_AUTH_AUTH0_KEY = os.environ.get('DJANGO_AUTH0_KEY')
 
-SOCIAL_AUTH_AUTH0_SECRET = os.environ.get('DJANGO_AUTH0_SECRET', 'ZvgWI5Z7FsCcvBhUx2lyFQgMc4Qg1t7pSGt_Vx-bG76K-zn4X7-cag05idwccA7B')
+SOCIAL_AUTH_AUTH0_SECRET = os.environ.get('DJANGO_AUTH0_SECRET')
 
 SOCIAL_AUTH_AUTH0_SCOPE = [
     'openid',
