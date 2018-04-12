@@ -14,9 +14,9 @@ spec:
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:
-              secretKeyRef:
-                name: mysecret
-                key: postgres
+                secretKeyRef:
+                  name: mysecret
+                  key: postgres
           livenessProbe:
             exec:
               command: ["pg_isready", "-U", "postgres", "-d", "postgres"]
