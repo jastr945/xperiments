@@ -18,6 +18,7 @@ services:
     build: .
     ports:
       - 5001:5000
+    command: ["sleep", "22000000000"]
     environment:
       - APP_SETTINGS=project.config.DevelopmentConfig
       - DATABASE_URL=postgres://postgres:postgres@albums-db:5432/albums_dev

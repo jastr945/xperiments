@@ -37,7 +37,8 @@ def index():
 
 @albums_blueprint.route('/login/authorized', methods=['GET', 'POST'])
 def authorized():
-    # import ipdb; ipdb.set_trace()
+    """Decoding the token and grabbing user data"""
+    import ipdb; ipdb.set_trace()
     mytoken = json.loads(request.data)['headers']['Authorization']
     if not mytoken:
         response_object = {
@@ -60,6 +61,7 @@ def authorized():
 
 @albums_blueprint.route('/ping', methods=['GET'])
 def ping_pong():
+    """Just a test"""
     return jsonify({
         'status': 'success',
         'message': 'kittykats!'

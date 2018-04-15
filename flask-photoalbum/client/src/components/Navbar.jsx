@@ -20,22 +20,27 @@ class Header extends Component  {
     this.getUser();
   }
   getUser() {
-    axios.get('http://slider.mee.how:5001/login/authorized')
-    .then((res) => { console.log(res.json()); console.log("getting user"); })
+    const config1 = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    axios.get('http://slider.mee.how:5001/login/authorized', config1)
+    .then((res) => { console.log(res); console.log("getting user"); })
     .catch((err) => { console.log(err); })
   }
   responseGoogle = (response) => {
-    console.log('login');
-    console.log(response);
-    var token = response.tokenObj.id_token;
-    const config = {
+    console.log("login", response);
+    var accessCode = response.code;
+    console.log(accessCode);
+    const config2 = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Bearer ' + token,
+        'Authorization': 'Bearer ' + accessCode,
         'mode': 'no-cors'
       }
     }
-    axios.post('http://slider.mee.how:5001/login/authorized', config)
+    axios.post('http://slider.mee.how:5001/login/authorized', config2)
     .then((res) => {
       console.log('access code sent');
     })
@@ -71,7 +76,7 @@ class Header extends Component  {
               onFailure={this.responseGoogle}
               offline={true}
               approvalPrompt="force"
-              responseType="id_token"
+              responseType="code"
               prompt="consent"
               isSignedIn
             />
