@@ -16,23 +16,9 @@ class Header extends Component  {
     this.responseGoogle = this.responseGoogle.bind(this);
     this.logout = this.logout.bind(this);
   }
-  componentDidMount() {
-    this.getUser();
-  }
-  getUser() {
-    const config1 = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    axios.get('http://slider.mee.how:5001/login/authorized', config1)
-    .then((res) => { console.log(res); console.log("getting user"); })
-    .catch((err) => { console.log(err); })
-  }
   responseGoogle = (response) => {
     console.log("login", response);
     var accessCode = response.code;
-    console.log(accessCode);
     const config2 = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -40,6 +26,7 @@ class Header extends Component  {
         'mode': 'no-cors'
       }
     }
+    console.log(config2);
     axios.post('http://slider.mee.how:5001/login/authorized', config2)
     .then((res) => {
       console.log('access code sent');

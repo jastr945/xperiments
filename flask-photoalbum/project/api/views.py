@@ -8,6 +8,7 @@ from flask_uploads import UploadSet, IMAGES, configure_uploads, patch_request_cl
 from flask_cors import CORS
 import json
 from urllib.request import urlopen
+from oauth2client.client import OAuth2WebServerFlow
 
 
 # creating an instance of an app and configuring Flask-Uploads
@@ -35,28 +36,23 @@ def index():
         db.session.commit()
     return render_template('index.html', albums=albums)
 
+
 @albums_blueprint.route('/login/authorized', methods=['GET', 'POST'])
 def authorized():
-    """Decoding the token and grabbing user data"""
-    import ipdb; ipdb.set_trace()
-    mytoken = json.loads(request.data)['headers']['Authorization']
-    if not mytoken:
-        response_object = {
-            'status': 'fail',
-            'message': 'Invalid payload.'
-        }
-        return jsonify(response_object), 404
-    else:
-        url = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token="
-        resp = urlopen(url + mytoken[7:]).read()
-        jsonResponse = json.loads(resp)
-        email = jsonResponse["email"]
-        pic = jsonResponse["picture"]
-        response_object = {
-            'email': email,
-            'pic': pic
-        }
-        return jsonify(response_object), 200
+    """Decoding the access code and grabbing user data"""
+    access_code = json.loads(request.data)['headers']['Authorization'] # obtaining the access code from Client
+    flow = OAuth2WebServerFlow(client_id='418257197191-75oafj28gkn84pj7ebgvt54av0vtt7br.apps.googleusercontent.com',
+                           client_secret='WFVzMZNMObdCcc1WjD-ifALs',
+                           scope='profile',
+                           redirect_uri='http://slider.mee.how:9000')
+    credentials = flow.step2_exchange(access_code[7:]) # exchanging access code for token
+    email = credentials.id_token['email']
+    pic = credentials.id_token['picture']
+    response_object = {
+        'email': email,
+        'pic': pic
+    }
+    return jsonify(response_object), 200
 
 
 @albums_blueprint.route('/ping', methods=['GET'])
@@ -66,6 +62,7 @@ def ping_pong():
         'status': 'success',
         'message': 'kittykats!'
     })
+
 
 @albums_blueprint.route('/albums', methods=['POST'])
 def add_album():
@@ -110,6 +107,7 @@ def add_album():
         }
         return jsonify(response_object), 400
 
+
 @albums_blueprint.route('/albums/<album_id>', methods=['GET'])
 def get_single_album(album_id):
     """Get single album details"""
@@ -134,6 +132,7 @@ def get_single_album(album_id):
             return jsonify(response_object), 200
     except ValueError:
         return jsonify(response_object), 404
+
 
 @albums_blueprint.route('/albums', methods=['GET'])
 def get_all_albums():
