@@ -16,6 +16,18 @@ class Header extends Component  {
     this.responseGoogle = this.responseGoogle.bind(this);
     this.logout = this.logout.bind(this);
   }
+  componentDidMount() {
+    console.log('component mounted')
+    this.getUsers();
+  }
+  getUsers() {
+    axios.get('http://slider.mee.how:5001/login/authorized')
+    .then((res) => {
+    this.setState({ albums: res.data });
+    console.log('user info called');
+     })
+    .catch((err) => { console.log(err); })
+  }
   responseGoogle = (response) => {
     console.log("login", response);
     var accessCode = response.code;
