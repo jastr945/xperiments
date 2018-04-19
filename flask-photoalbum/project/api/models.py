@@ -29,3 +29,12 @@ class Image(db.Model):
     def __init__(self, name, url):
         self.name = name
         self.url = url
+
+
+class Code(db.Model):
+    __tablename__ = "code"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    code = db.Column(db.String(1000), nullable=False)
+
+    def __init__(self, code):
+        self.code = code

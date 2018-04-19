@@ -27,10 +27,10 @@ class App extends Component {
     this.getAlbums();
   }
   getUsers() {
-    axios.post('http://slider.mee.how:5001/login/authorized')
+    axios.get('http://slider.mee.how:5001/login/authorized')
     .then((res) => {
     this.setState({ albums: res.data });
-    console.log('user info called', res);
+    console.log('user info called');
     })
     .catch((err) => { console.log(err); })
   }

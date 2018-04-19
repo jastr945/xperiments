@@ -17,10 +17,10 @@ class Header extends Component  {
     this.logout = this.logout.bind(this);
   }
   getUsers() {
-    axios.post('http://slider.mee.how:5001/login/authorized')
+    axios.get('http://slider.mee.how:5001/login/authorized')
     .then((res) => {
     this.setState({ albums: res.data });
-    console.log('user info called', res);
+    console.log('user info called');
      })
     .catch((err) => { console.log(err); })
   }
@@ -38,11 +38,11 @@ class Header extends Component  {
     axios.post('http://slider.mee.how:5001/login/authorized', config2)
     .then((res) => {
       console.log('access code sent');
-      this.getUsers();
     })
     .catch((err) => {
       console.log(err);
-    })
+    });
+    this.getUsers();
   }
   logout = () => {
     console.log('logout');
