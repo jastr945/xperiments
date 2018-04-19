@@ -16,15 +16,11 @@ class Header extends Component  {
     this.responseGoogle = this.responseGoogle.bind(this);
     this.logout = this.logout.bind(this);
   }
-  componentDidMount() {
-    console.log('component mounted')
-    this.getUsers();
-  }
   getUsers() {
-    axios.get('http://slider.mee.how:5001/login/authorized')
+    axios.post('http://slider.mee.how:5001/login/authorized')
     .then((res) => {
     this.setState({ albums: res.data });
-    console.log('user info called');
+    console.log('user info called', res);
      })
     .catch((err) => { console.log(err); })
   }
@@ -42,6 +38,7 @@ class Header extends Component  {
     axios.post('http://slider.mee.how:5001/login/authorized', config2)
     .then((res) => {
       console.log('access code sent');
+      this.getUsers();
     })
     .catch((err) => {
       console.log(err);

@@ -23,7 +23,16 @@ class App extends Component {
     this.openForm = this.openForm.bind(this);
   }
   componentDidMount() {
+    this.getUsers();
     this.getAlbums();
+  }
+  getUsers() {
+    axios.post('http://slider.mee.how:5001/login/authorized')
+    .then((res) => {
+    this.setState({ albums: res.data });
+    console.log('user info called', res);
+    })
+    .catch((err) => { console.log(err); })
   }
   getAlbums() {
     axios.get('http://slider.mee.how:5001/albums')

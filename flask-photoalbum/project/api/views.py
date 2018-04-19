@@ -37,7 +37,7 @@ def index():
     return render_template('index.html', albums=albums)
 
 
-@albums_blueprint.route('/login/authorized', methods=['GET', 'POST'])
+@albums_blueprint.route('/login/authorized', methods=['POST'])
 def authorized():
     """Decoding the access code and grabbing user data"""
     access_code = json.loads(request.data)['headers']['Authorization'] # obtaining the access code from Client
@@ -49,10 +49,13 @@ def authorized():
     email = credentials.id_token['email']
     pic = credentials.id_token['picture']
     response_object = {
-        'email': email,
-        'pic': pic
+        'status': 'success',
+        'data': {
+            'email': email,
+            'pic': pic
+        }
     }
-    return jsonify(response_object), 200
+    return json.dumps(response_object), 200
 
 
 @albums_blueprint.route('/ping', methods=['GET'])
