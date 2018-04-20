@@ -1,6 +1,10 @@
 from flask import Flask, jsonify, abort, make_response, request
+from flask_httpauth import HTTPBasicAuth
+
 
 app = Flask(__name__)
+auth = HTTPBasicAuth()
+
 
 items = [
     {
@@ -16,6 +20,19 @@ items = [
 ]
 
 
+@auth.get_password
+def get_password(username):
+    if username == 'polina':
+        return 'kittykat'
+    return None
+
+
+@auth.error_handler
+def unauthorized():
+    """Handling unauthorized access"""
+    return make_response(jsonify({'error': 'Access denied'}), 403)
+
+
 @app.errorhandler(404)
 def not_found(error):
     """Handling 404 nicely"""
@@ -29,6 +46,7 @@ def get_items():
 
 
 @app.route('/api/v1.0/items', methods=['POST'])
+@auth.login_required
 def add_item():
     """Adding an item to the list"""
     if not request.json or not 'title' in request.json:
@@ -52,6 +70,7 @@ def get_item(item_id):
 
 
 @app.route('/api/v1.0/items/<int:item_id>', methods=['PUT'])
+@auth.login_required
 def update_item(item_id):
     """Updating a single item"""
     item = [item for item in items if item['id'] == item_id]
@@ -69,6 +88,7 @@ def update_item(item_id):
 
 
 @app.route('/api/v1.0/items/<int:item_id>', methods=['DELETE'])
+@auth.login_required
 def delete_item(item_id):
     """Deleting a single item"""
     item = [item for item in items if item['id'] == item_id]
