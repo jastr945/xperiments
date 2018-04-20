@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, abort, make_response
+from flask import Flask, jsonify, abort, make_response, request
 
 app = Flask(__name__)
 
@@ -34,6 +34,20 @@ def get_item(item_id):
     if len(item) == 0:
         abort(404)
     return jsonify({'item': item[0]})
+
+
+@app.route('/api/v1.0/items', methods=['POST'])
+def add_item():
+    if not request.json or not 'title' in request.json:
+        abort(400)
+    item = {
+        'id': items[-1]['id'] + 1,
+        'title': request.json['title'],
+        'note': request.json.get('note', ""),
+        'done': False
+    }
+    items.append(item)
+    return jsonify({'item': item}), 201
 
 
 @app.route('/')
