@@ -7,13 +7,11 @@ items = [
         'id': 1,
         'title': u'muesli',
         'note': u'with nuts and raisins',
-        'done': False
     },
     {
         'id': 2,
         'title': u'cat food',
         'note': u'',
-        'done': False
     }
 ]
 
@@ -39,7 +37,6 @@ def add_item():
         'id': items[-1]['id'] + 1,
         'title': request.json['title'],
         'note': request.json.get('note', ""),
-        'done': False
     }
     items.append(item)
     return jsonify({'item': item}), 201
@@ -57,8 +54,18 @@ def get_item(item_id):
 @app.route('/api/v1.0/items/<int:item_id>', methods=['PUT'])
 def update_item(item_id):
     """Updating a single item"""
-    pass
-
+    item = [item for item in items if item['id'] == item_id]
+    if len(item) == 0:
+        abort(404)
+    if not request.json:
+        abort(400)
+    if 'title' in request.json and type(request.json['title']) != unicode:
+        abort(400)
+    if 'note' in request.json and type(request.json['note']) is not unicode:
+        abort(400)
+    item[0]['title'] = request.json.get('title', item[0]['title'])
+    item[0]['note'] = request.json.get('note', item[0]['note'])
+    return jsonify({'item': item[0]})
 
 
 @app.route('/api/v1.0/items/<int:item_id>', methods=['DELETE'])
