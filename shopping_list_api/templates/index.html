@@ -7,6 +7,8 @@
   <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
   <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+  <link href="/static/style.css" rel="stylesheet">
+  <script src="/static/site.js"></script>
 </head>
 <body>
     <div class="navbar">
@@ -16,16 +18,19 @@
     </div>
     <div id="main" class="container">
       {% if items %}
+      <div class="listContainer">
       {% for i in items %}
-        <div class="listContainer">
+        <div class="listRow">
           {{i.title}}
-          {{i.note}}
+          {% if i.note %}
+            {{i.note}}
+          {% endif %}
         </div>
       {% endfor %}
+      </div>
       {% else %}
         <h4>Your list is empty for now.</h4>
       {% endif %}
     </div>
-    <script type="text/javascript"></script>
 </body>
 </html>
