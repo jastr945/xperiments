@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, abort, make_response, request
+from flask import Flask, jsonify, abort, make_response, request, render_template
 from flask_httpauth import HTTPBasicAuth
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Item
@@ -134,9 +134,10 @@ def get_item(item_id):
 #     return jsonify({'result': True})
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return "Hello, World!"
+    items = Item.query.all()
+    return render_template('index.html', items=items)
 
 
 if __name__ == "__main__":
