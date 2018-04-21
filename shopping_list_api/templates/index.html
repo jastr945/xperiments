@@ -21,14 +21,14 @@
       <form id="addItemForm" action="/api/v1.0/items" method="post">
         <input
           name="title"
-          className="form-control input-lg"
+          class="form-control input-lg"
           type="text"
           placeholder="Enter an item..."
           required
         />
         <input
           name="note"
-          className="form-control input-lg"
+          class="form-control input-lg"
           type="text"
           placeholder="Make a note...(optional)"
         />
@@ -40,7 +40,7 @@
         <div class="listRow">
           {{i.title}}
           {% if i.note %}
-            | <i>{{i.note}}</i>
+          &nbsp;|&nbsp;<i>{{i.note}}</i>
           {% endif %}
         </div>
       {% endfor %}

@@ -12,6 +12,10 @@
   padding: 1em;
 }
 
+#addItemForm > input {
+  font-size: 1.2em;
+}
+
 .listContainer {
   display: flex;
   flex-direction: column;
