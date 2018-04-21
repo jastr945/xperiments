@@ -8,7 +8,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
   <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
   <link href="/static/style.css" rel="stylesheet">
-  <script src="/static/site.js"></script>
   <title>Shopping List</title>
 </head>
 <body>
@@ -38,10 +37,16 @@
       <div class="listContainer">
       {% for i in items %}
         <div class="listRow">
-          {{i.title}}
-          {% if i.note %}
-          &nbsp;|&nbsp;<i>{{i.note}}</i>
-          {% endif %}
+          <div class="listInfo">
+            {{i.title}}
+            {% if i.note %}
+            &nbsp;|&nbsp;<i>{{i.note}}</i>
+            {% endif %}
+          </div>
+          <div class="listButtons">
+            <button class="btn delete">edit</button>
+            <button class="btn delete" value={{i.id}}>del</button>
+          </div>
         </div>
       {% endfor %}
       </div>
@@ -49,5 +54,6 @@
         <h4>Your list is empty for now.</h4>
       {% endif %}
     </div>
+  <script src="/static/site.js"></script>
 </body>
 </html>

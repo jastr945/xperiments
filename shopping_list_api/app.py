@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, abort, make_response, request, render_template, redirect
+from flask import Flask, jsonify, abort, make_response, request, render_template, redirect, url_for
 from flask_httpauth import HTTPBasicAuth
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Item
@@ -94,7 +94,7 @@ def add_item():
             'status': 'success',
             'message': 'Item was added!'
         }
-        return redirect("http://localhost:5000", code=302)
+        return redirect(url_for('index'))
     return jsonify(response_object), 201
 
 
@@ -136,21 +136,29 @@ def get_item(item_id):
 #     item[0]['note'] = request.json.get('note', item[0]['note'])
 #     return jsonify({'item': item[0]})
 #
-#
-# @app.route('/api/v1.0/items/<int:item_id>', methods=['DELETE'])
-# @auth.login_required
-# def delete_item(item_id):
-#     """Deleting a single item"""
-#     item = [item for item in items if item['id'] == item_id]
-#     if len(item) == 0:
-#         abort(404)
-#     else:
-#         items.remove(item[0])
-#     return jsonify({'result': True})
+
+@app.route('/api/v1.0/items/<int:item_id>', methods=['DELETE'])
+def delete_item(item_id):
+    """Deleting a single item"""
+    try:
+        item = Item.query.filter_by(id=item_id).first()
+        if not item:
+            abort(404)
+        else:
+            db.session.delete(item)
+            db.session.commit()
+            response_object = {
+                'status': 'success',
+                'message': 'Item was deleted!'
+            }
+    except ValueError:
+        abort(400)
+    return jsonify(response_object), 204
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """Main page view"""
     items = Item.query.all()
     return render_template('index.html', items=items)
 

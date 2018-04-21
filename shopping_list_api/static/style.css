@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 #addItemForm {
@@ -28,8 +28,19 @@
 .listRow {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   background-color: lightgrey;
+  width:100%;
   height: auto;
   padding: 0.5em 1em;
   margin: 0.1em auto;
+}
+
+.listInfo {
+  text-align: center;
+}
+
+.listButtons {
+  display: flex;
+  flex-direction: row;
 }
