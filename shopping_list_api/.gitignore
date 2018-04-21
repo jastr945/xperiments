@@ -8,3 +8,4 @@ flask
 env/
 env*
 __pycache__
+*.db
