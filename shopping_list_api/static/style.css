@@ -1,5 +1,15 @@
 #main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-size: 1.5em;
+}
+
+#addItemForm {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em auto;
+  padding: 1em;
 }
 
 .listContainer {
@@ -7,7 +17,8 @@
   flex-direction: column;
   background-color: pink;
   height: auto;
-  padding: 1em;
+  padding: 0.5em;
+  margin-bottom: 1em;
 }
 
 .listRow {
@@ -15,6 +26,6 @@
   flex-direction: row;
   background-color: lightgrey;
   height: auto;
-  padding: 1em;
-  margin: 0.5em auto;
+  padding: 0.5em 1em;
+  margin: 0.1em auto;
 }

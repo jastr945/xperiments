@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, abort, make_response, request, render_template
+from flask import Flask, jsonify, abort, make_response, request, render_template, redirect
 from flask_httpauth import HTTPBasicAuth
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Item
@@ -62,24 +62,39 @@ def get_items():
 
 
 @app.route('/api/v1.0/items', methods=['POST'])
-@auth.login_required
 def add_item():
     """Adding an item to the list"""
-    if not request.json or not 'title' in request.json:
+    if not request.json and not request.form:
         abort(400)
-    if 'title' in request.json and type(request.json['title']) != unicode:
-        abort(400)
-    if 'note' in request.json and type(request.json['note']) is not unicode:
-        abort(400)
-    title = request.json['title']
-    note = request.json.get('note', "")
-    new_item = Item(title=title, note=note)
-    db.session.add(new_item)
-    db.session.commit()
-    response_object = {
-        'status': 'success',
-        'message': 'Item was added!'
-    }
+    # for curl command
+    if request.json:
+        if 'title' not in request.json:
+            abort(400)
+        if 'title' in request.json and type(request.json['title']) != unicode:
+            abort(400)
+        if 'note' in request.json and type(request.json['note']) is not unicode:
+            abort(400)
+        title = request.json['title']
+        note = request.json.get('note', "")
+        new_item = Item(title=title, note=note)
+        db.session.add(new_item)
+        db.session.commit()
+        response_object = {
+            'status': 'success',
+            'message': 'Item was added!'
+        }
+    # for JavaScript Client
+    if request.form:
+        title = request.form['title']
+        note = request.form['note']
+        new_item = Item(title=title, note=note)
+        db.session.add(new_item)
+        db.session.commit()
+        response_object = {
+            'status': 'success',
+            'message': 'Item was added!'
+        }
+        return redirect("http://localhost:5000", code=302)
     return jsonify(response_object), 201
 
 
