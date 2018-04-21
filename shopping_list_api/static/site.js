@@ -43,8 +43,8 @@ $('.delete').each(function () {
         entry.fadeOut("fast");
         console.log("delete request sent");
       },
-      error: function( jqXhr, textStatus, errorThrown ){
-        console.log( errorThrown );
+      error: function(jqXhr, textStatus, errorThrown) {
+        console.log(errorThrown);
       }
     });
   });
