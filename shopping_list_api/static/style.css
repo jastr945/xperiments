@@ -16,6 +16,16 @@
   font-size: 1.2em;
 }
 
+#addItem {
+  border: 3px solid pink;
+  width: 7em;
+}
+
+button:hover {
+  background-color: #545454;
+  color: pink;
+}
+
 .listContainer {
   display: flex;
   flex-direction: column;
@@ -44,4 +54,8 @@
 .listButtons {
   display: flex;
   flex-direction: row;
+}
+
+.delete, .edit {
+  margin: auto 0.1em;
 }
