@@ -144,7 +144,7 @@ def update_item(item_id):
                 db.session.commit()
                 response_object = {
                     'status': 'success',
-                    'message': 'Item was added!'
+                    'message': 'Item was updated!'
                 }
             # for JavaScript Client
             if request.form:
@@ -155,7 +155,7 @@ def update_item(item_id):
                 db.session.commit()
                 response_object = {
                     'status': 'success',
-                    'message': 'Item was added!'
+                    'message': 'Item was updated!'
                 }
                 return redirect(url_for('index'))
     except ValueError:

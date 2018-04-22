@@ -29,6 +29,15 @@ $('.form-control').focus(function(){
 //   })
 // });
 
+
+// Shows the edit form upon clicking the specific edit button
+$('.edit').each(function () {
+  $(this).click(function (e) {
+    e.preventDefault();
+    $(this).parent().parent().parent().next('.editProfile').show();
+  });
+});
+
 // Removes an entry from the list upon clicking on the cross icon
 $('.delete').each(function () {
   $(this).click(function (e) {
