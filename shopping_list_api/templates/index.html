@@ -37,13 +37,13 @@
       <div class="listContainer">
       {% for i in items %}
         <div class="listRow">
-          <div class="listInfo" style="display:none">
+          <div class="listInfo">
             {{i.title}}
             {% if i.note %}
             &nbsp;|&nbsp;<i>{{i.note}}</i>
             {% endif %}
           </div>
-          <form id="editItemForm" action="/api/v1.0/items" method="post">
+          <form class="editItemForm" action="/api/v1.0/items" method="post" style="display:none">
             <input
               name="title"
               class="form-control input-lg"
@@ -60,7 +60,7 @@
             <button id="updateItem" class="btn">Update</button>
           </form>
           <div class="listButtons">
-            <button class="btn delete">edit</button>
+            <button class="btn edit">edit</button>
             <button class="btn delete" value={{i.id}}>del</button>
           </div>
         </div>

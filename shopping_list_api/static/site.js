@@ -34,9 +34,11 @@ $('.form-control').focus(function(){
 $('.edit').each(function () {
   $(this).click(function (e) {
     e.preventDefault();
-    $(this).parent().parent().parent().next('.editProfile').show();
+    $(this).parent().siblings('.editItemForm').show();
+    $(this).parent().siblings('.listInfo').hide();
   });
 });
+
 
 // Removes an entry from the list upon clicking on the cross icon
 $('.delete').each(function () {

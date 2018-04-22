@@ -55,7 +55,7 @@ button:hover {
   align-items: center;
 }
 
-#editItemForm {
+.editItemForm {
   display: flex;
   flex-direction: row;
 }
