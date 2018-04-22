@@ -120,23 +120,48 @@ def get_item(item_id):
         abort(400)
 
 
-# @app.route('/api/v1.0/items/<int:item_id>', methods=['PUT'])
+@app.route('/api/v1.0/items/<int:item_id>', methods=['PUT'])
 # @auth.login_required
-# def update_item(item_id):
-#     """Updating a single item"""
-#     item = [item for item in items if item['id'] == item_id]
-#     if len(item) == 0:
-#         abort(404)
-#     if not request.json:
-#         abort(400)
-#     if 'title' in request.json and type(request.json['title']) != unicode:
-#         abort(400)
-#     if 'note' in request.json and type(request.json['note']) is not unicode:
-#         abort(400)
-#     item[0]['title'] = request.json.get('title', item[0]['title'])
-#     item[0]['note'] = request.json.get('note', item[0]['note'])
-#     return jsonify({'item': item[0]})
-#
+def update_item(item_id):
+    """Updating a single item"""
+    try:
+        item = Item.query.filter_by(id=item_id).first()
+        if not item:
+            abort(404)
+        else:
+            # for curl command
+            if request.json:
+                if 'title' not in request.json:
+                    abort(400)
+                if 'title' in request.json and type(request.json['title']) != unicode:
+                    abort(400)
+                if 'note' in request.json and type(request.json['note']) is not unicode:
+                    abort(400)
+                title = request.json['title']
+                note = request.json.get('note', "")
+                item.title = title
+                item.note = note
+                db.session.commit()
+                response_object = {
+                    'status': 'success',
+                    'message': 'Item was added!'
+                }
+            # for JavaScript Client
+            if request.form:
+                title = request.form['title']
+                note = request.form['note']
+                item.title = title
+                item.note = note
+                db.session.commit()
+                response_object = {
+                    'status': 'success',
+                    'message': 'Item was added!'
+                }
+                return redirect(url_for('index'))
+    except ValueError:
+        abort(400)
+    return jsonify(response_object), 200
+
 
 @app.route('/api/v1.0/items/<int:item_id>', methods=['DELETE'])
 def delete_item(item_id):
