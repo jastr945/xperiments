@@ -63,3 +63,38 @@ button:hover {
 .delete, .edit {
   margin: auto 0.1em;
 }
+
+@media screen and (max-width: 1000px) {
+  .brand {
+    font-size: 1.5em;
+  }
+
+  #main {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  #addItemForm {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8em;
+  }
+
+  #addItem {
+    margin: 0.2em auto;
+  }
+}
+
+
+@media screen and (max-width: 420px) {
+  .listRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .listInfo, .listButtons {
+    margin: 0.1em auto;
+  }
+}
