@@ -157,7 +157,6 @@ def update_item(item_id):
                     'status': 'success',
                     'message': 'Item was updated!'
                 }
-                return redirect(url_for('index'))
     except ValueError:
         abort(400)
     return jsonify(response_object), 200

@@ -1,6 +1,6 @@
 'use strict';
 
-// removing placeholder from the search tab on focus and bringing it back on blur
+// removes placeholder from the search tab on focus and brings it back on blur
 $('.form-control').focus(function(){
    $(this).data('placeholder', $(this).attr('placeholder'))
     .attr('placeholder','');
@@ -40,7 +40,30 @@ $('.edit').each(function () {
 });
 
 
-// Removes an entry from the list upon clicking on the cross icon
+// Sends updated entry to the server
+$('.update').each(function () {
+  $(this).click(function (e) {
+    e.preventDefault();
+    var elementId = $(this).attr("value");
+    var href = "http://localhost:5000/api/v1.0/items/" + elementId;
+    var form_data = $(this).parent('.editItemForm').serialize();
+    $.ajax({
+      url: href,
+      type: "PUT",
+      data: form_data,
+      success: function (e) {
+        console.log("update request sent");
+        $(this).parent('.editItemForm').hide();
+      },
+      error: function(jqXhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+      }
+    });
+  });
+});
+
+
+// Removes an entry from the list
 $('.delete').each(function () {
   $(this).click(function (e) {
     e.preventDefault();

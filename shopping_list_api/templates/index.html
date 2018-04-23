@@ -43,7 +43,7 @@
             &nbsp;|&nbsp;<i>{{i.note}}</i>
             {% endif %}
           </div>
-          <form class="editItemForm" method="post" style="display:none">
+          <form class="editItemForm" style="display:none">
             <input
               name="title"
               class="form-control input-lg"
@@ -57,7 +57,7 @@
               type="text"
               value={{i.note}}
             />
-            <button id="updateItem" class="btn">Update</button>
+            <button class="btn update" value={{i.id}}>Update</button>
           </form>
           <div class="listButtons">
             <button class="btn edit">edit</button>
