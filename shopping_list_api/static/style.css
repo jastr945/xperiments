@@ -77,6 +77,11 @@ button:hover {
   #main {
     font-size: 1em;
   }
+
+  .editItemForm {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 780px) {
