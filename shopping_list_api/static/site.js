@@ -1,5 +1,6 @@
 'use strict';
 
+
 // removes placeholder from the search tab on focus and brings it back on blur
 $('.form-control').focus(function(){
    $(this).data('placeholder', $(this).attr('placeholder'))
@@ -7,27 +8,6 @@ $('.form-control').focus(function(){
   }).blur(function(){
     $(this).attr('placeholder', $(this).data('placeholder'));
 });
-
-// Adding an item to the list
-// $('#addItem').click(function (e) {
-//   e.preventDefault();
-//   var href = "api/v1.0/items";
-//   var form_data = $('form').serialize();
-//   $.ajax({
-//     url: href,
-//     type: "POST",
-//     dataType: "json",
-//     processData: false,
-//     contentType: 'application/json',
-//     data: form_data,
-//     success: function(data){
-//       console.log("Item posted" + data);
-//     },
-//     error: function( jqXhr, textStatus, errorThrown ){
-//         console.log( errorThrown );
-//     }
-//   })
-// });
 
 
 // Shows the edit form upon clicking the specific edit button
@@ -40,20 +20,23 @@ $('.edit').each(function () {
 });
 
 
-// Sends updated entry to the server
+// Sends updated entry to the server, shows updated entry on the website
 $('.update').each(function () {
   $(this).click(function (e) {
     e.preventDefault();
     var elementId = $(this).attr("value");
     var href = "http://localhost:5000/api/v1.0/items/" + elementId;
     var form_data = $(this).parent('.editItemForm').serialize();
+    var that = this;
     $.ajax({
       url: href,
       type: "PUT",
       data: form_data,
-      success: function (e) {
-        console.log("update request sent");
-        $(this).parent('.editItemForm').hide();
+      success: function (data) {
+        var newdata = $.parseJSON(JSON.stringify(data));
+        // console.log(newdata.data.title, newdata.data.note);
+        $(that).parent('.editItemForm').hide();
+        $(that).parent().siblings('.listInfo').text(newdata.data.title + " | " + newdata.data.note).show();
       },
       error: function(jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
