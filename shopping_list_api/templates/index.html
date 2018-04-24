@@ -13,7 +13,26 @@
 <body>
     <div class="navbar">
         <div class="navbar-inner">
-            <h1 class="brand">Shopping List API Demo</h1>
+          <h1 class="brand">Shopping List API Demo</h1>
+        </div>
+        <div class="navbar-right">
+          <form id="loginForm" action="/api/v1.0/items" method="post">
+            <input
+              name="username"
+              class="form-control input-lg"
+              type="text"
+              placeholder="username"
+              required
+            />
+            <input
+              name="password"
+              class="form-control input-lg"
+              type="text"
+              placeholder="password"
+              required
+            />
+            <button id="login" class="btn">Login</button>
+          </form>
         </div>
     </div>
     <div id="main" class="container">
@@ -48,14 +67,14 @@
               name="title"
               class="title form-control input-lg"
               type="text"
-              value={{i.title}}
+              value="{{i.title}}"
               required
             />
             <input
               name="note"
               class="note form-control input-lg"
               type="text"
-              value={{i.note}}
+              value="{{i.note}}"
             />
             <button class="btn update" value={{i.id}}>Update</button>
           </form>

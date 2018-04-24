@@ -9,6 +9,11 @@
   font-size: 1.2em;
 }
 
+#loginForm {
+  display: flex;
+  flex-direction: row;
+}
+
 #addItemForm {
   display: flex;
   flex-direction: row;

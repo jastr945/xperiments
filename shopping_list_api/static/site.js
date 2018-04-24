@@ -36,7 +36,7 @@ $('.update').each(function () {
         var newdata = $.parseJSON(JSON.stringify(data));
         // console.log(newdata.data.title, newdata.data.note);
         $(that).parent('.editItemForm').hide();
-        $(that).parent().siblings('.listInfo').text(newdata.data.title + " | " + newdata.data.note).show();
+        $(that).parent().siblings('.listInfo').html(newdata.data.title + '&nbsp;|&nbsp;<i>' + newdata.data.note + '</i>').show();
       },
       error: function(jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
