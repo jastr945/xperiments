@@ -77,6 +77,7 @@ button:hover {
 @media screen and (max-width: 1000px) {
   .brand {
     font-size: 1.5em;
+    padding-top: 0.5em;
   }
 
   #main {
@@ -86,6 +87,13 @@ button:hover {
   .editItemForm {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #loginForm > input {
+    font-size: 0.9em;
+    width: 100px;
   }
 }
 
