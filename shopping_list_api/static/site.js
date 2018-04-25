@@ -50,8 +50,6 @@ $('#signupForm').submit(function (e) {
 });
 
 
-
-
 // Shows the edit form upon clicking the specific edit button
 $('.edit').each(function () {
   $(this).click(function (e) {
@@ -79,9 +77,11 @@ $('.update').each(function () {
         // console.log(newdata.data.title, newdata.data.note);
         $(that).parent('.editItemForm').hide();
         $(that).parent().siblings('.listInfo').html(newdata.data.title + '&nbsp;|&nbsp;<i>' + newdata.data.note + '</i>').show();
+        $('#messages').html("<h4 class='green'>Record updated successfully.</h4>")
       },
       error: function(jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
+        $('#messages').html("<h4 class='red'>Something went wrong. Try again.</h4>")
       }
     });
   });
@@ -101,9 +101,11 @@ $('.delete').each(function () {
       success: function (e) {
         entry.fadeOut("fast");
         console.log("delete request sent");
+        $('#messages').html("<h4 class='green'>Record deleted successfully.</h4>")
       },
       error: function(jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
+        $('#messages').html("<h4 class='red'>Something went wrong. Try again.</h4>")
       }
     });
   });
