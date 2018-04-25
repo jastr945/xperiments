@@ -26,6 +26,32 @@ $('#signupChoice').click(function (e) {
 });
 
 
+// sends data from the signup form
+$('#signupForm').submit(function (e) {
+  e.preventDefault();
+  var href = "/api/v1.0/signup";
+  var form_data = $(this).serialize();
+  console.log(form_data);
+  var that = this;
+  $.ajax({
+    url: href,
+    type: "POST",
+    data: form_data,
+    success: function (data) {
+      $(that).hide();
+      $(that).siblings('#choices').show();
+      $('#messages').html("<h4 class='green'>New user was created. Please log in.</h4>")
+    },
+    error: function(jqXhr, textStatus, errorThrown) {
+      console.log(errorThrown);
+      $('#messages').html("<h4 class='red'>Something went wrong. Try another username.</h4>")
+    }
+  });
+});
+
+
+
+
 // Shows the edit form upon clicking the specific edit button
 $('.edit').each(function () {
   $(this).click(function (e) {

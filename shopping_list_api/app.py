@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, abort, make_response, request, render_template, redirect, url_for
+from flask import Flask, jsonify, abort, make_response, request, render_template, redirect, url_for, flash
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -67,6 +67,7 @@ def get_users():
 @app.route('/api/v1.0/signup', methods=['POST'])
 def signup():
     """Creating a new user"""
+    error = None
     if not request.json and not request.form:
         abort(400)
     # for curl command

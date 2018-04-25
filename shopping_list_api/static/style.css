@@ -28,6 +28,21 @@
   flex-direction: row;
 }
 
+#messages {
+  margin: auto;
+
+}
+
+.green {
+  background-color: #d5fdd5;
+  color: green;
+}
+
+.red {
+  background-color: #ffb2b2;
+  color: red;
+}
+
 #addItemForm {
   display: flex;
   flex-direction: row;
