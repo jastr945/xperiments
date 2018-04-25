@@ -42,6 +42,77 @@ def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
 
 
+@app.route('/api/v1.0/users', methods=['GET'])
+def get_users():
+    """Listing all users"""
+    users = User.query.all()
+    users_list = []
+    for user in users:
+        user_object = {
+            'id': user.id,
+            'name': user.name,
+            'password': user.password_hash,
+        }
+        users_list.append(user_object)
+    response_object = {
+        'status': 'success',
+        'data': {
+            'users': users_list
+        }
+    }
+    return jsonify(response_object), 200
+
+
+
+@app.route('/api/v1.0/signup', methods=['POST'])
+def signup():
+    """Creating a new user"""
+    if not request.json and not request.form:
+        abort(400)
+    # for curl command
+    if request.json:
+        if 'name' in request.json and type(request.json['name']) != unicode:
+            abort(400)
+        name = request.json['name']
+        samename = User.query.filter_by(name=name).first()
+        if not samename:
+            password = generate_password_hash(request.json['password'])
+            new_user = User(name=name, password_hash=password)
+            db.session.add(new_user)
+            db.session.commit()
+            response_object = {
+                'status': 'success',
+                'message':  'New user {} was added!'.format(newname)
+            }
+        else:
+            response_object = {
+                'status': 'fail',
+                'message': 'Sorry. This name is already taken.'
+            }
+            return jsonify(response_object), 400
+    # for JavaScript Client
+    if request.form:
+        newname = request.form['newname']
+        samename = User.query.filter_by(name=newname).first()
+        if not samename:
+            newpassword = generate_password_hash(request.form['newpassword'])
+            new_user = User(name=newname, password_hash=newpassword)
+            db.session.add(new_user)
+            db.session.commit()
+            response_object = {
+                'status': 'success',
+                'message': 'New user {} was added!'.format(newname)
+            }
+            return redirect(url_for('index'))
+        else:
+            response_object = {
+                'status': 'fail',
+                'message': 'Sorry. This name is already taken.'
+            }
+            return jsonify(response_object), 400
+    return jsonify(response_object), 200
+
+
 @app.route('/api/v1.0/items', methods=['GET'])
 def get_items():
     """Listing all items"""
@@ -189,8 +260,6 @@ def delete_item(item_id):
 def index():
     """Main page view"""
     items = Item.query.all()
-    if request.method=="POST":
-        pass
     return render_template('index.html', items=items)
 
 
