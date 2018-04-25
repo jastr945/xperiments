@@ -23,7 +23,7 @@
   border-bottom: 1px solid black;
 }
 
-#loginForm {
+#loginForm, #signupForm {
   display: flex;
   flex-direction: row;
 }

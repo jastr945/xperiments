@@ -18,6 +18,14 @@ $('#loginChoice').click(function (e) {
 });
 
 
+// opens the signup form
+$('#signupChoice').click(function (e) {
+  e.preventDefault();
+  $('#signupForm').show();
+  $('#choices').hide();
+});
+
+
 // Shows the edit form upon clicking the specific edit button
 $('.edit').each(function () {
   $(this).click(function (e) {
