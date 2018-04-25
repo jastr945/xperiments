@@ -1,8 +1,9 @@
 import os
 from flask import Flask, jsonify, abort, make_response, request, render_template, redirect, url_for
 from flask_httpauth import HTTPBasicAuth
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
-from models import db, Item
+from models import db, Item, User
 
 
 app = Flask(__name__)
@@ -22,11 +23,11 @@ def initdb():
     db.session.commit()
 
 
-@auth.get_password
-def get_password(username):
-    if username == 'polina':
-        return 'kittykat'
-    return None
+@auth.verify_password
+def verify_password(username, password):
+    if username in users:
+        return check_password_hash(users.get(username), password)
+    return False
 
 
 @auth.error_handler

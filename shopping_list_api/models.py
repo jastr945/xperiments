@@ -12,3 +12,14 @@ class Item(db.Model):
     def __init__(self, title, note):
         self.title = title
         self.note = note
+
+
+class User(db.Model):
+    __tablename__ = "users"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(100), nullable=False)
+    password_hash = db.Column(db.String(100), nullable=False)
+
+    def __init__(self, name, password_hash):
+        self.name = name
+        self.password_hash = password_hash
