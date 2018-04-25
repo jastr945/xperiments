@@ -10,6 +10,14 @@ $('.form-control').focus(function(){
 });
 
 
+// opens the login form
+$('#loginChoice').click(function (e) {
+  e.preventDefault();
+  $('#loginForm').show();
+  $('#choices').hide();
+});
+
+
 // Shows the edit form upon clicking the specific edit button
 $('.edit').each(function () {
   $(this).click(function (e) {

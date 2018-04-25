@@ -189,6 +189,8 @@ def delete_item(item_id):
 def index():
     """Main page view"""
     items = Item.query.all()
+    if request.method=="POST":
+        pass
     return render_template('index.html', items=items)
 
 

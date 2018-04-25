@@ -9,6 +9,20 @@
   font-size: 1.2em;
 }
 
+#choices {
+  display: flex;
+  flex-direction: row;
+}
+
+#choices  > h4 {
+  margin-right: 0.5em;
+}
+
+#choices  > h4:hover {
+  cursor: pointer;
+  border-bottom: 1px solid black;
+}
+
 #loginForm {
   display: flex;
   flex-direction: row;
