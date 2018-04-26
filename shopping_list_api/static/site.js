@@ -31,7 +31,7 @@ $('#signupForm').submit(function (e) {
   e.preventDefault();
   var href = "/api/v1.0/signup";
   var form_data = $(this).serialize();
-  console.log(form_data);
+  // console.log(form_data);
   var that = this;
   $.ajax({
     url: href,
@@ -40,7 +40,8 @@ $('#signupForm').submit(function (e) {
     success: function (data) {
       $(that).hide();
       $(that).siblings('#choices').show();
-      $('#messages').html("<h4 class='green'>New user was created. Please log in.</h4>")
+      $('#messages').html("<h4 class='green'>New user was created. Please log in.</h4>");
+      $('input[type="text"]').val('');
     },
     error: function(jqXhr, textStatus, errorThrown) {
       console.log(errorThrown);
@@ -55,7 +56,7 @@ $('#loginForm').submit(function (e) {
   e.preventDefault();
   var href = "/api/v1.0/login";
   var form_data = $(this).serialize();
-  console.log(form_data);
+  // console.log(form_data);
   var that = this;
   $.ajax({
     url: href,
@@ -63,7 +64,8 @@ $('#loginForm').submit(function (e) {
     data: form_data,
     success: function (data) {
       $(that).hide();
-      $('#messages').html("<h4 class='green'>Login successful.</h4>")
+      $('#messages').html("<h4 class='green'>Login successful.</h4>");
+      $('input[type="text"]').val('');
     },
     error: function(jqXhr, textStatus, errorThrown) {
       console.log(errorThrown);
@@ -100,6 +102,29 @@ $('.edit').each(function () {
     $(this).parent().siblings('.listInfo').hide();
   });
 });
+
+
+// posts a new entry to the server
+$('#addItemForm').submit(function (e) {
+  e.preventDefault();
+  var href = "/api/v1.0/items";
+  var form_data = $(this).serialize();
+  // console.log(form_data);
+  $.ajax({
+    url: href,
+    type: "POST",
+    data: form_data,
+    success: function (data) {
+      $('#messages').html("<h4 class='green'>A new item was added.</h4>");
+      $('input[type="text"]').val('');
+    },
+    error: function(jqXhr, textStatus, errorThrown) {
+      console.log(errorThrown);
+      $('#messages').html("<h4 class='red'>Something went wrong. Please try again. Login required.</h4>");
+    }
+  });
+});
+
 
 
 // Sends updated entry to the server, shows updated entry on the website
