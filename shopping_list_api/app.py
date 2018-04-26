@@ -3,6 +3,7 @@ from flask import Flask, jsonify, abort, make_response, request, render_template
 from flask_httpauth import HTTPBasicAuth
 import flask_login
 from flask_login import current_user
+from flask.ext.login import login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Item, User
@@ -42,23 +43,14 @@ def not_found(error):
 
 @login_manager.user_loader
 def load_user(user_id):
+    """Loading User model for flask login"""
     return User.query.get(user_id)
-
-
-@app.route('/api/v1.0/token')
-@auth.login_required
-def get_auth_token():
-    token = g.user.generate_auth_token()
-    return jsonify({ 'token': token.decode('ascii') })
 
 
 @app.route('/api/v1.0/login', methods=['POST'])
 @auth.verify_password
 def verify_password():
-    # # first try to authenticate by token
-    # user = User.verify_auth_token(username_or_token)
-    # if not user:
-        # try to authenticate with username/password
+    """Check if password_hash matches and then login"""
     user = User.query.filter_by(name=request.form['username']).first()
     if not user or not user.verify_password(request.form['password']):
         response_object = {
@@ -76,6 +68,7 @@ def verify_password():
 
 @app.route('/api/v1.0/logout')
 def logout():
+    """End session"""
     flask_login.logout_user()
     response_object = {
         'status': 'success',
@@ -238,7 +231,8 @@ def get_item(item_id):
 
 
 @app.route('/api/v1.0/items/<int:item_id>', methods=['PUT'])
-# @auth.login_required
+@login_required
+@auth.login_required
 def update_item(item_id):
     """Updating a single item"""
     try:
