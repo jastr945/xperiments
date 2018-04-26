@@ -2,6 +2,7 @@ import os
 from flask import Flask, jsonify, abort, make_response, request, render_template, redirect, url_for, g, session
 from flask_httpauth import HTTPBasicAuth
 import flask_login
+from flask_login import current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Item, User
@@ -41,7 +42,7 @@ def not_found(error):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get(user_id)
+    return User.query.get(user_id)
 
 
 @app.route('/api/v1.0/token')
@@ -60,13 +61,12 @@ def verify_password():
         # try to authenticate with username/password
     user = User.query.filter_by(name=request.form['username']).first()
     if not user or not user.verify_password(request.form['password']):
-        import ipdb; ipdb.set_trace()
         response_object = {
             'status': 'fail',
             'message': 'Login failed.'
         }
         return jsonify(response_object), 400
-    g.user = user
+    flask_login.login_user(user)
     response_object = {
         'status': 'success',
         'message':  'User {} logged in!'.format(user.name)
@@ -303,8 +303,13 @@ def delete_item(item_id):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     """Main page view"""
+
+    if current_user.is_authenticated:
+        user = current_user.name
+    else:
+        user=None
     items = Item.query.all()
-    return render_template('index.html', items=items)
+    return render_template('index.html', items=items, user=user)
 
 
 if __name__ == "__main__":

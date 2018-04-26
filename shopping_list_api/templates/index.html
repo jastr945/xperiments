@@ -16,12 +16,11 @@
           <h1 class="brand">Shopping List API Demo</h1>
         </div>
         <div class="navbar-right">
-          {% if users %}
-            {% for user in users %}
-              <div id="welcome">
-                <h4>Hi, {{user.name}}</h4>
-              </div>
-            {% endfor %}
+          {% if user %}
+            <div id="welcome">
+              <h4>Hi, {{user}}!</h4>
+              
+            </div>
           {% else %}
           <div id="choices">
             <h4 id="loginChoice">Login</h4>
