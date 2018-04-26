@@ -1,6 +1,7 @@
 import os
-from flask import Flask, jsonify, abort, make_response, request, render_template, redirect, url_for, g
+from flask import Flask, jsonify, abort, make_response, request, render_template, redirect, url_for, g, session
 from flask_httpauth import HTTPBasicAuth
+import flask_login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Item, User
@@ -14,6 +15,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 auth = HTTPBasicAuth()
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
 
 
 @app.cli.command()
@@ -36,6 +39,11 @@ def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
+
+
 @app.route('/api/v1.0/token')
 @auth.login_required
 def get_auth_token():
@@ -52,6 +60,7 @@ def verify_password():
         # try to authenticate with username/password
     user = User.query.filter_by(name=request.form['username']).first()
     if not user or not user.verify_password(request.form['password']):
+        import ipdb; ipdb.set_trace()
         response_object = {
             'status': 'fail',
             'message': 'Login failed.'
@@ -63,6 +72,17 @@ def verify_password():
         'message':  'User {} logged in!'.format(user.name)
     }
     return jsonify(response_object), 200
+
+
+@app.route('/api/v1.0/logout')
+def logout():
+    flask_login.logout_user()
+    response_object = {
+        'status': 'success',
+        'message':  'User logged out!'
+    }
+    return jsonify(response_object), 200
+
 
 @app.route('/api/v1.0/users', methods=['GET'])
 def get_users():
@@ -83,18 +103,6 @@ def get_users():
         }
     }
     return jsonify(response_object), 200
-
-
-@app.route('/api/v1.0/login', methods=['POST'])
-def login():
-    # for JavaScript Client
-    if request.form:
-        name = request.form['username']
-        samename = User.query.filter_by(name=name).first()
-        if samename:
-            return check_password_hash(samename, request.form['password'])
-        else:
-            return False
 
 
 @app.route('/api/v1.0/signup', methods=['POST'])

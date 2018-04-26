@@ -62,8 +62,8 @@ $('#loginForm').submit(function (e) {
     type: "POST",
     data: form_data,
     success: function (data) {
-      // $(that).hide();
-      // $(that).siblings('#choices').show();
+      $(that).hide();
+      $(that).siblings('#welcome').show();
       $('#messages').html("<h4 class='green'>Login successful.</h4>")
     },
     error: function(jqXhr, textStatus, errorThrown) {
