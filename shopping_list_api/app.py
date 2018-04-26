@@ -23,13 +23,6 @@ def initdb():
     db.session.commit()
 
 
-@auth.verify_password
-def verify_password(username, password):
-    if username in users:
-        return check_password_hash(users.get(username), password)
-    return False
-
-
 @auth.error_handler
 def unauthorized():
     """Handling unauthorized access"""
@@ -63,6 +56,17 @@ def get_users():
     return jsonify(response_object), 200
 
 
+@app.route('/api/v1.0/login', methods=['POST'])
+def login():
+    # for JavaScript Client
+    if request.form:
+        name = request.form['username']
+        samename = User.query.filter_by(name=name).first()
+        import ipdb; ipdb.set_trace()
+        if samename:
+            return check_password_hash(samename, request.form['password'])
+        else:
+            return False
 
 @app.route('/api/v1.0/signup', methods=['POST'])
 def signup():

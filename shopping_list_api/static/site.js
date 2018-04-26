@@ -50,6 +50,30 @@ $('#signupForm').submit(function (e) {
 });
 
 
+// sends data from the login form
+$('#loginForm').submit(function (e) {
+  e.preventDefault();
+  var href = "/api/v1.0/login";
+  var form_data = $(this).serialize();
+  console.log(form_data);
+  var that = this;
+  $.ajax({
+    url: href,
+    type: "POST",
+    data: form_data,
+    success: function (data) {
+      // $(that).hide();
+      // $(that).siblings('#choices').show();
+      $('#messages').html("<h4 class='green'>Login successful.</h4>")
+    },
+    error: function(jqXhr, textStatus, errorThrown) {
+      console.log(errorThrown);
+      $('#messages').html("<h4 class='red'>Something went wrong. Please try again.</h4>")
+    }
+  });
+});
+
+
 // Shows the edit form upon clicking the specific edit button
 $('.edit').each(function () {
   $(this).click(function (e) {
