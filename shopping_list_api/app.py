@@ -51,6 +51,7 @@ def load_user(user_id):
 @auth.verify_password
 def verify_password():
     """Check if password_hash matches and then login"""
+    # check current user's password
     user = User.query.filter_by(name=request.form['username']).first()
     if not user or not user.verify_password(request.form['password']):
         response_object = {
@@ -67,6 +68,7 @@ def verify_password():
 
 
 @app.route('/api/v1.0/logout')
+@login_required
 def logout():
     """End session"""
     flask_login.logout_user()
@@ -173,6 +175,7 @@ def get_items():
 
 
 @app.route('/api/v1.0/items', methods=['POST'])
+@login_required
 def add_item():
     """Adding an item to the list"""
     if not request.json and not request.form:
@@ -232,7 +235,6 @@ def get_item(item_id):
 
 @app.route('/api/v1.0/items/<int:item_id>', methods=['PUT'])
 @login_required
-@auth.login_required
 def update_item(item_id):
     """Updating a single item"""
     try:
@@ -277,6 +279,7 @@ def update_item(item_id):
 
 
 @app.route('/api/v1.0/items/<int:item_id>', methods=['DELETE'])
+@login_required
 def delete_item(item_id):
     """Deleting a single item"""
     try:

@@ -123,7 +123,7 @@ $('.update').each(function () {
       },
       error: function(jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
-        $('#messages').html("<h4 class='red'>Something went wrong. Try again.</h4>")
+        $('#messages').html("<h4 class='red'>Something went wrong. Try again. Login required.</h4>")
       }
     });
   });
@@ -147,7 +147,7 @@ $('.delete').each(function () {
       },
       error: function(jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
-        $('#messages').html("<h4 class='red'>Something went wrong. Try again.</h4>")
+        $('#messages').html("<h4 class='red'>Something went wrong. Try again. Login required.</h4>")
       }
     });
   });
