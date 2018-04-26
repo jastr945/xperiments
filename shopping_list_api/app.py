@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, abort, make_response, request, render_template, redirect, url_for, flash
+from flask import Flask, jsonify, abort, make_response, request, render_template, redirect, url_for, g
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -9,6 +9,7 @@ from models import db, Item, User
 app = Flask(__name__)
 project_dir = os.path.dirname(os.path.abspath(__file__))
 database_file = "sqlite:///{}".format(os.path.join(project_dir, "shopping.db"))
+app.config['SECRET_KEY'] = 'ahfeireibuungohl7ePhmooboozaibei1AeNiepedow5eeRoh2EePh5Ailas'
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
@@ -34,6 +35,34 @@ def not_found(error):
     """Handling 404 nicely"""
     return make_response(jsonify({'error': 'Not found'}), 404)
 
+
+@app.route('/api/v1.0/token')
+@auth.login_required
+def get_auth_token():
+    token = g.user.generate_auth_token()
+    return jsonify({ 'token': token.decode('ascii') })
+
+
+@app.route('/api/v1.0/login', methods=['POST'])
+@auth.verify_password
+def verify_password():
+    # # first try to authenticate by token
+    # user = User.verify_auth_token(username_or_token)
+    # if not user:
+        # try to authenticate with username/password
+    user = User.query.filter_by(name=request.form['username']).first()
+    if not user or not user.verify_password(request.form['password']):
+        response_object = {
+            'status': 'fail',
+            'message': 'Login failed.'
+        }
+        return jsonify(response_object), 400
+    g.user = user
+    response_object = {
+        'status': 'success',
+        'message':  'User {} logged in!'.format(user.name)
+    }
+    return jsonify(response_object), 200
 
 @app.route('/api/v1.0/users', methods=['GET'])
 def get_users():
@@ -62,11 +91,11 @@ def login():
     if request.form:
         name = request.form['username']
         samename = User.query.filter_by(name=name).first()
-        import ipdb; ipdb.set_trace()
         if samename:
             return check_password_hash(samename, request.form['password'])
         else:
             return False
+
 
 @app.route('/api/v1.0/signup', methods=['POST'])
 def signup():
@@ -81,8 +110,9 @@ def signup():
         name = request.json['name']
         samename = User.query.filter_by(name=name).first()
         if not samename:
-            password = generate_password_hash(request.json['password'])
-            new_user = User(name=name, password_hash=password)
+            password = request.json['password']
+            new_user = User(name=name)
+            new_user.hash_password(password)
             db.session.add(new_user)
             db.session.commit()
             response_object = {
@@ -100,8 +130,9 @@ def signup():
         newname = request.form['newname']
         samename = User.query.filter_by(name=newname).first()
         if not samename:
-            newpassword = generate_password_hash(request.form['newpassword'])
-            new_user = User(name=newname, password_hash=newpassword)
+            newpassword = request.form['newpassword']
+            new_user = User(name=newname)
+            new_user.hash_password(newpassword)
             db.session.add(new_user)
             db.session.commit()
             response_object = {
