@@ -81,6 +81,7 @@ def logout():
         'status': 'success',
         'message':  'User logged out!'
     }
+    return redirect(url_for('index'))
     return jsonify(response_object), 200
 
 
@@ -303,7 +304,6 @@ def delete_item(item_id):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     """Main page view"""
-
     if current_user.is_authenticated:
         user = current_user.name
     else:

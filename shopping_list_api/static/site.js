@@ -63,8 +63,26 @@ $('#loginForm').submit(function (e) {
     data: form_data,
     success: function (data) {
       $(that).hide();
-      $(that).siblings('#welcome').show();
       $('#messages').html("<h4 class='green'>Login successful.</h4>")
+    },
+    error: function(jqXhr, textStatus, errorThrown) {
+      console.log(errorThrown);
+      $('#messages').html("<h4 class='red'>Something went wrong. Please try again.</h4>")
+    }
+  });
+});
+
+
+// logs the user out
+$('#logout').click(function (e) {
+  e.preventDefault();
+  var href = "/api/v1.0/logout";
+  $.ajax({
+    url: href,
+    type: "GET",
+    success: function (data) {
+      $('#messages').html("<h4 class='green'>Logout successful.</h4>");
+      $('#welcome').hide();
     },
     error: function(jqXhr, textStatus, errorThrown) {
       console.log(errorThrown);
