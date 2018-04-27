@@ -69,7 +69,7 @@ $('#loginForm').submit(function (e) {
       if (data.redirect !== undefined && data.redirect) {
         setTimeout(function() {
           window.location.href = data.redirect_url;
-        }, 1500);
+        }, 1200);
       };
     },
     error: function(jqXhr, textStatus, errorThrown) {
@@ -93,7 +93,7 @@ $('#logout').click(function (e) {
       if (data.redirect !== undefined && data.redirect) {
         setTimeout(function() {
           window.location.href = data.redirect_url;
-        }, 1500);
+        }, 1200);
       };
     },
     error: function(jqXhr, textStatus, errorThrown) {
@@ -130,7 +130,7 @@ $('#addItemForm').submit(function (e) {
       if (data.redirect !== undefined && data.redirect) {
         setTimeout(function() {
           window.location.href = data.redirect_url;
-        }, 1500);
+        }, 1200);
       };
     },
     error: function(jqXhr, textStatus, errorThrown) {
@@ -157,7 +157,7 @@ $('.update').each(function () {
         if (data.redirect !== undefined && data.redirect) {
           setTimeout(function() {
             window.location.href = data.redirect_url;
-          }, 1500);
+          }, 1200);
         };
         $('#messages').html("<h4 class='green'>Record updated successfully.</h4>")
       },

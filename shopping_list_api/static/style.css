@@ -36,7 +36,8 @@
 
 #welcome > h4 {
   margin-bottom: 0;
-  margin-right: 0.5;
+  margin-right: 0.5em;
+  font-family: 'Dancing Script', cursive;
 }
 
 #messages {
