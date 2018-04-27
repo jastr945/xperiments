@@ -62,7 +62,9 @@ def verify_password():
     flask_login.login_user(user)
     response_object = {
         'status': 'success',
-        'message':  'User {} logged in!'.format(user.name)
+        'message':  'User {} logged in!'.format(user.name),
+        'redirect': True,
+        'redirect_url': url_for('index')
     }
     return jsonify(response_object), 200
 
@@ -74,9 +76,10 @@ def logout():
     flask_login.logout_user()
     response_object = {
         'status': 'success',
-        'message':  'User logged out!'
+        'message':  'User logged out!',
+        'redirect': True,
+        'redirect_url': url_for('index')
     }
-    return redirect(url_for('index'))
     return jsonify(response_object), 200
 
 
@@ -141,9 +144,8 @@ def signup():
             db.session.commit()
             response_object = {
                 'status': 'success',
-                'message': 'New user {} was added!'.format(newname)
+                'message': 'New user {} was added!'.format(newname),
             }
-            return redirect(url_for('index'))
         else:
             response_object = {
                 'status': 'fail',
@@ -197,6 +199,7 @@ def add_item():
             'status': 'success',
             'message': 'Item was added!'
         }
+        return jsonify(response_object), 201
     # for JavaScript Client
     if request.form:
         title = request.form['title']
@@ -206,10 +209,11 @@ def add_item():
         db.session.commit()
         response_object = {
             'status': 'success',
-            'message': 'Item was added!'
+            'message': 'Item was added!',
+            'redirect': True,
+            'redirect_url': url_for('index')
         }
-        return redirect(url_for('index'))
-    return jsonify(response_object), 201
+        return jsonify(response_object), 201
 
 
 @app.route('/api/v1.0/items/<int:item_id>', methods=['GET'])
@@ -268,6 +272,8 @@ def update_item(item_id):
                 db.session.commit()
                 response_object = {
                     'status': 'success',
+                    'redirect': True,
+                    'redirect_url': url_for('index'),
                     'data': {
                         'title': title,
                         'note': note

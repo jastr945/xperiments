@@ -36,7 +36,7 @@
 
 #welcome > h4 {
   margin-bottom: 0;
-  margin-right: 0.5em;
+  margin-right: 0.5;
 }
 
 #messages {
@@ -137,6 +137,10 @@ button:hover {
 }
 
 @media screen and (max-width: 780px) {
+  #messages > h4 {
+    font-size: 1em;
+  }
+
   #addItemForm {
     display: flex;
     flex-direction: column;

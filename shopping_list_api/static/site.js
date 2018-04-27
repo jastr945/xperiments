@@ -66,6 +66,11 @@ $('#loginForm').submit(function (e) {
       $(that).hide();
       $('#messages').html("<h4 class='green'>Login successful.</h4>");
       $('input[type="text"]').val('');
+      if (data.redirect !== undefined && data.redirect) {
+        setTimeout(function() {
+          window.location.href = data.redirect_url;
+        }, 1500);
+      };
     },
     error: function(jqXhr, textStatus, errorThrown) {
       console.log(errorThrown);
@@ -84,7 +89,12 @@ $('#logout').click(function (e) {
     type: "GET",
     success: function (data) {
       $('#messages').html("<h4 class='green'>Logout successful.</h4>");
-      $('#welcome').hide();
+      // $('#welcome').hide();
+      if (data.redirect !== undefined && data.redirect) {
+        setTimeout(function() {
+          window.location.href = data.redirect_url;
+        }, 1500);
+      };
     },
     error: function(jqXhr, textStatus, errorThrown) {
       console.log(errorThrown);
@@ -117,6 +127,11 @@ $('#addItemForm').submit(function (e) {
     success: function (data) {
       $('#messages').html("<h4 class='green'>A new item was added.</h4>");
       $('input[type="text"]').val('');
+      if (data.redirect !== undefined && data.redirect) {
+        setTimeout(function() {
+          window.location.href = data.redirect_url;
+        }, 1500);
+      };
     },
     error: function(jqXhr, textStatus, errorThrown) {
       console.log(errorThrown);
@@ -126,7 +141,6 @@ $('#addItemForm').submit(function (e) {
 });
 
 
-
 // Sends updated entry to the server, shows updated entry on the website
 $('.update').each(function () {
   $(this).click(function (e) {
@@ -134,16 +148,17 @@ $('.update').each(function () {
     var elementId = $(this).attr("value");
     var href = "http://localhost:5000/api/v1.0/items/" + elementId;
     var form_data = $(this).parent('.editItemForm').serialize();
-    var that = this;
     $.ajax({
       url: href,
       type: "PUT",
       data: form_data,
       success: function (data) {
-        var newdata = $.parseJSON(JSON.stringify(data));
-        // console.log(newdata.data.title, newdata.data.note);
-        $(that).parent('.editItemForm').hide();
-        $(that).parent().siblings('.listInfo').html(newdata.data.title + '&nbsp;|&nbsp;<i>' + newdata.data.note + '</i>').show();
+        // console.log(data);
+        if (data.redirect !== undefined && data.redirect) {
+          setTimeout(function() {
+            window.location.href = data.redirect_url;
+          }, 1500);
+        };
         $('#messages').html("<h4 class='green'>Record updated successfully.</h4>")
       },
       error: function(jqXhr, textStatus, errorThrown) {
