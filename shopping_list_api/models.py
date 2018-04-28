@@ -12,9 +12,10 @@ class Item(db.Model):
     note = db.Column(db.String(1000), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def __init__(self, title, note):
+    def __init__(self, title, note, user_id):
         self.title = title
         self.note = note
+        self.user_id = user_id
 
 
 class User(db.Model, UserMixin):

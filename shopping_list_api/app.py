@@ -204,7 +204,7 @@ def add_item():
     if request.form:
         title = request.form['title']
         note = request.form['note']
-        new_item = Item(title=title, note=note)
+        new_item = Item(title=title, note=note, user_id=current_user.id)
         db.session.add(new_item)
         db.session.commit()
         response_object = {
@@ -309,9 +309,10 @@ def index():
     """Main page view"""
     if current_user.is_authenticated:
         user = current_user.name
+        items = Item.query.filter_by(user_id=current_user.id)
     else:
         user=None
-    items = Item.query.all()
+        items=None
     return render_template('index.html', items=items, user=user)
 
 
