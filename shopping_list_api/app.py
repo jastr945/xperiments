@@ -3,7 +3,7 @@ from flask import Flask, jsonify, abort, make_response, request, render_template
 from flask_httpauth import HTTPBasicAuth
 import flask_login
 from flask_login import current_user
-from flask.ext.login import login_required
+from flask_login import login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Item, User
