@@ -146,7 +146,7 @@ $('.update').each(function () {
   $(this).click(function (e) {
     e.preventDefault();
     var elementId = $(this).attr("value");
-    var href = "http://localhost:5000/api/v1.0/items/" + elementId;
+    var href = "/api/v1.0/items/" + elementId;
     var form_data = $(this).parent('.editItemForm').serialize();
     $.ajax({
       url: href,
@@ -176,13 +176,13 @@ $('.delete').each(function () {
     e.preventDefault();
     var entry = $(this).parent().parent();
     var elementId = $(this).attr("value");
-    var href = "http://localhost:5000/api/v1.0/items/" + elementId;
+    var href = "api/v1.0/items/" + elementId;
     $.ajax({
       url: href,
       type: "DELETE",
       success: function (e) {
         entry.fadeOut("fast");
-        console.log("delete request sent");
+        // console.log("delete request sent");
         $('#messages').html("<h4 class='green'>Record deleted successfully.</h4>")
       },
       error: function(jqXhr, textStatus, errorThrown) {
