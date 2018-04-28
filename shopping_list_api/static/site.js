@@ -154,12 +154,12 @@ $('.update').each(function () {
       data: form_data,
       success: function (data) {
         // console.log(data);
+        $('#messages').html("<h4 class='green'>Record updated successfully.</h4>");
         if (data.redirect !== undefined && data.redirect) {
           setTimeout(function() {
             window.location.href = data.redirect_url;
           }, 1200);
         };
-        $('#messages').html("<h4 class='green'>Record updated successfully.</h4>")
       },
       error: function(jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
