@@ -309,7 +309,11 @@ def index():
     """Main page view"""
     if current_user.is_authenticated:
         user = current_user.name
-        items = Item.query.filter_by(user_id=current_user.id)
+        check_items_list = Item.query.filter_by(user_id=current_user.id).first()
+        if check_items_list:
+            items = Item.query.filter_by(user_id=current_user.id)
+        else:
+            items = None
     else:
         user=None
         items=None
