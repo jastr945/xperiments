@@ -82,41 +82,126 @@
         />
         <button id="addItem" class="btn"><b>+</b></button>
       </form>
-      {% if items %}
+      {% if user %}
+        {% if items %}
+        <div class="listContainer">
+        {% for i in items %}
+          <div class="listRow">
+            <div class="listInfo">
+              {{i.title}}
+              {% if i.note %}
+              &nbsp;|&nbsp;<i>{{i.note}}</i>
+              {% endif %}
+            </div>
+            <form class="editItemForm" style="display:none">
+              <input
+                name="title"
+                class="title form-control input-lg"
+                type="text"
+                value="{{i.title}}"
+                required
+              />
+              <input
+                name="note"
+                class="note form-control input-lg"
+                type="text"
+                value="{{i.note}}"
+              />
+              <button class="btn update" value={{i.id}}>Update</button>
+            </form>
+            <div class="listButtons">
+              <button class="btn edit">edit</button>
+              <button class="btn delete" value={{i.id}}>del</button>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+        {% else %}
+          <h4>Your list is empty for now. Start adding shopping items.</h4>
+        {% endif %}
+      {% else %}
+      <h4>Sign up and create your own shopping list.</h4><br>
+      <div class="info">Example:</div>
       <div class="listContainer">
-      {% for i in items %}
         <div class="listRow">
           <div class="listInfo">
-            {{i.title}}
-            {% if i.note %}
-            &nbsp;|&nbsp;<i>{{i.note}}</i>
-            {% endif %}
+            grapes
+            &nbsp;|&nbsp;<i>red or green, 1 lb</i>
           </div>
           <form class="editItemForm" style="display:none">
             <input
               name="title"
               class="title form-control input-lg"
               type="text"
-              value="{{i.title}}"
+              value="grapes"
               required
             />
             <input
               name="note"
               class="note form-control input-lg"
               type="text"
-              value="{{i.note}}"
+              value="red or green, 1 lb"
             />
-            <button class="btn update" value={{i.id}}>Update</button>
+            <button class="btn update">Update</button>
           </form>
           <div class="listButtons">
             <button class="btn edit">edit</button>
-            <button class="btn delete" value={{i.id}}>del</button>
+            <button class="btn delete">del</button>
           </div>
         </div>
-      {% endfor %}
+        <div class="listRow">
+          <div class="listInfo">
+            bread
+            &nbsp;|&nbsp;<i>whole wheat</i>
+          </div>
+          <form class="editItemForm" style="display:none">
+            <input
+              name="title"
+              class="title form-control input-lg"
+              type="text"
+              value="bread"
+              required
+            />
+            <input
+              name="note"
+              class="note form-control input-lg"
+              type="text"
+              value="whole wheat"
+            />
+            <button class="btn update">Update</button>
+          </form>
+          <div class="listButtons">
+            <button class="btn edit">edit</button>
+            <button class="btn delete">del</button>
+          </div>
+        </div>
+        <div class="listRow">
+          <div class="listInfo">
+            yogurt
+            &nbsp;|&nbsp;<i>Greek, fat free</i>
+          </div>
+          <form class="editItemForm" style="display:none">
+            <input
+              name="title"
+              class="title form-control input-lg"
+              type="text"
+              value="yogurt"
+              required
+            />
+            <input
+              name="note"
+              class="note form-control input-lg"
+              type="text"
+              value="Greek, fat free"
+            />
+            <button class="btn update">Update</button>
+          </form>
+          <div class="listButtons">
+            <button class="btn edit">edit</button>
+            <button class="btn delete">del</button>
+          </div>
+        </div>
       </div>
-      {% else %}
-        <h4>Your list is empty for now. Start adding shopping items.</h4>
       {% endif %}
     </div>
   <script src="/static/site.js"></script>

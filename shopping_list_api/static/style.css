@@ -28,6 +28,12 @@
   flex-direction: row;
 }
 
+.info {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2em;
+  margin: 0.5em auto;
+}
+
 #welcome {
   display: flex;
   flex-direction: row;

@@ -306,7 +306,7 @@ def delete_item(item_id):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    """Main page view"""
+    """Main page view. If user is authenticated, show them their items."""
     if current_user.is_authenticated:
         user = current_user.name
         check_items_list = Item.query.filter_by(user_id=current_user.id).first()
