@@ -192,7 +192,7 @@ def add_item():
             abort(400)
         title = request.json['title']
         note = request.json.get('note', "")
-        new_item = Item(title=title, note=note)
+        new_item = Item(title=title, note=note, user_id=current_user.id)
         db.session.add(new_item)
         db.session.commit()
         response_object = {
@@ -297,11 +297,13 @@ def delete_item(item_id):
             db.session.commit()
             response_object = {
                 'status': 'success',
-                'message': 'Item was deleted!'
+                'message': 'Item was deleted!',
+                'redirect': True,
+                'redirect_url': url_for('index')
             }
     except ValueError:
         abort(400)
-    return jsonify(response_object), 204
+    return jsonify(response_object), 200
 
 
 @app.route('/', methods=['GET', 'POST'])

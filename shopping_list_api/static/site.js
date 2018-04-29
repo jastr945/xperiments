@@ -180,10 +180,15 @@ $('.delete').each(function () {
     $.ajax({
       url: href,
       type: "DELETE",
-      success: function (e) {
+      success: function (data) {
+        console.log(data);
         entry.fadeOut("fast");
-        // console.log("delete request sent");
-        $('#messages').html("<h4 class='green'>Record deleted successfully.</h4>")
+        $('#messages').html("<h4 class='green'>Record deleted successfully.</h4>");
+        if (data.redirect !== undefined && data.redirect) {
+          setTimeout(function() {
+            window.location.href = data.redirect_url;
+          }, 1200);
+        };
       },
       error: function(jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
