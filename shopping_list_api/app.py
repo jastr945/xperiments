@@ -51,14 +51,24 @@ def load_user(user_id):
 @auth.verify_password
 def verify_password():
     """Check if password_hash matches and then login"""
-    # check current user's password
-    user = User.query.filter_by(name=request.form['username']).first()
-    if not user or not user.verify_password(request.form['password']):
-        response_object = {
-            'status': 'fail',
-            'message': 'Login failed.'
-        }
-        return jsonify(response_object), 400
+    if not request.json and not request.form:
+        abort(400)
+    if request.json:
+        user = User.query.filter_by(name=request.json['name']).first()
+        if not user or not user.verify_password(request.json['password']):
+            response_object = {
+                'status': 'fail',
+                'message': 'Login failed.'
+            }
+            return jsonify(response_object), 400
+    if request.form:
+        user = User.query.filter_by(name=request.form['username']).first()
+        if not user or not user.verify_password(request.form['password']):
+            response_object = {
+                'status': 'fail',
+                'message': 'Login failed.'
+            }
+            return jsonify(response_object), 400
     flask_login.login_user(user)
     response_object = {
         'status': 'success',
@@ -69,7 +79,7 @@ def verify_password():
     return jsonify(response_object), 200
 
 
-@app.route('/api/v1.0/logout')
+@app.route('/api/v1.0/logout', methods=['GET'])
 @login_required
 def logout():
     """End session"""
@@ -107,7 +117,6 @@ def get_users():
 @app.route('/api/v1.0/signup', methods=['POST'])
 def signup():
     """Creating a new user"""
-    error = None
     if not request.json and not request.form:
         abort(400)
     # for curl command
@@ -124,7 +133,7 @@ def signup():
             db.session.commit()
             response_object = {
                 'status': 'success',
-                'message':  'New user {} was added!'.format(newname)
+                'message':  'New user {} was added!'.format(name)
             }
         else:
             response_object = {
