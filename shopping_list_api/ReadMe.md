@@ -8,4 +8,4 @@ UPDATE entries,
 DELETE them.
 
 
-The REST API can be accessed via the JavaScript Client or cURL commands.
+The REST API can be accessed via the JavaScript Client or cURL commands / Postman.
