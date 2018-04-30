@@ -61,13 +61,12 @@ class BasicTests(TestCase):
         response = self.app.get('/api/v1.0/users')
         assert response.status_code==200
 
+    def test_signup(self):
+        response = self.app.post('/api/v1.0/signup', json={
+                'name': 'flask', 'password': 'secret'
+            })
+        assert response.status_code==200
 
-# with app.test_client() as c:
-#     rv = c.post('/api/auth', json={
-#         'username': 'flask', 'password': 'secret'
-#     })
-#     json_data = rv.get_json()
-#     assert verify_token(email, json_data['token'])
 
 if __name__ == "__main__":
     unittest.main()

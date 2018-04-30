@@ -121,7 +121,7 @@ def signup():
         abort(400)
     # for curl command
     if request.json:
-        if 'name' in request.json and type(request.json['name']) != unicode:
+        if 'name' in request.json and type(request.json['name']) != str:
             abort(400)
         name = request.json['name']
         samename = User.query.filter_by(name=name).first()
@@ -195,9 +195,9 @@ def add_item():
     if request.json:
         if 'title' not in request.json:
             abort(400)
-        if 'title' in request.json and type(request.json['title']) != unicode:
+        if 'title' in request.json and type(request.json['title']) != str:
             abort(400)
-        if 'note' in request.json and type(request.json['note']) is not unicode:
+        if 'note' in request.json and type(request.json['note']) is not str:
             abort(400)
         title = request.json['title']
         note = request.json.get('note', "")
@@ -259,9 +259,9 @@ def update_item(item_id):
             if request.json:
                 if 'title' not in request.json:
                     abort(400)
-                if 'title' in request.json and type(request.json['title']) != unicode:
+                if 'title' in request.json and type(request.json['title']) != str:
                     abort(400)
-                if 'note' in request.json and type(request.json['note']) is not unicode:
+                if 'note' in request.json and type(request.json['note']) is not str:
                     abort(400)
                 title = request.json['title']
                 note = request.json.get('note', "")
