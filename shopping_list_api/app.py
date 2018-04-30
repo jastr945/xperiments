@@ -1,4 +1,5 @@
 import os
+import sys
 from flask import Flask, jsonify, abort, make_response, request, render_template, redirect, url_for, g, session
 from flask_httpauth import HTTPBasicAuth
 import flask_login
@@ -19,6 +20,10 @@ db.init_app(app)
 auth = HTTPBasicAuth()
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
+
+# resolving unicode vs. str conflict
+if sys.version_info[0] >= 3:
+    unicode = str
 
 
 @app.cli.command()
@@ -54,11 +59,15 @@ def verify_password():
     if not request.json and not request.form:
         abort(400)
     if request.json:
+        if type(request.json['name']) != unicode and type(request.json['name']) != str:
+            abort(400)
+        if type(request.json['password']) != unicode and type(request.json['password']) != str:
+            abort(400)
         user = User.query.filter_by(name=request.json['name']).first()
         if not user or not user.verify_password(request.json['password']):
             response_object = {
                 'status': 'fail',
-                'message': 'Login failed.'
+                'message': 'Login failed. No such user or invalid data.'
             }
             return jsonify(response_object), 400
     if request.form:
@@ -121,7 +130,9 @@ def signup():
         abort(400)
     # for curl command
     if request.json:
-        if 'name' in request.json and type(request.json['name']) != str:
+        if 'name' not in request.json:
+            abort(400)
+        if type(request.json['name']) != unicode and type(request.json['name']) != str:
             abort(400)
         name = request.json['name']
         samename = User.query.filter_by(name=name).first()
@@ -195,9 +206,9 @@ def add_item():
     if request.json:
         if 'title' not in request.json:
             abort(400)
-        if 'title' in request.json and type(request.json['title']) != str:
+        if 'title' in request.json and type(request.json['title']) != unicode and type(request.json['title']) != str:
             abort(400)
-        if 'note' in request.json and type(request.json['note']) is not str:
+        if 'note' in request.json and type(request.json['note']) != unicode and type(request.json['note']) != str:
             abort(400)
         title = request.json['title']
         note = request.json.get('note', "")
@@ -259,9 +270,9 @@ def update_item(item_id):
             if request.json:
                 if 'title' not in request.json:
                     abort(400)
-                if 'title' in request.json and type(request.json['title']) != str:
+                if 'title' in request.json and type(request.json['title']) != unicode and type(request.json['title']) != str:
                     abort(400)
-                if 'note' in request.json and type(request.json['note']) is not str:
+                if 'note' in request.json and type(request.json['note']) != unicode and type(request.json['note']) != str:
                     abort(400)
                 title = request.json['title']
                 note = request.json.get('note', "")
