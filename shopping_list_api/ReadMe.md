@@ -1,6 +1,6 @@
 # Shopping List App
 
-This is a simple **RESTful API** built with Python and Flask. A web service to add, remove and modify items on the shopping list.
+This is a simple **RESTful API** built with Python and Flask. A web service to add, remove and modify items on the shopping list. POST, GET, PUT and DELETE requests sent with appropriate HTTP codes.
 
 - CREATE shopping items,
 - READ them,
