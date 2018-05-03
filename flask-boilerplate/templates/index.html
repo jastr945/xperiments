@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  <link href="/static/style.css" rel="stylesheet">
+  <title>Boilerplate</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-inner">
+          <h1 class="brand">Boilerplate</h1>
+        </div>
+        <div class="navbar-right">
+          {% if user %}
+            <div id="welcome">
+              <h4>Hi, {{user}}!</h4>
+              <button id="logout" class="btn">Logout</button>
+            </div>
+          {% else %}
+          <div id="choices">
+            <h4 id="loginChoice">Login</h4>
+            <h4 id="signupChoice">Signup</h4>
+          </div>
+          {% endif %}
+          <form id="loginForm" style="display:none">
+            <input
+              name="username"
+              class="form-control input-lg"
+              type="text"
+              placeholder="username"
+              required
+            />
+            <input
+              name="password"
+              class="form-control input-lg"
+              type="text"
+              placeholder="password"
+              required
+            />
+            <button id="login" class="btn">Login</button>
+          </form>
+          <form id="signupForm" style="display:none">
+            <input
+              name="newname"
+              class="form-control input-lg"
+              type="text"
+              placeholder="username"
+              required
+            />
+            <input
+              name="newpassword"
+              class="form-control input-lg"
+              type="text"
+              placeholder="password"
+              required
+            />
+            <button id="signup" class="btn">Signup</button>
+          </form>
+        </div>
+    </div>
+    <div id="main" class="container">
+      <div id="messages">
+      </div>
+    </div>
+  <script src="/static/site.js"></script>
+</body>
+</html>

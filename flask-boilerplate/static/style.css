@@ -1,0 +1,83 @@
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+#choices {
+  display: flex;
+  flex-direction: row;
+}
+
+#choices  > h4 {
+  margin-right: 0.5em;
+}
+
+#choices  > h4:hover {
+  cursor: pointer;
+  border-bottom: 1px solid black;
+}
+
+#loginForm, #signupForm {
+  display: flex;
+  flex-direction: row;
+}
+
+.info {
+  font-size: 2em;
+  margin: 0.5em auto;
+}
+
+#welcome {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#welcome > h4 {
+  margin-bottom: 0;
+  margin-right: 0.5em;
+}
+
+#messages {
+  margin: auto;
+}
+
+.green {
+  background-color: #d5fdd5;
+  color: green;
+}
+
+.red {
+  background-color: #ffb2b2;
+  color: red;
+}
+
+@media screen and (max-width: 1000px) {
+  .brand {
+    font-size: 1.5em;
+    padding-top: 0.5em;
+  }
+
+  #main {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #loginForm > input, #signupForm > input {
+    font-size: 0.9em;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  #messages > h4 {
+    font-size: 1em;
+  }
+
+  .info {
+    font-size: 1.5em;
+  }
+}
