@@ -1,4 +1,5 @@
 import collections
+import re
 
 
 def unique_chars(s):
@@ -40,3 +41,12 @@ print(permutation("aabb", "bbaa"))
 print(permutation("aabb", "bbaaa"))
 print(permutation("asabb", "bbaas"))
 print(permutation("asbb", "bbaa"))
+
+
+def replace_spaces(my_string, true_length):
+    """Replaces all spaces in a string with %20; discards any additional spaces at the end given the true length of a string"""
+    real_str = my_string[:true_length]
+    result = re.sub(" ", "%20", real_str)
+    return result
+
+print(replace_spaces("aa bb cc     ", 8))

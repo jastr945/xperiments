@@ -21,9 +21,9 @@ class Game():
             open_frame = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
             for index, i in enumerate(self.result_string): # getting the index of every character in a string
                 current_index = index
-                if current_index < (len(self.result_string) - 2):
+                if current_index <= (len(self.result_string) - 2):
                     next_score = self.result_string[current_index + 1]
-                if current_index < (len(self.result_string) - 3):
+                if current_index <= (len(self.result_string) - 3):
                     second_next_score = self.result_string[current_index + 2]
                 if current_index > 0:
                     previous_score = self.result_string[current_index - 1]
@@ -34,7 +34,6 @@ class Game():
                     frame_result += 0
 
                 if i == "X":
-                    i = 10
                     if current_index < (len(self.result_string) - 3):
                         if next_score == "X" and second_next_score == "X":
                             i = 30
@@ -46,26 +45,24 @@ class Game():
                             i = 20
                         if next_score in open_frame and second_next_score in open_frame:
                             i = 10 + int(next_score) + int(second_next_score)
-
-                    if current_index == (len(self.result_string) - 3):
+                    if current_index == (len(self.result_string) - 2):
                         if next_score == "X":
                             i = 20
                         else:
-                            i = 10
-                    if current_index == (len(self.result_string) - 2):
+                            i = 10 + int(next_score)
+                    if current_index == (len(self.result_string) - 1):
                         i = 10
                     frame_result += int(i)
 
                 if i in open_frame:
-                    if current_index < (len(self.result_string) - 3) and next_score == "/":
+                    if current_index <= (len(self.result_string) - 3) and next_score == "/":
                         if second_next_score == "X":
                             i = 20
                         else:
                             i = 10 + int(second_next_score)
-                    if current_index == (len(self.result_string) - 2) and previous_score == "/":
+                    if current_index == (len(self.result_string) - 1) and previous_score == "/":
                         i = int(i)
-                    else:
-                        i = int(i)
+                    i = int(i)
                     frame_result += int(i)
 
                 total_result += frame_result
@@ -83,7 +80,7 @@ print(g.get_score())
 
 g = Game("5/5/5/5/5/5/5/5/5/5/5")
 print(g.get_score())
-#
+
 g = Game("X7/729/XXX236/7/3")
 print(g.get_score())
 
