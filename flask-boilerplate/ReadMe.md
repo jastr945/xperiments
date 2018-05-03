@@ -14,8 +14,18 @@ Features:
 - Dockerfile
 - basic Flask unittests setup
 - ReadMe.md and .gitignore for GitHub
+- secrets are not hidden 
 
 ## Demo
+
+Download, build an image with Docker and run on port 5000. The image is also available from my Docker Hub:
+
+...Or create a virtual environment and do:
+```sh
+$ export FLASK_APP=app.py
+$ flask run
+
+```
 
 ## Tests
 ```sh
