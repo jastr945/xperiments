@@ -50,3 +50,23 @@ def replace_spaces(my_string, true_length):
     return result
 
 print(replace_spaces("aa bb cc     ", 8))
+
+
+def compressed(my_string):
+    """aabcccccaaa becomes a2b1c5a3. If the result is nor shorter, return the original string."""
+    final_str = ""
+    check_list = []
+    for i in my_string:
+        if len(check_list) > 1 and i==check_list[-2]:
+            check_list[-1]+=1
+        else:
+            check_list.append(i)
+            check_list.append(1)
+    for i in check_list:
+        final_str+=str(i)
+    if final_str > my_string:
+        return my_string
+    else:
+        return final_str
+
+print(compressed("aabcccccaaa"))
