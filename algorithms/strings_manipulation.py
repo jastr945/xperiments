@@ -70,3 +70,22 @@ def compressed(my_string):
         return final_str
 
 print(compressed("aabcccccaaa"))
+
+
+def all_unique(str1):
+    """Identify if a string has all unique characters"""
+    for i in str1:
+        if str1.count(i) > 1:
+            return False
+    else:
+        return True
+
+print(all_unique("hangs"))
+print(all_unique("ahhngs"))
+
+def all_unique2(str2):
+    """Identify if a string has all unique characters"""
+    return str1==set(str1)
+
+print(all_unique("hangs"))
+print(all_unique("ahhngs"))
