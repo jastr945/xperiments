@@ -89,3 +89,17 @@ def all_unique2(str2):
 
 print(all_unique("hangs"))
 print(all_unique("ahhngs"))
+
+
+def is_substring(str1, str2):
+    """Finds out if one string is a substring of another"""
+    return str1.find(str2) > 0
+
+def if_rotation(str1, str2):
+    """Checks if one string is rotation of another using is_substring method"""
+    if len(str1)!=len(str2):
+        return False
+    double = str1 + str1
+    return is_substring(double, str2)
+
+print(if_rotation("waterbottle", "bottlewater"))
