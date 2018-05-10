@@ -38,3 +38,13 @@ if __name__ == "__main__":
     node3.next = node4
 
     node1.traverse()
+
+
+# list1=[1, 2, 3], list2=[4, 5, 6,5,10] How to sum these lists having different lengths?
+def sum_lists(my_list1, my_list2):
+    """Creating a sum of two lists"""
+    sum1 = sum(my_list1)
+    sum2 = sum(my_list2)
+    return sum1 + sum2
+
+print(sum_lists([1, 2, 3],[4, 5, 6,5,10]))
