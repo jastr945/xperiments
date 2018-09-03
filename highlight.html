@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JS Highlighlight Script</title>
+<style>
+  body, html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  #mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 70%;
+    margin: auto;
+  }
+  .formSentence {
+    margin: 0.5em auto;
+  }
+  button {
+    margin: auto;
+    padding: 1em;
+    align-self: center;
+    cursor: pointer;
+  }
+  #mainText {
+    margin: 1em auto;
+  }
+</style>
+</head>
+
+<body>
+  <div id="mainContainer">
+    <b>Fragment 1: </b><div class="formSentence">Plaid rain secular humanists 100% handcrafted - indie $600 rock voodoo donuts Cascadia dark ale fixed gear direct trade Oregon Trail moustache unicycling with bagpipes and Darth Vader mask Last Thursday food carts.</div>
+    <b>Fragment 2: </b><div class="formSentence">Silicon Forest The Bins beerfest purveyor of fine goods gentrification rivers Mount Tabor/punk ``~;: rock artisan mini-mart zwickelmania.</div>
+    <button>Highlight Fragments</button>
+    <div id="mainText">
+      Plaid rain secular humanists 100% handcrafted - indie $600 rock Voodoo Donuts Cascadia dark ale fixed gear direct trade Oregon Trail moustache unicycling with bagpipes and Darth Vader mask Last Thursday food carts. Holocene yupster co-op hipster house pickled Plaid Pantry queer culture tall bikes hops explosion brewvana clouds indie rock Grimm anachronism blackberries Alberta Arts. mellow Forest Park charcuterie pork belly Portlandia evergreens new urbanist Saturday Market bicycle rights bridgetown tulips Rocky Butte it's raining again urban farmer. sustainable DIY veggie burger NoPo James Mercer Silicon Forest The Bins beerfest purveyor of fine goods gentrification rivers Mount Tabor/punk ``~;: rock artisan mini-mart zwickelmania.
+    </div>
+    <div id="mainTextHighlighted" style="display: none;">
+      Plaid rain secular humanists 100% handcrafted - indie $600 rock Voodoo Donuts Cascadia dark ale fixed gear direct trade Oregon Trail moustache unicycling with bagpipes and Darth Vader mask Last Thursday food carts. Holocene yupster co-op hipster house pickled Plaid Pantry queer culture tall bikes hops explosion brewvana clouds indie rock Grimm anachronism blackberries Alberta Arts. mellow Forest Park charcuterie pork belly Portlandia evergreens new urbanist Saturday Market bicycle rights bridgetown tulips Rocky Butte it's raining again urban farmer. sustainable DIY veggie burger NoPo James Mercer Silicon Forest The Bins beerfest purveyor of fine goods gentrification rivers Mount Tabor/punk ``~;: rock artisan mini-mart zwickelmania.
+    </div>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+<script>
+
+var highlighted = false;
+
+var mark = function() {
+
+  var options = {
+    accuracy: "exactly",
+    separateWordSearch: false,
+    diacritics: true,
+    caseSensitive: false,
+  };
+
+  if (highlighted) {
+    $("#mainText").unmark();
+    highlighted = false;
+  } else {
+    $(".formSentence").each(function() {
+      keyword = $(this).text();
+      $("#mainText").mark(keyword, options);
+    });
+    highlighted = true;
+  }
+};
+
+$("button").click(mark);
+
+</script>
+</html>
